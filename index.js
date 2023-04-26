@@ -3,6 +3,8 @@ const colors = require("colors");
 const figlet = require("figlet");
 const { program } = require("commander");
 const packageConfig = require("./helpers/utilis/packageConfiguration");
+const packageDes = require("./helpers/utilis/packageDescription");
+const packageGen = require("./helpers/utilis/packageGenerator");
 // Configure Figlet for the package name
 figlet.text(
   "React-Gen",
@@ -20,33 +22,9 @@ figlet.text(
     }
 
     console.log(colors.rainbow(data));
-    
-    //package description
-    program
-      .version("1.0.0")
-      .description(
-        colors.cyan("A CLI tool that creates React Components & Pages")
-    );
-    program 
-      .command("generate")
-      .alias("g")
-      .option(
-        "-p, --page " + colors.green("<page>"),
-        "Generates a React page file"
-       )
-      .option(
-        "-c, --component "+ colors.green("<component>"),
-        "Generates a React component file"
-       )
-      .description("Generate a new React Component or Page!")
-      .action(async (name)=>{
-          console.log(name);
-          
-      })
-      
-    //package configurations.
+    packageDes.packageDescription();
     packageConfig.configurePackage();
-    
+    packageGen.packageGenerator();
     program.parse(process.argv);
   }
 );
