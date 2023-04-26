@@ -1,4 +1,5 @@
 {
   "template": "tsx",
-  "component": "functional"
+  "component": "arrow",
+  "page": "arrow"
 }
