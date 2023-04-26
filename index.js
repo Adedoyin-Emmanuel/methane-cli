@@ -25,9 +25,9 @@ figlet.text(
       console.log("Figlet error:", colors.red(err));
       return;
     }
-   
+
     console.log(colors.rainbow(data));
-    
+
     program
       .version("1.0.0")
       .description(
@@ -37,42 +37,59 @@ figlet.text(
       .command("config")
       .description("Set default configurations")
       .option(
-        "-t, --template <template>",
+        "-t, --template " + colors.green("<template>"),
         "Set the default template (jsx or tsx)"
       )
       .option(
-        "-c, --component <component>",
-        "Set the default component type (arrow function or function)"
+        "-c, --component " + colors.green("<component>"),
+        "Set the default component type (arrow or functional)"
       )
       .option(
-        "-p, --page <page>",
-        "Set the default page type (arrow function or function)"
+        "-p, --page " + colors.green("<page>"),
+        "Set the default page type (arrow or functional)"
       )
       .action((options) => {
         const config = userReadConfig.readConfig();
         if (options.template) {
-          if(options.template != "jsx"  && options.template != "tsx")
-          {
+          if (options.template != "jsx" && options.template != "tsx") {
             console.log(options.template);
-            console.log(colors.red("Invalid template format, format must be either 'jsx' or 'tsx'"));
+            console.log(
+              colors.red(
+                "Invalid template format, format must be either 'jsx' or 'tsx'"
+              )
+            );
             return;
           }
           config.template = options.template;
           userWriteConfig.writeConfig(config);
-          console.log(colors.cyan("Default template is now " + config.template));
+          console.log(
+            colors.cyan("Default template is now " + config.template)
+          );
         }
         if (options.component) {
+          if (
+            options.component != "arrow" &&
+            options.component != "functional"
+          ) {
+            console.log(
+              colors.red(
+                "Invalid component format, format must be either 'arrow' or 'functional'"
+              )
+            );
+            return;
+          }
           config.component = options.component;
+          userWriteConfig.writeConfig(config);
+          console.log(
+            colors.cyan(
+              "Default component is now " + config.component + " function template"
+            )
+          );
         }
         if (options.page) {
           config.page = options.page;
         }
       });
-        program.parse(process.argv);
-      
+    program.parse(process.argv);
   }
-  
-    
 );
-
-

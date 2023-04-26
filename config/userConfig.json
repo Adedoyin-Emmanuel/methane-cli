@@ -1,3 +1,4 @@
 {
-  "template": "tsx"
+  "template": "tsx",
+  "component": "functional"
 }
