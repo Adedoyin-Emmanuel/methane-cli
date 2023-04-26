@@ -47,6 +47,9 @@ figlet.text(
       .option(
         "-p, --page " + colors.green("<page>"),
         "Set the default page type (arrow or functional)"
+      ).option(
+        "-r --register" + colors.green("<register>"),
+        "Set the default registration of pages in the App.jsx or App.tsx file (true or false)" 
       )
       .action((options) => {
         const config = userReadConfig.readConfig();
@@ -87,7 +90,26 @@ figlet.text(
           );
         }
         if (options.page) {
+          if (
+            options.page != "arrow" &&
+            options.page != "functional"
+          ) {
+            console.log(
+              colors.red(
+                "Invalid page format, format must be either 'arrow' or 'functional'"
+              )
+            );
+            return;
+          }
           config.page = options.page;
+          userWriteConfig.writeConfig(config);
+          console.log(
+            colors.cyan(
+              "Default page is now " +
+                config.page +
+                " function template"
+            )
+          );
         }
       });
     program.parse(process.argv);
