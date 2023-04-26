@@ -1,16 +1,19 @@
 const fs = require("fs");
-const filePath = "./../../config/userConfig.json";
+const filePath = "configs/userConfig.json";
+const colors = require("colors");
 
 const readConfig = () => {
   try {
     const data = fs.readFileSync(filePath);
     return JSON.parse(data);
   } catch (error) {
-    console.error("Error reading config file", error.message);
+    console.log(
+      colors.grey("Error reading config file", colors.red(error.message))
+    );
     return {};
   }
 };
 
-modules.exports = {
+module.exports = {
     readConfig
 }

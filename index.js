@@ -5,6 +5,7 @@ const colors = require("colors");
 const figlet = require("figlet");
 const path = require("path");
 const { program } = require("commander");
+const userConfig = require("./helpers/utilis/readUserConfig");
 
 // Configure Figlet for the package name
 figlet.text(
@@ -22,5 +23,11 @@ figlet.text(
       return;
     }
     console.log(colors.rainbow(data));
+    
+    console.log(userConfig.readConfig());
   }
+  
+    
 );
+
+
