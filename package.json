@@ -1,0 +1,35 @@
+{
+  "name": "react-gen",
+  "version": "1.0.0",
+  "description": "React-gen is a command-line tool for generating React components and pages with ease.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adedoyin-Emmanuel/react-gen.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Adedoyin Emmanuel Adeniyi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Adedoyin-Emmanuel/react-gen/issues"
+  },
+  "bin": {
+    "rg": "./bin/rg.js"
+  },
+  "homepage": "https://github.com/Adedoyin-Emmanuel/react-gen#readme",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "colors": "^1.4.0",
+    "commander": "^10.0.1",
+    "figlet": "^1.6.0",
+    "fs-extra": "^11.1.1",
+    "gradient-string": "^2.0.2",
+    "inquirer": "^9.2.0",
+    "yargs": "^17.7.1"
+  }
+}
