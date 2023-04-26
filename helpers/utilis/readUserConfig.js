@@ -1,5 +1,5 @@
 const fs = require("fs");
-const filePath = "configs/userConfig.json";
+const filePath = "config/userConfig.json";
 const colors = require("colors");
 
 const readConfig = () => {
@@ -13,6 +13,7 @@ const readConfig = () => {
     return {};
   }
 };
+
 
 module.exports = {
     readConfig
