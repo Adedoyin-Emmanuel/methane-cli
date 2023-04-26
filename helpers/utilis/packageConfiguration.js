@@ -19,10 +19,14 @@ const configurePackage = () => {
       "-p, --page " + colors.green("<page>"),
       "Set the default page type (arrow or functional)"
     ).option(
-      "-gs --generateStyle " + colors.green("<boolean>"),
+      "-st, --styleType " + colors.green("<style>"),
+      "Set the default style type (css or scss)"
+    )
+    .option(
+      "-gs, --generateStyle " + colors.green("<boolean>"),
       "Generates a <component-name>.css or <page-name>.css file for the Compoent and Pages. (true or false)"
     ).option(
-      "-gf --generateFolder" + colors.green("<boolean>"),
+      "-gf, --generateFolder" + colors.green("<boolean>"),
       "Generates a custom folder for the Component and Pages. (true or false)"
     )
     .option(
