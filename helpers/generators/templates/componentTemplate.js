@@ -47,7 +47,7 @@ import React from "react";
 interface ${componentName}Props {
     
 }
-const ${componentName}:React.FC = ():JSX.Element => {
+const ${componentName}:React.FC = (): JSX.Element => {
 
     return (
         <React.Fragment>
@@ -69,7 +69,7 @@ import React from "react";
 interface ${componentName}Props {
     
 }
-function ${componentName}():JSX.Element => {
+function ${componentName}(): JSX.Element => {
 
     return (
         <React.Fragment>
