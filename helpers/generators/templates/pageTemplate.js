@@ -1,32 +1,61 @@
-const generateJsxArrowTemplate = (componentName) => {
-  const template = `
-    import React from "react";
-    import { Link, useNavigate } from "react-router-dom";
-    
-    const ${componentName} = () => {
-        const navigateTo = useNavigate();
-        
-        return (
-            <React.Fragment>
-                <h1>${componentName} works!</h1>
-            </React.Fragment>
-        );  
-    }
-    
-    export default ${componentName};
+const generateJsxArrowTemplate = (
+  componentName,
+  importStyleSheet,
+  styleSheetType
+) => {
+  let template;
+  if (importStyleSheet === "true") {
+    template = `
+import React from "react";
+import "./${componentName}Style.${styleSheetType}";
+import {Link, useNavigate} from "react-router-dom";
+
+const ${componentName} = () => {
+    const navigateTo = useNavigate();
+    return (
+        <React.Fragment>
+            <h1>${componentName} works!</h1>
+        </React.Fragment>
+    );  
+}
+
+export default ${componentName};
     `;
+  } else {
+    template = `
+import React from "react";
+import {Link, useNavigate} from "react-router-dom";
+
+const ${componentName} = () => {
+    const navigateTo = useNavigate();
+    return (
+        <React.Fragment>
+            <h1>${componentName} works!</h1>
+        </React.Fragment>
+    );  
+}
+
+export default ${componentName};
+    `;
+  }
+
   return template;
 };
 
-const generateJsxFunctionTemplate = (componentName) => {
-  const template = `
+const generateJsxFunctionTemplate = (
+  componentName,
+  importStyleSheet,
+  styleSheetType
+) => {
+  let template;
+  if (importStyleSheet === "true") {
+    template = `
     import React from "react";
-    import { Link, useNavigate } from "react-router-dom";
-    
-    
+    import "./${componentName}Style.${styleSheetType}";
+    import {Link, useNavigate} from "react-router-dom";
+
     function ${componentName} () {
         const navigateTo = useNavigate();
-        
         return (
             <React.Fragment>
                 <h1>${componentName} works!</h1>
@@ -35,53 +64,130 @@ const generateJsxFunctionTemplate = (componentName) => {
     }
     
     export default ${componentName};
-    `;
+        `;
+  } else {
+    template = `
+    import React from "react";
+    import {Link, useNavigate} from "react-router-dom";
+
+    function ${componentName} () {
+      const navigateTo = useNavigate();
+      
+        return (
+            <React.Fragment>
+                <h1>${componentName} works!</h1>
+            </React.Fragment>
+        );  
+    }
+    
+    export default ${componentName};
+        `;
+  }
   return template;
 };
 
-const generateTsxArrowTemplate = (componentName) => {
-  const template = `
-    import React from "react";
-    import { Link, useNavigate } from "react-router-dom";
+const generateTsxArrowTemplate = (
+  componentName,
+  importStyleSheet,
+  styleSheetType
+) => {
+  let template;
+  if (importStyleSheet === "true") {
+    template = `
+import React from "react";
+import "./${componentName}Style.${styleSheetType}";
+import {Link, useNavigate} from "react-router-dom";
+
+interface ${componentName}Props {
     
-    interface ${componentName}Props {
-        
-    }
-    const ${componentName}:React.FC = ():JSX.Element => {
-        const navigateTo = useNavigate();
-        
-        return (
-            <React.Fragment>
-                <h1>${componentName} works!</h1>
-            </React.Fragment>
-        );  
-    }
-    
-    export default ${componentName};
+}
+const ${componentName}:React.FC = (): JSX.Element => {
+    const navigateTo = useNavigate();
+    return (
+        <React.Fragment>
+            <h1>${componentName} works!</h1>
+        </React.Fragment>
+    );  
+}
+
+export default ${componentName};
     `;
+  } else {
+    template = `
+import React from "react";
+import {Link, useNavigate} from "react-router-dom";
+
+interface ${componentName}Props {
+    
+}
+
+const ${componentName}:React.FC = (): JSX.Element => {
+    const navigateTo = useNavigate();
+    return (
+        <React.Fragment>
+            <h1>${componentName} works!</h1>
+        </React.Fragment>
+    );  
+}
+
+export default ${componentName};
+    `;
+  }
   return template;
 };
 
-const generateTsxFunctionTemplate = (componentName) => {
-  const template = `
-    import React from "react";
-    import { Link, useNavigate } from "react-router-dom";
+const generateTsxFunctionTemplate = (
+  componentName,
+  importStyleSheet,
+  styleSheetType
+) => {
+  let template;
+  if (importStyleSheet === "true") {
+    template = `
+import React from "react";
+import "./${componentName}Style.${styleSheetType}";
+import {Link, useNavigate} from "react-router-dom";
+
+
+interface ${componentName}Props {
     
-    interface ${componentName}Props {
-        
-    }
-    function ${componentName}():JSX.Element => {
-        const navigateTo = useNavigate();
-        
-        return (
-            <React.Fragment>
-                <h1>${componentName} works!</h1>
-            </React.Fragment>
-        );  
-    }
+}
+
+function ${componentName}(): JSX.Element {
+    const navigateTo = useNavigate();
     
-    export default ${componentName};
+    return (
+        <React.Fragment>
+            <h1>${componentName} works!</h1>
+        </React.Fragment>
+    );  
+}
+
+export default ${componentName};
     `;
+  } else {
+    template = `
+import React from "react";
+import {Link, useNavigate} from "react-router-dom";
+
+
+interface ${componentName}Props {
+    
+}
+
+function ${componentName}(): JSX.Element {
+    const navigateTo = useNavigate();
+    
+    return (
+        <React.Fragment>
+            <h1>${componentName} works!</h1>
+        </React.Fragment>
+    );  
+}
+
+export default ${componentName};
+    `;
+  }
 
   return template;
 };
