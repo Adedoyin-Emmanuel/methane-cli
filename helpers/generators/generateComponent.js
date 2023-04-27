@@ -12,7 +12,7 @@ const componentDir = [
 });
 const readUserConfig = require("./../utilis/readUserConfig");
 const componentResolver = require("./resolvers/resolveComponentContent");
-
+const getFileStats = require("./../geFileStats");
 const generateComponentFile = async (name, componentDir, componentResolver) => {
   await fs.writeFile(
     componentDir,
@@ -60,7 +60,6 @@ const generateComponent = async (name) => {
         `${name}Style.${styleSheetType}`
       );
 
-      console.log(cssFilePath);
 
       await fs.promises.writeFile(cssFilePath, "");
     }
@@ -70,16 +69,9 @@ const generateComponent = async (name) => {
       path.join(componentFilePath),
       componentResolver
     );
-    readUserConfig.readConfig().generateFolder === "true"
-      ? console.log(
-          colors.green(
-            `${"CREATE "} ${colors.white(`${componentDirName}${name}`)}`
-          )
-        )
-      : null;
-    console.log(colors.green(`${"CREATE "} ${cssFilePath}`));
+    
   } catch (error) {
-    console.log(colors.bold(colors.cyan(error)));
+    console.log(colors.bold(colors.red(error)));
   }
 
   console.log(`${colors.bold(colors.green(`${name} generated successfully`))}`);
