@@ -20,19 +20,19 @@ const configurePackage = () => {
       "Set the default page type (arrow or functional)"
     )
     .option(
-      "-r --register" + colors.green("<boolean>"),
+      "-r, --register " + colors.green("<boolean>"),
       "Set the default registration of pages in the App.jsx or App.tsx file (true or false)"
     )
     .option(
-      "-st, --styleType " + colors.green("<style>"),
+      "-st, --stylesheetType " + colors.green("<style>"),
       "Set the default style type (css or scss)"
     )
     .option(
-      "-gs, --generateStyle " + colors.green("<boolean>"),
-      "Generates a <component-name>.css or <page-name>.css file for the Component and Pages. (true or false)"
+      "-gs, --generateStylesheet " + colors.green("<boolean>"),
+      "Generates a stylesheet file for the Component and Pages. (true or false)"
     )
     .option(
-      "-gf, --generateFolder" + colors.green("<boolean>"),
+      "-gf, --generateFolder " + colors.green("<boolean>"),
       "Generates a custom folder for the Component and Pages. (true or false)"
     )
     .action((options) => {
@@ -53,20 +53,92 @@ const configurePackage = () => {
         userWriteConfig.writeConfig(config);
         console.log(colors.cyan("Default template is now " + config.template));
       }
-      //styleType format
-      if (options.styleType) {
-        if (options.styleType != "css" && options.styleType != "scss") {
+      //stylesheetType format
+      if (options.stylesheetType) {
+        if (
+          options.stylesheetType != "css" &&
+          options.stylesheetType != "scss"
+        ) {
           console.log(
             colors.red(
-              "Invalid styleType format, format must be either 'css' or 'scss'"
+              "Invalid stylesheetType format, format must be either 'css' or 'scss'"
             )
           );
           return;
         }
-        config.styleType = options.styleType;
+        config.stylesheetType = options.stylesheetType;
         userWriteConfig.writeConfig(config);
         console.log(
-          colors.cyan("Default style type is now " + config.styleType)
+          colors.cyan("Default stylesheet type is now " + config.stylesheetType)
+        );
+      }
+      //generate stylesheet file config
+      if (options.generateStylesheet) {
+        if (
+          options.generateStylesheet != "true" &&
+          options.generateStylesheet != "false"
+        ) {
+          console.log(
+            colors.red(
+              "Invalid stylesheet generation value, value must be 'true' or 'false'"
+            )
+          );
+          return;
+        }
+        config.generateStylesheet = options.generateStylesheet;
+        userWriteConfig.writeConfig(config);
+        console.log(
+          colors.cyan(
+            `Stylesheet files generation set to ${colors.bold(
+              config.generateStylesheet
+            )}`
+          )
+        );
+      }
+      //folder generation
+      if (options.generateFolder) {
+        if (
+          options.generateFolder != "true" &&
+          options.generateFolder != "false"
+        ) {
+          console.log(
+            colors.red(
+              `Invalid folder generation value, value must be ${colors.bold(
+                "true"
+              )} or ${colors.bold("false")}`
+            )
+          );
+          return;
+        }
+        config.generateFolder = options.generateFolder;
+        userWriteConfig.writeConfig(config);
+        console.log(
+          colors.cyan(
+            `Component & Page folder generation set to ${colors.bold(
+              config.generateFolder
+            )}`
+          )
+        );
+      }
+
+      //page registration.
+      if (options.register) {
+        if (options.register != "true" && options.register != "false") {
+          console.log(
+            colors.red(
+              `Invalid register value, value must be ${colors.bold(
+                "true"
+              )} or ${colors.bold("false")}`
+            )
+          );
+          return;
+        }
+        config.register = options.register;
+        userWriteConfig.writeConfig(config);
+        console.log(
+          colors.cyan(
+            `React pages registration set to ${colors.bold(config.register)}`
+          )
         );
       }
       //component generation format
@@ -89,6 +161,8 @@ const configurePackage = () => {
           )
         );
       }
+
+      //page generation template
       if (options.page) {
         if (options.page != "arrow" && options.page != "functional") {
           console.log(

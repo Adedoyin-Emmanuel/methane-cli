@@ -1,5 +1,8 @@
 {
   "template": "tsx",
   "component": "arrow",
-  "page": "arrow"
+  "page": "arrow",
+  "generateStylesheet": "false",
+  "generateFolder": "false",
+  "register": "true"
 }
