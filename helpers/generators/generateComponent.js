@@ -32,8 +32,7 @@ const generateComponent = async (name) => {
     );
   }
   if (!componentDir) {
-    console.log("components folder doesn't exist");
-    console.log(componentDir);
+    console.log(colors.red("components folder doesn't exist"));
     return;
   }
 
@@ -48,7 +47,6 @@ const generateComponent = async (name) => {
 
   try {
     /*create the generated component directory*/
-
     readUserConfig.readConfig().generateFolder === "true"
       ? await fs.mkdirSync(componentDirName)
       : null;
@@ -60,7 +58,6 @@ const generateComponent = async (name) => {
         `${name}Style.${styleSheetType}`
       );
 
-
       await fs.promises.writeFile(cssFilePath, "");
     }
 
@@ -69,7 +66,6 @@ const generateComponent = async (name) => {
       path.join(componentFilePath),
       componentResolver
     );
-    
   } catch (error) {
     console.log(colors.bold(colors.red(error)));
   }

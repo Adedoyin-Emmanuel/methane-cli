@@ -1,0 +1,73 @@
+const fs = require("fs");
+const colors = require("colors");
+const path = require("path");
+const rootDir = path.join(process.cwd());
+const pageDir = ["pages", "Pages", "page", "Page"].find((dir) => {
+  return fs.existsSync(path.join(rootDir, dir));
+});
+const readUserConfig = require("./../utilis/readUserConfig");
+const pageResolver = require("./resolvers/resolvePageContent");
+
+const generatePageFile = async (name, pageDir, pageResolver) => {
+  await fs.writeFile(
+    pageDir,
+    pageResolver.resolvePageContent(readUserConfig, name),
+    (error) => {
+      if (error) {
+        console.log(colors.bold(colors.red(error)));
+      }
+    }
+  );
+};
+
+const generatePage = async (name) => {
+  if (!name) {
+    return console.log(
+      colors.bold(colors.red("page extension or name is required!"))
+    );
+  }
+  if (!pageDir) {
+    console.log(colors.red("pages folder doesn't exist"));
+    return;
+  }
+
+  const pageDirName =
+    readUserConfig.readConfig().generateFolder === "true"
+      ? path.join(pageDir, name)
+      : path.join(pageDir);
+
+  const pageFilePath = path.join(
+    pageDirName + `/${name}.${readUserConfig.readConfig().template}`
+  );
+
+  try {
+    /*create the generated component directory*/
+    readUserConfig.readConfig().generateFolder === "true"
+      ? await fs.mkdirSync(pageDirName)
+      : null;
+
+    if (readUserConfig.readConfig().generateStylesheet === "true") {
+      const styleSheetType = readUserConfig.readConfig().stylesheetType;
+      const cssFilePath = path.join(
+        pageDirName,
+        `${name}Style.${styleSheetType}`
+      );
+
+      await fs.promises.writeFile(cssFilePath, "");
+    }
+
+    generatePageFile(
+      name,
+      path.join(pageFilePath),
+      pageResolver
+    );
+  } catch (error) {
+    console.log(colors.bold(colors.red(error)));
+  }
+
+  console.log(`${colors.bold(colors.green(`${name} generated successfully`))}`);
+};
+
+module.exports = {
+  generatePage,
+};

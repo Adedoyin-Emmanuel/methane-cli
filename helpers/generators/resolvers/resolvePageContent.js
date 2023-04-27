@@ -1,29 +1,45 @@
-const generateComponentTmp = require("./../template/pageTemplate");
+const generatePageTmp = require("./../templates/pageTemplate");
 
-const resolveComponentContent = (userConfig) => {
+const resolvePageContent = (userConfig, pageName) => {
   if (
     userConfig.readConfig().template === "jsx" &&
-    userConfig.readConfig().page === "arrow"
+    userConfig.readConfig().component === "arrow"
   ) {
-    return generateComponentTmp.generateJsxArrowTemplate();
+    return generatePageTmp.generateJsxArrowTemplate(
+      pageName,
+      userConfig.readConfig().generateStylesheet,
+      userConfig.readConfig().stylesheetType
+    );
   } else if (
     userConfig.readConfig().template === "jsx" &&
-    userConfig.readConfig().page === "functional"
+    userConfig.readConfig().component === "functional"
   ) {
-    return generateComponentTmp.generateJsxFunctionTemplate();
+    return generatePageTmp.generateJsxFunctionTemplate(
+      pageName,
+      userConfig.readConfig().generateStylesheet,
+      userConfig.readConfig().stylesheetType
+    );
   } else if (
     userConfig.readConfig().template === "tsx" &&
-    userConfig.readConfig().page === "arrow"
+    userConfig.readConfig().component === "arrow"
   ) {
-    return generateComponentTmp.generateTsxArrowTemplate();
+    return generatePageTmp.generateTsxArrowTemplate(
+      pageName,
+      userConfig.readConfig().generateStylesheet,
+      userConfig.readConfig().stylesheetType
+    );
   } else if (
     userConfig.readConfig().template === "tsx" &&
-    userConfig.readConfig().page === "functional"
+    userConfig.readConfig().component === "functional"
   ) {
-    return generateComponentTmp.generateTsxFunctionTemplate();
+    return generatePageTmp.generateTsxFunctionTemplate(
+      pageName,
+      userConfig.readConfig().generateStylesheet,
+      userConfig.readConfig().stylesheetType
+    );
   }
 };
 
 module.exports = {
-  resolveComponentContent,
+  resolvePageContent,
 };
