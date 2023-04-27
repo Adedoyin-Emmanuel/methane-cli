@@ -5,26 +5,41 @@ const resolveComponentContent = (userConfig, componentName) => {
     userConfig.readConfig().template === "jsx" &&
     userConfig.readConfig().component === "arrow"
   ) {
-    return generateComponentTmp.generateJsxArrowTemplate(componentName);
+    return generateComponentTmp.generateJsxArrowTemplate(
+      componentName,
+      userConfig.readConfig().generateStylesheet,
+      userConfig.readConfig().stylesheetType
+    );
   } else if (
     userConfig.readConfig().template === "jsx" &&
     userConfig.readConfig().component === "functional"
   ) {
-    return generateComponentTmp.generateJsxFunctionTemplate(componentName);
+    return generateComponentTmp.generateJsxFunctionTemplate(
+      componentName,
+      userConfig.readConfig().generateStylesheet,
+      userConfig.readConfig().stylesheetType
+    );
   } else if (
     userConfig.readConfig().template === "tsx" &&
     userConfig.readConfig().component === "arrow"
   ) {
-    return generateComponentTmp.generateTsxArrowTemplate(componentName);
+    return generateComponentTmp.generateTsxArrowTemplate(
+      componentName,
+      userConfig.readConfig().generateStylesheet,
+      userConfig.readConfig().stylesheetType
+    );
   } else if (
     userConfig.readConfig().template === "tsx" &&
     userConfig.readConfig().component === "functional"
   ) {
-    return generateComponentTmp.generateTsxFunctionTemplate(componentName);
+    return generateComponentTmp.generateTsxFunctionTemplate(
+      componentName,
+      userConfig.readConfig().generateStylesheet,
+      userConfig.readConfig().stylesheetType
+    );
   }
 };
 
-
-module.exports ={
-    resolveComponentContent
-}
+module.exports = {
+  resolveComponentContent,
+};
