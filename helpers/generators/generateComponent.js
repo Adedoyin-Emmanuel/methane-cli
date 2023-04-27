@@ -13,6 +13,18 @@ const componentDir = [
 const readUserConfig = require("./../utilis/readUserConfig");
 const componentResolver = require("./resolvers/resolveComponentContent");
 
+const generateComponentFile = async (name, componentFilePath, componentResolver) => {
+  await fs.writeFile(
+    componentFilePath,
+    componentResolver.resolveComponentContent(readUserConfig, name),
+    (error) => {
+      if (error) {
+        console.log(colors.bold(colors.red(error)));
+      }
+    }
+  );
+};
+
 const generateComponent = async (name) => {
   if (!name) {
     return console.log(
@@ -33,22 +45,26 @@ const generateComponent = async (name) => {
 
         if (readUserConfig.readConfig().generateStylesheet === "true") {
           const styleSheetType = readUserConfig.readConfig().stylesheetType;
-          const cssFilePath = path.join(`${componentPath}/${name}${name}Style.${styleSheetType}`);
+          const cssFilePath = path.join(
+            `${componentPath}/${name}Style.${styleSheetType}`
+          );
 
           await fs.writeFile(cssFilePath, "", (error) => {
-            console.log(colors.bold(colors.red(error)));
-          });
-          await fs.writeFile(
-            componentFilePath,
-            componentResolver.resolveComponentContent(readUserConfig, name),
-            (error) => {
+            if (error) {
               console.log(colors.bold(colors.red(error)));
             }
-          );
+          });
+          generateComponentFile(name, componentFilePath, componentResolver);
+          
+        } else {
+          /*generate the component without the stylesheet*/
+          generateComponentFile(name, componentFilePath, componentResolver);
         }
       } catch (error) {
-        console.log(colors.bold(colors.red(error)));
+        console.log(colors.bold(colors.cyan(error)));
       }
+    } else {
+      //don't generate folder
     }
     const componentFilePath = path.join(
       rootDir,

@@ -6,6 +6,7 @@ const colors = require("colors");
 const configurePackage = () => {
   program
     .command("config")
+    .alias("c")
     .description("Set default configurations")
     .option(
       "-t, --template " + colors.green("<template>"),

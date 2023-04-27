@@ -1,8 +1,13 @@
-const generateJsxArrowTemplate = (componentName) =>
-{
-    const template = `
+const generateJsxArrowTemplate = (
+  componentName,
+  importStyleSheet,
+  styleSheetType
+) => {
+  let template;
+  if (importStyleSheet === "true") {
+    template = `
 import React from "react";
-
+import "./"${componentName}Style.${styleSheetType};
 
 const ${componentName} = () => {
 
@@ -15,17 +20,11 @@ const ${componentName} = () => {
 
 export default ${componentName};
     `;
-    return template;
-}
-
-
-const generateJsxFunctionTemplate = (componentName) =>
-{
-    const template = `
+  } else {
+    template = `
 import React from "react";
 
-
-function ${componentName} () {
+const ${componentName} = () => {
 
     return (
         <React.Fragment>
@@ -36,13 +35,62 @@ function ${componentName} () {
 
 export default ${componentName};
     `;
-    return template;
-}
+  }
 
+  return template;
+};
 
-const generateTsxArrowTemplate = (componentName) => {
-  const template = `
+const generateJsxFunctionTemplate = (
+  componentName,
+  importStyleSheet,
+  styleSheetType
+) => {
+  let template;
+  if (importStyleSheet === "true") {
+    template = `
+    import React from "react";
+    import "./"${componentName}Style.${styleSheetType};
+    
+    function ${componentName} () {
+    
+        return (
+            <React.Fragment>
+                <h1>${componentName} works!</h1>
+            </React.Fragment>
+        );  
+    }
+    
+    export default ${componentName};
+        `;
+  } else {
+    template = `
+    import React from "react";
+    
+    function ${componentName} () {
+    
+        return (
+            <React.Fragment>
+                <h1>${componentName} works!</h1>
+            </React.Fragment>
+        );  
+    }
+    
+    export default ${componentName};
+        `;
+  }
+  return template;
+};
+
+const generateTsxArrowTemplate = (
+  componentName,
+  importStyleSheet,
+  styleSheetType
+) => {
+  let template;
+  if (importStyleSheet === "true") {
+    template = `
 import React from "react";
+import "./"${componentName}Style.${styleSheetType};
 
 interface ${componentName}Props {
     
@@ -58,17 +106,45 @@ const ${componentName}:React.FC = (): JSX.Element => {
 
 export default ${componentName};
     `;
-  return template;
-  
-};
-
-const generateTsxFunctionTemplate = (componentName) => {
-  const template = `
+  } else {
+    template = `
 import React from "react";
 
 interface ${componentName}Props {
     
 }
+
+const ${componentName}:React.FC = (): JSX.Element => {
+
+    return (
+        <React.Fragment>
+            <h1>${componentName} works!</h1>
+        </React.Fragment>
+    );  
+}
+
+export default ${componentName};
+    `;
+  }
+  return template;
+};
+
+const generateTsxFunctionTemplate = (
+  componentName,
+  importStyleSheet,
+  styleSheetType
+) => {
+  let template;
+  if (importStyleSheet === "true") {
+    template = `
+import React from "react";
+import "./"${componentName}Style.${styleSheetType};
+
+
+interface ${componentName}Props {
+    
+}
+
 function ${componentName}(): JSX.Element => {
 
     return (
@@ -80,16 +156,34 @@ function ${componentName}(): JSX.Element => {
 
 export default ${componentName};
     `;
+  } else {
+    template = `
+import React from "react";
+
+
+interface ${componentName}Props {
     
+}
+
+function ${componentName}(): JSX.Element => {
+
+    return (
+        <React.Fragment>
+            <h1>${componentName} works!</h1>
+        </React.Fragment>
+    );  
+}
+
+export default ${componentName};
+    `;
+  }
+
   return template;
 };
 
-
 module.exports = {
-
-    generateJsxArrowTemplate,
-    generateJsxFunctionTemplate,
-    generateTsxArrowTemplate,
-    generateTsxFunctionTemplate
-}
-
+  generateJsxArrowTemplate,
+  generateJsxFunctionTemplate,
+  generateTsxArrowTemplate,
+  generateTsxFunctionTemplate,
+};
