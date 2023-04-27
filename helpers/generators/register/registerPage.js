@@ -5,14 +5,36 @@ const readUserConfig = require("./../../utilis/readUserConfig");
 
 const addPageImport = (rootDir, pageName, currentPageName) => {
   const supportedExtensions = [".js", ".jsx", ".ts", ".tsx"];
-  const generatedPageImportStatement = (readUserConfig.readConfig().generateFolder === "true") ? `import ${pageName} from "./${currentPageName}/${pageName}/${pageName}";` : `import ${pageName} from "./${currentPageName}/${pageName}";`;
+  const generatedPageImportStatement =
+    readUserConfig.readConfig().generateFolder === "true"
+      ? `import ${pageName} from "./${currentPageName}/${pageName}/${pageName}";`
+      : `import ${pageName} from "./${currentPageName}/${pageName}";`;
 
   const checkFile = (filePath) => {
     const fileExt = path.extname(filePath);
     if (supportedExtensions.includes(fileExt)) {
       const fileContents = fs.readFileSync(filePath, "utf8");
       if (!fileContents.includes(generatedPageImportStatement)) {
-        const newContents = generatedPageImportStatement + fileContents;
+        const importStatements = fileContents.match(/import.*?;/gs);
+        let newContents = fileContents;
+        if (importStatements && importStatements.length > 0) {
+          const lastImportStatement =
+            importStatements[importStatements.length - 1];
+          const lastImportStatementIndex =
+            newContents.lastIndexOf(lastImportStatement);
+          newContents =
+            newContents.slice(
+              0,
+              lastImportStatementIndex + lastImportStatement.length
+            ) +
+            "\n" +
+            generatedPageImportStatement +
+            newContents.slice(
+              lastImportStatementIndex + lastImportStatement.length
+            );
+        } else {
+          newContents = generatedPageImportStatement + "\n" + newContents;
+        }
         fs.writeFileSync(filePath, newContents);
         console.log(
           colors.cyan(colors.bold(`Page Successfully Added to ${filePath}`))
