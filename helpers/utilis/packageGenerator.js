@@ -75,7 +75,6 @@ const packageGenerator = () => {
         component === undefined &&
         page === undefined
       ) {
-        console.log(`serviceWorker is ${typeof serviceWorker}`);
         serviceWorkerGen.generateServiceWorkerFile();
         
       } else if (
