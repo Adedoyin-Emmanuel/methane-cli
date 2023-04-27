@@ -5,7 +5,9 @@ const packageDescription = () => {
   program
     .version("1.0.0")
     .description(
-      colors.cyan("A CLI tool that creates React Components & Pages")
+      colors.cyan(
+        "A CLI tool for efficient creation of React components, pages and Service Worker files."
+      )
     );
 };
 
