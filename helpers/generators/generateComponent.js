@@ -12,6 +12,10 @@ const componentDir = [
 });
 const readUserConfig = require("./../utilis/readUserConfig");
 
+// const generatePageTmp = require("./templates/pageTemplate");
+// const serviceWorkerTmp = require("./templates/serviceWorkerTemplate");
+
+
 const generateComponent = (extension, name) => {
   if (!extension || !name) {
     return console.log(
@@ -25,6 +29,7 @@ const generateComponent = (extension, name) => {
         componentPath,
         `${name}.${readUserConfig.readConfig().template}`
       );
+      cosnt 
 
       try {
         /*create the generated component directory*/
@@ -36,10 +41,11 @@ const generateComponent = (extension, name) => {
             componentFilePath,
             `${name}Style.${styleSheetType}`
           );
-            
+          
           fs.writeFile(cssFilePath, "");
           
           /*create the generated component*/
+          fs.writeFile(componentFilePath, )
         }
       } catch (error) {}
     }
