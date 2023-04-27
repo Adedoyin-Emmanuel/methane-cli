@@ -2,7 +2,7 @@
   "template": "jsx",
   "component": "arrow",
   "page": "arrow",
-  "generateStylesheet": "false",
+  "generateStylesheet": "true",
   "generateFolder": "true",
   "register": "true",
   "stylesheetType": "css"
