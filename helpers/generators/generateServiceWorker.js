@@ -14,7 +14,7 @@ const generateServiceWorkerFile = async () => {
     try {
       /*create the service worker file*/
       await fs.writeFile(
-        path.resolve(SWDir, `sw.js`),
+        path.resolve(SWDir, `service-worker.js`),
         swResolver.resolveServiceWorkerTemplate(),
         (error) => {
           if (error) {
@@ -24,7 +24,7 @@ const generateServiceWorkerFile = async () => {
       );
 
       await fs.writeFile(
-        path.resolver(SWDir, "serviceWorkerRegistration.js"),
+        path.resolve(SWDir, "serviceWorkerRegistration.js"),
         swResolver.resolveServiceWorkerRegistrationTemplate(),
         (error) => {
           if (error) {

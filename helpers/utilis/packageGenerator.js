@@ -17,7 +17,7 @@ const packageGenerator = () => {
       "Generates a React component file."
     )
     .option(
-      "-sw, --serviceWorker " + colors.green("<name>"),
+      "-sw, --serviceWorker ",
       "Generates a Service Worker file for PWA."
     )
     .description("Generate a new React Component, Page or Service Worker!")

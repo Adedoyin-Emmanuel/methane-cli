@@ -1,7 +1,7 @@
 const {
   serviceWorkerTemplate,
   serviceWorkerRegistrationTemplate,
-} = require("./../templates/serviceWorker");
+} = require("./../templates/serviceWorkerTemplate");
 
 const resolveServiceWorkerTemplate= () => {
   return serviceWorkerTemplate();
