@@ -1,7 +1,9 @@
 const colors = require("colors");
 const { program } = require("commander");
 const componentGen = require("./../generators/generateComponent");
-const pageGen = require("./../generators/generatePage")
+const pageGen = require("./../generators/generatePage");
+const serviceWorkerGen = require("./../generators/generateServiceWorker");
+
 const packageGenerator = () => {
   program
     .command("generate")
@@ -45,6 +47,7 @@ const packageGenerator = () => {
           .toUpperCase()}${component.slice(1)}`;
         const pageName = `${page.charAt(0).toUpperCase()}${page.slice(1)}`;
         //serviceworker is here too
+        serviceWorkerGen.generateServiceWorkerFile();
         componentGen.generateComponent(componentName);
         pageGen.generatePage(pageName);
         
@@ -73,6 +76,8 @@ const packageGenerator = () => {
         page === undefined
       ) {
         console.log(`serviceWorker is ${typeof serviceWorker}`);
+        serviceWorkerGen.generateServiceWorkerFile();
+        
       } else if (
         serviceWorker !== undefined &&
         page !== undefined &&
@@ -91,7 +96,8 @@ const packageGenerator = () => {
           .charAt(0)
           .toUpperCase()}${component.slice(1)}`;
          componentGen.generateComponent(componentName);
-          
+         serviceWorkerGen.generateServiceWorkerFile();
+         
         //service worker is here too
       } else if (
         page !== undefined &&
