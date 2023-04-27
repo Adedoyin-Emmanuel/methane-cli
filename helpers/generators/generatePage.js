@@ -7,6 +7,7 @@ const pageDir = ["pages", "Pages", "page", "Page"].find((dir) => {
 });
 const readUserConfig = require("./../utilis/readUserConfig");
 const pageResolver = require("./resolvers/resolvePageContent");
+const pageRegisterer = require("./register/registerPage");
 
 const generatePageFile = async (name, pageDir, pageResolver) => {
   await fs.writeFile(
@@ -61,6 +62,9 @@ const generatePage = async (name) => {
       path.join(pageFilePath),
       pageResolver
     );
+    
+    /*register the page in the App.jsx or App.tsx file*/
+    pageRegisterer.addPageImport(rootDir, name, pageDir);
   } catch (error) {
     console.log(colors.bold(colors.red(error)));
   }
