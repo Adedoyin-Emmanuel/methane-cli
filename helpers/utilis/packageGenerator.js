@@ -39,21 +39,26 @@ const packageGenerator = () => {
         page !== undefined &&
         serviceWorker !== undefined
       ) {
-        console.log(
-          `component is ${typeof component}, page is ${typeof page}, serviceWorker is ${typeof serviceWorker}`
-        );
+        const componentName = `${component
+          .charAt(0)
+          .toUpperCase()}${component.slice(1)}`;
+        const pageName = `${page.charAt(0).toUpperCase()}${page.slice(1)}`;
+        //serviceworker is here too
+        console.log(pageName, componentName);
       } else if (
         component !== undefined &&
         page === undefined &&
         serviceWorker === undefined
       ) {
-        console.log(`component is ${typeof component}`);
+        const componentName = `${component
+          .charAt(0)
+          .toUpperCase()}${component.slice(1)}`;
       } else if (
         name !== undefined &&
         component === undefined &&
         serviceWorker === undefined
       ) {
-        console.log(`page is ${typeof page}`);
+        const pageName = `${page.charAt(0).toUpperCase()}${page.slice(1)}`;
       } else if (
         serviceWorker !== undefined &&
         component === undefined &&
@@ -65,25 +70,27 @@ const packageGenerator = () => {
         page !== undefined &&
         component === undefined
       ) {
-        console.log(
-          `page is ${typeof page}, serviceWorker is ${typeof serviceWorker}`
-        );
+        const pageName = `${page.charAt(0).toUpperCase()}${page.slice(1)}`;
+        //serviceworker is here too
       } else if (
         serviceWorker !== undefined &&
         component !== undefined &&
         page == undefined
       ) {
-        console.log(
-          `component is ${typeof component}, serviceWorker is ${typeof serviceWorker}`
-        );
+        const componentName = `${component
+          .charAt(0)
+          .toUpperCase()}${component.slice(1)}`;
+        //service worker is here too
       } else if (
         page !== undefined &&
         component !== undefined &&
         serviceWorker === undefined
       ) {
-        console.log(`component is ${typeof component}, page is ${typeof page}`);
+        const componentName = `${component
+          .charAt(0)
+          .toUpperCase()}${component.slice(1)}`;
+        const pageName = `${page.charAt(0).toUpperCase()}${page.slice(1)}`;
       }
-
     });
 };
 
