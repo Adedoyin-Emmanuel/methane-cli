@@ -69,7 +69,7 @@ const generatePage = async (name) => {
     console.log(colors.bold(colors.red(error)));
   }
 
-  console.log(`${colors.bold(colors.green(`${name} generated successfully`))}`);
+  console.log(`${colors.bold(colors.green(`${name} Page generated successfully`))}`);
 };
 
 module.exports = {
