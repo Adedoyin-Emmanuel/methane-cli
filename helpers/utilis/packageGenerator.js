@@ -44,7 +44,7 @@ const packageGenerator = () => {
           .toUpperCase()}${component.slice(1)}`;
         const pageName = `${page.charAt(0).toUpperCase()}${page.slice(1)}`;
         //serviceworker is here too
-        componentGen.generateComponent("jsx", componentName);
+        componentGen.generateComponent(componentName);
         
       } else if (
         component !== undefined &&
@@ -54,6 +54,9 @@ const packageGenerator = () => {
         const componentName = `${component
           .charAt(0)
           .toUpperCase()}${component.slice(1)}`;
+          
+        componentGen.generateComponent(componentName);
+        
       } else if (
         name !== undefined &&
         component === undefined &&

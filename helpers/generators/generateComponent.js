@@ -8,16 +8,13 @@ const componentDir = [
   "component",
   "Component",
 ].find((dir) => {
-  fs.existsSync(path.join(rootDir, dir));
+  return fs.existsSync(path.join(rootDir, dir));
 });
 const readUserConfig = require("./../utilis/readUserConfig");
+const componentResolver = require("./resolvers/resolveComponentContent");
 
-// const generatePageTmp = require("./templates/pageTemplate");
-// const serviceWorkerTmp = require("./templates/serviceWorkerTemplate");
-
-
-const generateComponent = (extension, name) => {
-  if (!extension || !name) {
+const generateComponent = (name) => {
+  if (!name) {
     return console.log(
       colors.bold(colors.red("Component extension or name is required!"))
     );
@@ -29,11 +26,12 @@ const generateComponent = (extension, name) => {
         componentPath,
         `${name}.${readUserConfig.readConfig().template}`
       );
-      cosnt 
-
+      console.log(componentPath);
+      console.log(componentFilePath);
+      console.log(componentResolver.resolveComponentContent(readUserConfig));
       try {
         /*create the generated component directory*/
-        fs.mkdir(componentPath);
+        fs.mkdirSync(componentPath);
 
         if (readUserConfig.readConfig().generateStylesheet === "true") {
           const styleSheetType = readUserConfig.readConfig().stylesheetType;
@@ -41,13 +39,16 @@ const generateComponent = (extension, name) => {
             componentFilePath,
             `${name}Style.${styleSheetType}`
           );
-          
-          fs.writeFile(cssFilePath, "");
-          
-          /*create the generated component*/
-          fs.writeFile(componentFilePath, )
+
+          fs.writeFileSync(cssFilePath, "");
+          fs.writeFileSync(
+            componentFilePath,
+            componentResolver.resolveComponentContent(readUserConfig)
+          );
         }
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     }
     const componentFilePath = path.join(
       rootDir,
@@ -55,10 +56,11 @@ const generateComponent = (extension, name) => {
     );
 
     /*check user configurations*/
-    console.log(readUserConfig.readConfig().template);
+   // console.log(readUserConfig.readConfig().template);
     //if(readUserConfig.readConfig().)
   } else {
-    console.log(readUserConfig.readConfig().template);
+    console.log("components folder doesn't exist");
+    console.log(componentDir);
   }
   console.log(`${colors.bold(colors.green(`${name} generated successfully`))}`);
 };

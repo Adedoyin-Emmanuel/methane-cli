@@ -7,18 +7,18 @@ const resolveComponentContent = (userConfig) => {
   ) {
     return generateComponentTmp.generateJsxArrowTemplate();
   } else if (
-    userConfig.readConfig.template === "jsx" &&
-    userConfig.readConfig.page === "functional"
+    userConfig.readConfig().template === "jsx" &&
+    userConfig.readConfig().page === "functional"
   ) {
     return generateComponentTmp.generateJsxFunctionTemplate();
   } else if (
-    userConfig.readConfig.template === "tsx" &&
-    userConfig.readConfig.page === "arrow"
+    userConfig.readConfig().template === "tsx" &&
+    userConfig.readConfig().page === "arrow"
   ) {
     return generateComponentTmp.generateTsxArrowTemplate();
   } else if (
-    userConfig.readConfig.template === "tsx" &&
-    userConfig.readConfig.page === "functional"
+    userConfig.readConfig().template === "tsx" &&
+    userConfig.readConfig().page === "functional"
   ) {
     return generateComponentTmp.generateTsxFunctionTemplate();
   }
