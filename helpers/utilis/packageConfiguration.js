@@ -44,14 +44,18 @@ const configurePackage = () => {
           console.log(options.template);
           console.log(
             colors.red(
-              "Invalid template format, format must be either 'jsx' or 'tsx'"
+              `Invalid template format, format must be either ${colors.bold(
+                "jsx"
+              )} or ${colors.bold("tsx")}`
             )
           );
           return;
         }
         config.template = options.template;
         userWriteConfig.writeConfig(config);
-        console.log(colors.cyan("Default template is now " + config.template));
+        console.log(
+          colors.cyan(`Default template is now ${colors.bold(config.template)}`)
+        );
       }
       //stylesheetType format
       if (options.stylesheetType) {
@@ -61,7 +65,9 @@ const configurePackage = () => {
         ) {
           console.log(
             colors.red(
-              "Invalid stylesheetType format, format must be either 'css' or 'scss'"
+              `Invalid stylesheetType format, format must be either ${colors.bold(
+                "css"
+              )} or ${colors.bold("scss")}`
             )
           );
           return;
@@ -69,7 +75,11 @@ const configurePackage = () => {
         config.stylesheetType = options.stylesheetType;
         userWriteConfig.writeConfig(config);
         console.log(
-          colors.cyan("Default stylesheet type is now " + config.stylesheetType)
+          colors.cyan(
+            `Default stylesheet type is now ${colors.bold(
+              config.stylesheetType
+            )}`
+          )
         );
       }
       //generate stylesheet file config
@@ -146,7 +156,9 @@ const configurePackage = () => {
         if (options.component != "arrow" && options.component != "functional") {
           console.log(
             colors.red(
-              "Invalid component format, format must be either 'arrow' or 'functional'"
+              `Invalid component format, format must be either ${colors.bold(
+                "arrow"
+              )} or ${colors.bold("functional")}`
             )
           );
           return;
@@ -155,9 +167,8 @@ const configurePackage = () => {
         userWriteConfig.writeConfig(config);
         console.log(
           colors.cyan(
-            "Default component is now " +
-              config.component +
-              " function template"
+            `Default component is now 
+             ${colors.bold("functional")} function template`
           )
         );
       }
@@ -167,7 +178,7 @@ const configurePackage = () => {
         if (options.page != "arrow" && options.page != "functional") {
           console.log(
             colors.red(
-              "Invalid page format, format must be either 'arrow' or 'functional'"
+              `Invalid page format, format must be either ${colors.bold("arrow")} or ${colors.bold("functional")}`
             )
           );
           return;
@@ -176,7 +187,9 @@ const configurePackage = () => {
         userWriteConfig.writeConfig(config);
         console.log(
           colors.cyan(
-            "Default page is now " + config.page + " function template"
+            `Default page is now ${colors.bold(
+              config.page
+            )} function template`
           )
         );
       }
