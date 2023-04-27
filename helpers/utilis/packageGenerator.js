@@ -1,6 +1,6 @@
 const colors = require("colors");
 const { program } = require("commander");
-
+const componentGen = require("./../generators/generateComponent");
 const packageGenerator = () => {
   program
     .command("generate")
@@ -44,7 +44,8 @@ const packageGenerator = () => {
           .toUpperCase()}${component.slice(1)}`;
         const pageName = `${page.charAt(0).toUpperCase()}${page.slice(1)}`;
         //serviceworker is here too
-        console.log(pageName, componentName);
+        componentGen.generateComponent("jsx", componentName);
+        
       } else if (
         component !== undefined &&
         page === undefined &&

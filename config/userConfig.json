@@ -4,5 +4,6 @@
   "page": "arrow",
   "generateStylesheet": "false",
   "generateFolder": "true",
-  "register": "true"
+  "register": "true",
+  "stylesheetType": "css"
 }
