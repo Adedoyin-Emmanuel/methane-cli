@@ -33,8 +33,9 @@ const packageGenerator = () => {
          );
         return;
       }
-      console.log(typeof(name));
-      return;
+      
+      const {component, page} = name;
+      
     });
     
    
