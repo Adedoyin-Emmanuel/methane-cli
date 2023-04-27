@@ -1,6 +1,6 @@
 {
-  "template": "jsx",
-  "component": "arrow",
+  "template": "tsx",
+  "component": "functional",
   "page": "arrow",
   "generateStylesheet": "true",
   "generateFolder": "true",

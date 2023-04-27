@@ -1,15 +1,14 @@
 
 import React from "react";
-import "./HeaderStyle.css";
 
-const Header = () => {
+const Button = () => {
 
     return (
         <React.Fragment>
-            <h1>Header works!</h1>
+            <h1>Button works!</h1>
         </React.Fragment>
     );  
 }
 
-export default Header;
+export default Button;
     

@@ -145,7 +145,7 @@ interface ${componentName}Props {
     
 }
 
-function ${componentName}(): JSX.Element => {
+function ${componentName}(): JSX.Element {
 
     return (
         <React.Fragment>
@@ -165,7 +165,7 @@ interface ${componentName}Props {
     
 }
 
-function ${componentName}(): JSX.Element => {
+function ${componentName}(): JSX.Element {
 
     return (
         <React.Fragment>
