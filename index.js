@@ -12,7 +12,7 @@ figlet.text(
     font: "Big",
     horizontalLayout: "default",
     verticalLayout: "default",
-    width: 80,
+    width: 150,
     whitespaceBreak: true,
   },
   function (err, data) {
@@ -21,7 +21,7 @@ figlet.text(
       return;
     }
 
-    console.log(colors.rainbow(data));
+    console.log(colors.bold(colors.rainbow(data)));
     packageDes.packageDescription();
     packageConfig.configurePackage();
     packageGen.packageGenerator();
