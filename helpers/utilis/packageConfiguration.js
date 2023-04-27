@@ -1,6 +1,6 @@
 const userReadConfig = require("./readUserConfig");
 const userWriteConfig = require("./writeUserConfig");
-const {program} = require("commander");
+const { program } = require("commander");
 const colors = require("colors");
 
 const configurePackage = () => {
@@ -18,23 +18,27 @@ const configurePackage = () => {
     .option(
       "-p, --page " + colors.green("<page>"),
       "Set the default page type (arrow or functional)"
-    ).option(
+    )
+    .option(
+      "-r --register" + colors.green("<boolean>"),
+      "Set the default registration of pages in the App.jsx or App.tsx file (true or false)"
+    )
+    .option(
       "-st, --styleType " + colors.green("<style>"),
       "Set the default style type (css or scss)"
     )
     .option(
       "-gs, --generateStyle " + colors.green("<boolean>"),
-      "Generates a <component-name>.css or <page-name>.css file for the Compoent and Pages. (true or false)"
-    ).option(
+      "Generates a <component-name>.css or <page-name>.css file for the Component and Pages. (true or false)"
+    )
+    .option(
       "-gf, --generateFolder" + colors.green("<boolean>"),
       "Generates a custom folder for the Component and Pages. (true or false)"
     )
-    .option(
-      "-r --register" + colors.green("<register>"),
-      "Set the default registration of pages in the App.jsx or App.tsx file (true or false)"
-    )
     .action((options) => {
       const config = userReadConfig.readConfig();
+
+      //component template
       if (options.template) {
         if (options.template != "jsx" && options.template != "tsx") {
           console.log(options.template);
@@ -49,6 +53,23 @@ const configurePackage = () => {
         userWriteConfig.writeConfig(config);
         console.log(colors.cyan("Default template is now " + config.template));
       }
+      //styleType format
+      if (options.styleType) {
+        if (options.styleType != "css" && options.styleType != "scss") {
+          console.log(
+            colors.red(
+              "Invalid styleType format, format must be either 'css' or 'scss'"
+            )
+          );
+          return;
+        }
+        config.styleType = options.styleType;
+        userWriteConfig.writeConfig(config);
+        console.log(
+          colors.cyan("Default style type is now " + config.styleType)
+        );
+      }
+      //component generation format
       if (options.component) {
         if (options.component != "arrow" && options.component != "functional") {
           console.log(
