@@ -14,10 +14,10 @@ const packageGenerator = () => {
       "Generates a React component file."
     )
     .option(
-      "-sw, --serviceWorker" + colors.green("<name>"),
+      "-sw, --serviceWorker " + colors.green("<name>"),
       "Generates a Service Worker file for PWA."
     )
-    .description("Generate a new React Component or Page!")
+    .description("Generate a new React Component, Page or Service Worker!")
     .action(async (name) => {
       //check if an argument was passed
       if (Object.keys(name).length === 0) {
@@ -33,26 +33,57 @@ const packageGenerator = () => {
         return;
       }
 
-      const { component, page } = name;
-      /* check if component and page arguments were passed */
-      if (typeof component !== undefined && typeof page !== undefined) {
-        // const componentName =
+      const { component, page, serviceWorker } = name;
+      if (
+        component !== undefined &&
+        page !== undefined &&
+        serviceWorker !== undefined
+      ) {
         console.log(
-          `${component} is ${typeof component} ${page} is ${typeof page}`
+          `component is ${typeof component}, page is ${typeof page}, serviceWorker is ${typeof serviceWorker}`
         );
-      }
-      /*check if only component was passed as argument */
-      if (typeof component !== undefined && typeof page === undefined) {
+      } else if (
+        component !== undefined &&
+        page === undefined &&
+        serviceWorker === undefined
+      ) {
+        console.log(`component is ${typeof component}`);
+      } else if (
+        name !== undefined &&
+        component === undefined &&
+        serviceWorker === undefined
+      ) {
+        console.log(`page is ${typeof page}`);
+      } else if (
+        serviceWorker !== undefined &&
+        component === undefined &&
+        page === undefined
+      ) {
+        console.log(`serviceWorker is ${typeof serviceWorker}`);
+      } else if (
+        serviceWorker !== undefined &&
+        page !== undefined &&
+        component === undefined
+      ) {
         console.log(
-          `${component} is ${typeof component} ${page} is ${typeof page}`
+          `page is ${typeof page}, serviceWorker is ${typeof serviceWorker}`
         );
+      } else if (
+        serviceWorker !== undefined &&
+        component !== undefined &&
+        page == undefined
+      ) {
+        console.log(
+          `component is ${typeof component}, serviceWorker is ${typeof serviceWorker}`
+        );
+      } else if (
+        page !== undefined &&
+        component !== undefined &&
+        serviceWorker === undefined
+      ) {
+        console.log(`component is ${typeof component}, page is ${typeof page}`);
       }
 
-      if (typeof name !== undefined && typeof component === undefined) {
-        console.log(
-          `${component} is ${typeof component} ${page} is ${typeof page}`
-        );
-      }
     });
 };
 
