@@ -6,17 +6,39 @@ const packageGenerator = () => {
     .command("generate")
     .alias("g")
     .option(
-      "-p, --page " + colors.green("<page>"),
-      "Generates a React page file"
+      "-p, --page " + colors.green("<name>"),
+      "Generates a React page file."
     )
     .option(
-      "-c, --component " + colors.green("<component>"),
-      "Generates a React component file"
+      "-c, --component " + colors.green("<name>"),
+      "Generates a React component file."
+    )
+    .option(
+      "-sw, --serviceWorker" + colors.green("<name>"),
+      "Generates a service worker file for PWA."
     )
     .description("Generate a new React Component or Page!")
     .action(async (name) => {
-      console.log(name);
+      //check if an argument was passed
+      if(Object.keys(name).length === 0)
+      {
+         console.log(
+           colors.bold(
+             colors.grey(
+               `No argument specified, run ${colors.white(
+                 "rg generate --help"
+               )} for available commands`
+             )
+           )
+         );
+        return;
+      }
+      console.log(typeof(name));
+      return;
     });
+    
+   
+  
 };
 
 module.exports = {

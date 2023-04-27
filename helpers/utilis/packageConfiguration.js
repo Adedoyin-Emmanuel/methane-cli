@@ -201,16 +201,19 @@ const configurePackage = () => {
         );
         return;
       }
-
-      console.log(
-        colors.grey(
-          colors.bold(
-            `No configurations applied, run ${colors.white(
-              "rg config --help"
-            )} to see available commands`
+      
+      //check if an argument was passed
+      if (Object.keys(options).length === 0) {
+        console.log(
+          colors.grey(
+            colors.bold(
+              `No configurations applied, run ${colors.white(
+                "rg config --help"
+              )} to see available commands`
+            )
           )
-        )
-      );
+        );
+      }
     });
 };
 
