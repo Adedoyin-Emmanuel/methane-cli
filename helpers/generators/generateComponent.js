@@ -13,7 +13,7 @@ const componentDir = [
 const readUserConfig = require("./../utilis/readUserConfig");
 const componentResolver = require("./resolvers/resolveComponentContent");
 
-const generateComponent = (name) => {
+const generateComponent = async (name) => {
   if (!name) {
     return console.log(
       colors.bold(colors.red("Component extension or name is required!"))
@@ -26,28 +26,28 @@ const generateComponent = (name) => {
         componentPath,
         `${name}.${readUserConfig.readConfig().template}`
       );
-      console.log(componentPath);
-      console.log(componentFilePath);
-      console.log(componentResolver.resolveComponentContent(readUserConfig));
+
       try {
         /*create the generated component directory*/
-        fs.mkdirSync(componentPath);
+        await fs.mkdirSync(componentPath);
 
         if (readUserConfig.readConfig().generateStylesheet === "true") {
           const styleSheetType = readUserConfig.readConfig().stylesheetType;
-          const cssFilePath = path.join(
-            componentFilePath,
-            `${name}Style.${styleSheetType}`
-          );
+          const cssFilePath = path.join(`${componentPath}/${name}${name}Style.${styleSheetType}`);
 
-          fs.writeFileSync(cssFilePath, "");
-          fs.writeFileSync(
+          await fs.writeFile(cssFilePath, "", (error) => {
+            console.log(colors.bold(colors.red(error)));
+          });
+          await fs.writeFile(
             componentFilePath,
-            componentResolver.resolveComponentContent(readUserConfig)
+            componentResolver.resolveComponentContent(readUserConfig, name),
+            (error) => {
+              console.log(colors.bold(colors.red(error)));
+            }
           );
         }
       } catch (error) {
-        console.log(error);
+        console.log(colors.bold(colors.red(error)));
       }
     }
     const componentFilePath = path.join(
@@ -56,7 +56,7 @@ const generateComponent = (name) => {
     );
 
     /*check user configurations*/
-   // console.log(readUserConfig.readConfig().template);
+    // console.log(readUserConfig.readConfig().template);
     //if(readUserConfig.readConfig().)
   } else {
     console.log("components folder doesn't exist");
