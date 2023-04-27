@@ -1,9 +1,20 @@
-const generateServiceWorker = require("./../templates/serviceWorker");
+const {
+  serviceWorkerTemplate,
+  serviceWorkerRegistrationTemplate,
+} = require("./../templates/serviceWorker");
+
+const resolveServiceWorkerTemplate= () => {
+  return serviceWorkerTemplate();
+};
 
 
-const resolveServiceWorker = (userConfig) =>
+const resolveServiceWorkerRegistrationTemplate = () =>
 {
-    
-    return;
-    
+    return serviceWorkerRegistrationTemplate();
+}
+
+
+module.exports = {
+    resolveServiceWorkerTemplate,
+    resolveServiceWorkerRegistrationTemplate,
 }
