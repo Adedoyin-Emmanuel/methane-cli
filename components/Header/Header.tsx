@@ -2,7 +2,12 @@
 import React from "react";
 import "./HeaderStyle.css";
 
-const Header = () => {
+
+interface HeaderProps {
+    
+}
+
+function Header(): JSX.Element {
 
     return (
         <React.Fragment>

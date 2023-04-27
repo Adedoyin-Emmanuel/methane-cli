@@ -1,7 +1,13 @@
 
 import React from "react";
+import "./ButtonStyle.css";
 
-const Button = () => {
+
+interface ButtonProps {
+    
+}
+
+function Button(): JSX.Element {
 
     return (
         <React.Fragment>

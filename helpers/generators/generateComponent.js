@@ -13,9 +13,9 @@ const componentDir = [
 const readUserConfig = require("./../utilis/readUserConfig");
 const componentResolver = require("./resolvers/resolveComponentContent");
 
-const generateComponentFile = async (name, componentFilePath, componentResolver) => {
+const generateComponentFile = async (name, componentDir, componentResolver) => {
   await fs.writeFile(
-    componentFilePath,
+    componentDir,
     componentResolver.resolveComponentContent(readUserConfig, name),
     (error) => {
       if (error) {
@@ -31,53 +31,57 @@ const generateComponent = async (name) => {
       colors.bold(colors.red("Component extension or name is required!"))
     );
   }
-  if (componentDir) {
-    if (readUserConfig.readConfig().generateFolder === "true") {
-      const componentPath = path.join(rootDir, componentDir, name);
-      const componentFilePath = path.join(
-        componentPath,
-        `${name}.${readUserConfig.readConfig().template}`
-      );
-
-      try {
-        /*create the generated component directory*/
-        await fs.mkdirSync(componentPath);
-
-        if (readUserConfig.readConfig().generateStylesheet === "true") {
-          const styleSheetType = readUserConfig.readConfig().stylesheetType;
-          const cssFilePath = path.join(
-            `${componentPath}/${name}Style.${styleSheetType}`
-          );
-
-          await fs.writeFile(cssFilePath, "", (error) => {
-            if (error) {
-              console.log(colors.bold(colors.red(error)));
-            }
-          });
-          generateComponentFile(name, componentFilePath, componentResolver);
-          
-        } else {
-          /*generate the component without the stylesheet*/
-          generateComponentFile(name, componentFilePath, componentResolver);
-        }
-      } catch (error) {
-        console.log(colors.bold(colors.cyan(error)));
-      }
-    } else {
-      //don't generate folder
-    }
-    const componentFilePath = path.join(
-      rootDir,
-      `${name}.${readUserConfig.readConfig().template}`
-    );
-
-    /*check user configurations*/
-    // console.log(readUserConfig.readConfig().template);
-    //if(readUserConfig.readConfig().)
-  } else {
+  if (!componentDir) {
     console.log("components folder doesn't exist");
     console.log(componentDir);
+    return;
   }
+
+  const componentDirName =
+    readUserConfig.readConfig().generateFolder === "true"
+      ? path.join(componentDir, name)
+      : path.join(componentDir);
+
+  const componentFilePath = path.join(
+    componentDirName + `/${name}.${readUserConfig.readConfig().template}`
+  );
+
+  try {
+    /*create the generated component directory*/
+
+    readUserConfig.readConfig().generateFolder === "true"
+      ? await fs.mkdirSync(componentDirName)
+      : null;
+
+    if (readUserConfig.readConfig().generateStylesheet === "true") {
+      const styleSheetType = readUserConfig.readConfig().stylesheetType;
+      const cssFilePath = path.join(
+        componentDirName,
+        `${name}Style.${styleSheetType}`
+      );
+
+      console.log(cssFilePath);
+
+      await fs.promises.writeFile(cssFilePath, "");
+    }
+
+    generateComponentFile(
+      name,
+      path.join(componentFilePath),
+      componentResolver
+    );
+    readUserConfig.readConfig().generateFolder === "true"
+      ? console.log(
+          colors.green(
+            `${"CREATE "} ${colors.white(`${componentDirName}${name}`)}`
+          )
+        )
+      : null;
+    console.log(colors.green(`${"CREATE "} ${cssFilePath}`));
+  } catch (error) {
+    console.log(colors.bold(colors.cyan(error)));
+  }
+
   console.log(`${colors.bold(colors.green(`${name} generated successfully`))}`);
 };
 
