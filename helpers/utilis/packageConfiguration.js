@@ -56,6 +56,7 @@ const configurePackage = () => {
         console.log(
           colors.cyan(`Default template is now ${colors.bold(config.template)}`)
         );
+        return;
       }
       //stylesheetType format
       if (options.stylesheetType) {
@@ -81,6 +82,7 @@ const configurePackage = () => {
             )}`
           )
         );
+        return;
       }
       //generate stylesheet file config
       if (options.generateStylesheet) {
@@ -104,6 +106,7 @@ const configurePackage = () => {
             )}`
           )
         );
+        return;
       }
       //folder generation
       if (options.generateFolder) {
@@ -129,6 +132,7 @@ const configurePackage = () => {
             )}`
           )
         );
+        return;
       }
 
       //page registration.
@@ -150,6 +154,7 @@ const configurePackage = () => {
             `React pages registration set to ${colors.bold(config.register)}`
           )
         );
+        return;
       }
       //component generation format
       if (options.component) {
@@ -167,10 +172,12 @@ const configurePackage = () => {
         userWriteConfig.writeConfig(config);
         console.log(
           colors.cyan(
-            `Default component is now 
-             ${colors.bold("functional")} function template`
+            `Default component is now ${colors.bold(
+              "functional"
+            )} function template`
           )
         );
+        return;
       }
 
       //page generation template
@@ -178,7 +185,9 @@ const configurePackage = () => {
         if (options.page != "arrow" && options.page != "functional") {
           console.log(
             colors.red(
-              `Invalid page format, format must be either ${colors.bold("arrow")} or ${colors.bold("functional")}`
+              `Invalid page format, format must be either ${colors.bold(
+                "arrow"
+              )} or ${colors.bold("functional")}`
             )
           );
           return;
@@ -187,12 +196,21 @@ const configurePackage = () => {
         userWriteConfig.writeConfig(config);
         console.log(
           colors.cyan(
-            `Default page is now ${colors.bold(
-              config.page
-            )} function template`
+            `Default page is now ${colors.bold(config.page)} function template`
           )
         );
+        return;
       }
+
+      console.log(
+        colors.grey(
+          colors.bold(
+            `No configurations applied, run ${colors.white(
+              "rg config --help"
+            )} to see available commands`
+          )
+        )
+      );
     });
 };
 

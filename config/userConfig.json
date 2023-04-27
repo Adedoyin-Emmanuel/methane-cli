@@ -3,6 +3,6 @@
   "component": "arrow",
   "page": "arrow",
   "generateStylesheet": "false",
-  "generateFolder": "false",
+  "generateFolder": "true",
   "register": "true"
 }
