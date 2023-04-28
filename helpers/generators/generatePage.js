@@ -2,7 +2,7 @@ const fs = require("fs");
 const colors = require("colors");
 const path = require("path");
 const rootDir = path.join(process.cwd());
-const pageDir = ["pages", "Pages", "page", "Page"].find((dir) => {
+const pageDir = ["src/pages", "src/Pages", "src/page", "src/Page"].find((dir) => {
   return fs.existsSync(path.join(rootDir, dir));
 });
 const readUserConfig = require("./../utilis/readUserConfig");

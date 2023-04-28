@@ -3,10 +3,10 @@ const colors = require("colors");
 const path = require("path");
 const rootDir = path.join(process.cwd());
 const componentDir = [
-  "components",
-  "Components",
-  "component",
-  "Component",
+  "src/components",
+  "src/Components",
+  "src/component",
+  "src/Component",
 ].find((dir) => {
   return fs.existsSync(path.join(rootDir, dir));
 });
