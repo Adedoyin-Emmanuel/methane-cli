@@ -37,7 +37,9 @@ const addPageImport = (rootDir, pageName, currentPageName) => {
         }
         fs.writeFileSync(filePath, newContents);
         console.log(
-          colors.cyan(colors.bold(`Page Successfully Added to ${filePath}`))
+          colors.cyan(
+            colors.bold(`${pageName} Page Successfully Added to ${filePath}`)
+          )
         );
       } else {
         console.log(

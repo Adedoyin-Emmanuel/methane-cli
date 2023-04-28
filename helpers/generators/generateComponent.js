@@ -7,6 +7,10 @@ const componentDir = [
   "src/Components",
   "src/component",
   "src/Component",
+  "Components",
+  "components",
+  "Component",
+  "component"
 ].find((dir) => {
   return fs.existsSync(path.join(rootDir, dir));
 });

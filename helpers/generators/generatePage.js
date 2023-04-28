@@ -2,7 +2,7 @@ const fs = require("fs");
 const colors = require("colors");
 const path = require("path");
 const rootDir = path.join(process.cwd());
-const pageDir = ["src/pages", "src/Pages", "src/page", "src/Page"].find((dir) => {
+const pageDir = ["src/pages", "src/Pages", "src/page", "src/Page",  "pages","Pages", "page", "Page"].find((dir) => {
   return fs.existsSync(path.join(rootDir, dir));
 });
 const readUserConfig = require("./../utilis/readUserConfig");
@@ -62,7 +62,7 @@ const generatePage = async (name) => {
       path.join(pageFilePath),
       pageResolver
     );
-    console.log(path.join(".", pageDir.replace("src/", "")));
+    
     /*register the page in the App.jsx or App.tsx file*/
     readUserConfig.readConfig().register === "true"
       ? pageRegisterer.addPageImport(
