@@ -1,7 +1,7 @@
 {
-  "name": "propane-cli",
+  "name": "methane-cli",
   "version": "1.0.0",
-  "description": "propane-cli is a command-line tool for generating React components and pages with ease.",
+  "description": "methane-cli is a command-line tool for generating React components and pages with ease.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
