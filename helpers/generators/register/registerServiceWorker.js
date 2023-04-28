@@ -4,7 +4,7 @@ const colors = require("colors");
 
 
 const checkAndImportServiceWorker = () => {
-  const supportedFiles = ["index.jsx", "index.tsx", "main.jsx", "main.tsx"];
+  const supportedFiles = ["index.jsx", "index.tsx", "main.jsx", "main.tsx", "index.js", "main.js", "main.ts", "index.ts", "Index.jsx", "Main.jsx", "Index.js","Index.ts", "Main.ts"];
   const importStatement =
     `import * as serviceWorkerRegistration from './serviceWorkerRegistration';`;
 
