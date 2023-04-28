@@ -2,8 +2,8 @@
   "template": "jsx",
   "component": "arrow",
   "page": "arrow",
-  "generateStylesheet": "true",
-  "generateFolder": "false",
-  "register": "true",
+  "generateStylesheet": true,
+  "generateFolder": true,
+  "register": true,
   "stylesheetType": "css"
 }

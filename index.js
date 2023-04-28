@@ -5,6 +5,8 @@ const { program } = require("commander");
 const packageConfig = require("./helpers/utilis/packageConfiguration");
 const packageDes = require("./helpers/utilis/packageDescription");
 const packageGen = require("./helpers/utilis/packageGenerator");
+const packageInit = require("./helpers/utilis/packageInit");
+
 // Configure Figlet for the package name
 figlet.text(
   "Methane-C l i",
@@ -22,6 +24,7 @@ figlet.text(
     }
 
     console.log(colors.bold(colors.rainbow(data)));
+    packageInit.InitMethaneCLI();
     packageDes.packageDescription();
     packageConfig.configurePackage();
     packageGen.packageGenerator();

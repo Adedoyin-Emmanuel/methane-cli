@@ -1,30 +1,19 @@
-const fs = require("fs");
-const path = require("path");
-const colors = require("colors");
-const initMethaneCLI = () =>{
-  const configFolderPath = path.join(process.cwd(), "config");
-  const userConfigFilePath = path.join(configFolderPath, "userConfig.json");
+const methaneCli = require("./initHelperFunction");
+const {program} = require("commander");
 
-  if (!fs.existsSync(configFolderPath)) {
-    fs.mkdirSync(configFolderPath);
-  }
 
-  const defaultConfig = {
-    template: "jsx",
-    component: "arrow",
-    page: "arrow",
-    generateStylesheet: true,
-    generateFolder: true,
-    register: true,
-    stylesheetType: "css",
-  };
+const InitMethaneCLI = () =>{
 
-  if (!fs.existsSync(userConfigFilePath)) {
-    fs.writeFileSync(
-      userConfigFilePath,
-      JSON.stringify(defaultConfig, null, 2)
-    );
-  }
+    program
+      .command("init")
+      .alias("i")
+      .description("Create default configuration files")
+      .action(()=>{
+        methaneCli.initMethaneCLI();
+      })
+}
 
-  console.log(colors.green(colors.bold("Methane CLI has been initialized successfully!")));
+
+module.exports = {
+    InitMethaneCLI
 }
