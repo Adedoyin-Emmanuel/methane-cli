@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const filePath = path.join(process.cwd(), "config", "methaneCliConfig.json");
+const filePath = path.join(__dirname, "../../", "config", "methaneCliConfig.json");
 const colors = require("colors");
 
 const readConfig = () => {
