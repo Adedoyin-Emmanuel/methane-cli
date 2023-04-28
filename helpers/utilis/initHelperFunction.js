@@ -14,9 +14,9 @@ const initMethaneCLI = () =>{
     template: "jsx",
     component: "arrow",
     page: "arrow",
-    generateStylesheet: true,
-    generateFolder: true,
-    register: true,
+    generateStylesheet: "true",
+    generateFolder: "true",
+    register: "true",
     stylesheetType: "css",
   };
 
