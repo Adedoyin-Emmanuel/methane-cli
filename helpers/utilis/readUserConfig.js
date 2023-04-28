@@ -1,5 +1,6 @@
 const fs = require("fs");
-const filePath = "./config/userConfig.json";
+const path = require("path");
+const filePath = path.join(process.cwd(), "config", "userConfig.json");
 const colors = require("colors");
 
 const readConfig = () => {
@@ -14,7 +15,6 @@ const readConfig = () => {
   }
 };
 
-
 module.exports = {
-    readConfig
-}
+  readConfig,
+};
