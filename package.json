@@ -4,14 +4,19 @@
   "description": "propane-cli is a command-line tool for generating React components and pages with ease.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "script": "node ./index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Adedoyin-Emmanuel/react-gen.git"
   },
-  "keywords": [
-    "react"
+ "keywords": [
+    "propane",
+    "reactJS",
+    "reactTS",
+    "node",
+    "cli"
   ],
   "author": "Adedoyin Emmanuel Adeniyi",
   "license": "MIT",
@@ -19,7 +24,7 @@
     "url": "https://github.com/Adedoyin-Emmanuel/react-gen/issues"
   },
   "bin": {
-    "rg": "bin/rg.js"
+    "rg": "./index.js"
   },
   "homepage": "https://github.com/Adedoyin-Emmanuel/react-gen#readme",
   "dependencies": {
