@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Adedoyin-Emmanuel/react-gen.git"
+    "url": "git+https://github.com/Adedoyin-Emmanuel/methane-cli.git"
   },
   "keywords": [
     "Methane-Cli",
@@ -22,12 +22,12 @@
   "author": "Adedoyin Emmanuel Adeniyi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Adedoyin-Emmanuel/react-gen/issues"
+    "url": "https://github.com/Adedoyin-Emmanuel/methane-cli/issues"
   },
   "bin": {
     "rg": "./index.js"
   },
-  "homepage": "https://github.com/Adedoyin-Emmanuel/react-gen#readme",
+  "homepage": "https://github.com/Adedoyin-Emmanuel/methane-cli#readme",
   "dependencies": {
     "colors": "^1.4.0",
     "commander": "^10.0.1",
