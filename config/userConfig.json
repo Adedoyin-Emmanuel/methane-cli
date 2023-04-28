@@ -1,9 +1,9 @@
 {
-  "template": "jsx",
+  "template": "tsx",
   "component": "arrow",
   "page": "arrow",
-  "generateStylesheet": true,
-  "generateFolder": true,
-  "register": true,
+  "generateStylesheet": "true",
+  "generateFolder": "true",
+  "register": "true",
   "stylesheetType": "css"
 }
