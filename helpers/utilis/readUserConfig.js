@@ -1,5 +1,5 @@
 const fs = require("fs");
-const filePath = "config/userConfig.json";
+const filePath = "./config/userConfig.json";
 const colors = require("colors");
 
 const readConfig = () => {

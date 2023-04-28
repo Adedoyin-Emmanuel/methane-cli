@@ -1,6 +1,6 @@
 const fs = require("fs");
 const colors = require("colors");
-const filePath = "config/userConfig.json";
+const filePath = "./config/userConfig.json";
 
 const writeConfig = (config) => {
   try {

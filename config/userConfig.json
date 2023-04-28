@@ -1,5 +1,5 @@
 {
-  "template": "tsx",
+  "template": "jsx",
   "component": "functional",
   "page": "arrow",
   "generateStylesheet": "true",
