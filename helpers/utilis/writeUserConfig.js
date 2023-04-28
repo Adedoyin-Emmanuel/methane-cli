@@ -1,7 +1,7 @@
 const fs = require("fs");
 const colors = require("colors");
 const path = require("path");
-const filePath = path.join(process.cwd(), "config", "userConfig.json");
+const filePath = path.join(process.cwd(), "config", "methaneCliConfig.json");
 
 const writeConfig = (config) => {
   try {
