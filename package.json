@@ -12,7 +12,8 @@
     "url": "git+https://github.com/Adedoyin-Emmanuel/react-gen.git"
   },
   "keywords": [
-    "propane",
+    "Methane-Cli",
+    "Methane",
     "reactJS",
     "reactTS",
     "node",
@@ -28,14 +29,11 @@
   },
   "homepage": "https://github.com/Adedoyin-Emmanuel/react-gen#readme",
   "dependencies": {
-    "chalk": "^5.2.0",
     "colors": "^1.4.0",
     "commander": "^10.0.1",
     "figlet": "^1.6.0",
     "fs-extra": "^11.1.1",
-    "gradient-string": "^2.0.2",
-    "inquirer": "^9.2.0",
-    "yargs": "^17.7.1"
+    "gradient-string": "^2.0.2"
   },
   "devDependencies": {}
 }
