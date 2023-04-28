@@ -214,4 +214,4 @@ If you'd like to contribute to **methane-cli**, please follow these steps:
 ## Contibutors 👨‍
 
 <img src="https://www.npmjs.com/npm-avatar/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdmF0YXJVUkwiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci82YjdmNjY1YjY5NzNlMTA5MDY5NWYxNGQ5ZTFjN2FlMT9zaXplPTQ5NiZkZWZhdWx0PXJldHJvIn0.VLsXZqAcYRo73KaG7EmkZtMv67-fHx-8x4Fo_nXv_b4" />
-<a target="_blank" href="https:adedoyin-emmanuel.netlify.app">Adedoyin Emmanuel Adeniyi></a>
+<a target="_blank" href="https:adedoyin-emmanuel.netlify.app">Adedoyin Emmanuel Adeniyi</a>
