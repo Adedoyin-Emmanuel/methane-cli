@@ -20,7 +20,8 @@
     "cli"
   ],
   "files": [
-  "./config/config.json"
+    "config/**/*",
+    "helpers/**/*"
   ],
   "author": "Adedoyin Emmanuel Adeniyi",
   "license": "MIT",
@@ -31,7 +32,6 @@
     "rg": "./index.js",
     "methane-cli": "./index.js"
   },
-  
   "homepage": "https://github.com/Adedoyin-Emmanuel/methane-cli#readme",
   "dependencies": {
     "colors": "^1.4.0",
