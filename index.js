@@ -7,7 +7,7 @@ const packageDes = require("./helpers/utilis/packageDescription");
 const packageGen = require("./helpers/utilis/packageGenerator");
 // Configure Figlet for the package name
 figlet.text(
-  "React-Gen",
+  "Methane-C l i",
   {
     font: "Big",
     horizontalLayout: "default",
