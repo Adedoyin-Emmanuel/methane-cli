@@ -10,13 +10,12 @@ const componentDir = [
   "Components",
   "components",
   "Component",
-  "component"
+  "component",
 ].find((dir) => {
   return fs.existsSync(path.join(rootDir, dir));
 });
 const readUserConfig = require("./../utilis/readUserConfig");
 const componentResolver = require("./resolvers/resolveComponentContent");
-const getFileStats = require("./../geFileStats");
 const generateComponentFile = async (name, componentDir, componentResolver) => {
   await fs.writeFile(
     componentDir,
@@ -74,7 +73,9 @@ const generateComponent = async (name) => {
     console.log(colors.bold(colors.red(error)));
   }
 
-  console.log(`${colors.bold(colors.green(`${name} Component generated successfully`))}`);
+  console.log(
+    `${colors.bold(colors.green(`${name} Component generated successfully`))}`
+  );
 };
 
 module.exports = {

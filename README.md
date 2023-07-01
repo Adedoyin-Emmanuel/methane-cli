@@ -1,9 +1,49 @@
 # Methane-Cli
+
 [![npm downloads](https://img.shields.io/npm/dt/methane-cli.svg)](https://www.npmjs.com/package/methane-cli)
 
 Methane-Cli is a CLI tool that helps developers easily create **React Components, Pages and Service Worker Files**. The CLI tool provides tons of powerful configurations for creating **React Components, Pages and Service Worker Files**
 
-![Methane-**Cli**](/assets/screenshots/screenshot-1.png)
+```bash
+  __  __      _   _                              _____   _   _
+ |  \/  |    | | | |                            / ____| | | (_)
+ | \  / | ___| |_| |__   __ _ _ __   ___ ______| |      | |  _
+ | |\/| |/ _ \ __| '_ \ / _` | '_ \ / _ \______| |      | | | |
+ | |  | |  __/ |_| | | | (_| | | | |  __/      | |____  | | | |
+ |_|  |_|\___|\__|_| |_|\__,_|_| |_|\___|       \_____| |_| |_|
+
+
+```
+
+## What's New ?
+
+Added a new command **`list-config [ls]`**
+
+- `--list-config` or `-lc`: Lists all Methane-Cli configurations.
+
+```bash
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli list-config
+
+  __  __      _   _                              _____   _   _
+ |  \/  |    | | | |                            / ____| | | (_)
+ | \  / | ___| |_| |__   __ _ _ __   ___ ______| |      | |  _
+ | |\/| |/ _ \ __| '_ \ / _` | '_ \ / _ \______| |      | | | |
+ | |  | |  __/ |_| | | | (_| | | | |  __/      | |____  | | | |
+ |_|  |_|\___|\__|_| |_|\__,_|_| |_|\___|       \_____| |_| |_|
+
+
+All configurations
+{
+  template: 'jsx',
+  component: 'arrow',
+  page: 'arrow',
+  generateStylesheet: 'true',
+  generateFolder: 'true',
+  register: 'true',
+  stylesheetType: 'css'
+}
+
+```
 
 ## Installation 💿
 
@@ -37,6 +77,7 @@ The following commands are available in **methane-cli**
 - `--generate` or `-g`: Generates Components, Pages or Service Worker files.
 - `--config` or `-c`: Configures the CLI tool to your taste.
 - `--init` or `-i`: Initializes default configuration files in root directory.
+- `--list-config` or `-lc`: Lists all Methane-Cli configurations.
 
 #### Note:
 

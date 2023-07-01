@@ -6,8 +6,10 @@ const packageConfig = require("./helpers/utilis/packageConfiguration");
 const packageDes = require("./helpers/utilis/packageDescription");
 const packageGen = require("./helpers/utilis/packageGenerator");
 const packageInit = require("./helpers/utilis/packageInit");
+const packageListConfig = require("./helpers/utilis/packageListConfiguration");
 
-// Configure Figlet for the package name
+/* Configure Figlet for the package name */
+
 figlet.text(
   "Methane-C l i",
   {
@@ -28,6 +30,7 @@ figlet.text(
     packageDes.packageDescription();
     packageConfig.configurePackage();
     packageGen.packageGenerator();
+    packageListConfig.listAllConfig();
     program.parse(process.argv);
   }
 );
