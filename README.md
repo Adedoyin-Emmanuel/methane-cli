@@ -5,15 +5,16 @@
 Methane-Cli is a CLI tool that helps developers easily create **React Components, Pages and Service Worker Files**. The CLI tool provides tons of powerful configurations for creating **React Components, Pages and Service Worker Files**
 
 ```bash
-  __  __      _   _                              _____   _   _
- |  \/  |    | | | |                            / ____| | | (_)
- | \  / | ___| |_| |__   __ _ _ __   ___ ______| |      | |  _
- | |\/| |/ _ \ __| '_ \ / _` | '_ \ / _ \______| |      | | | |
- | |  | |  __/ |_| | | | (_| | | | |  __/      | |____  | | | |
- |_|  |_|\___|\__|_| |_|\__,_|_| |_|\___|       \_____| |_| |_|
+                        __  __      _   _                              _____   _   _
+                       |  \/  |    | | | |                            / ____| | | (_)
+                       | \  / | ___| |_| |__   __ _ _ __   ___ ______| |      | |  _
+                       | |\/| |/ _ \ __| '_ \ / _` | '_ \ / _ \______| |      | | | |
+                       | |  | |  __/ |_| | | | (_| | | | |  __/      | |____  | | | |
+                       |_|  |_|\___|\__|_| |_|\__,_|_| |_|\___|       \_____| |_| |_|
 
 
 ```
+
 
 ## What's New ?
 
@@ -23,14 +24,6 @@ Added a new command **`list-config [ls]`**
 
 ```bash
 doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli list-config
-
-  __  __      _   _                              _____   _   _
- |  \/  |    | | | |                            / ____| | | (_)
- | \  / | ___| |_| |__   __ _ _ __   ___ ______| |      | |  _
- | |\/| |/ _ \ __| '_ \ / _` | '_ \ / _ \______| |      | | | |
- | |  | |  __/ |_| | | | (_| | | | |  __/      | |____  | | | |
- |_|  |_|\___|\__|_| |_|\__,_|_| |_|\___|       \_____| |_| |_|
-
 
 All configurations
 {
