@@ -7,6 +7,4 @@ const getFileStats = (filePath) => {
   return sizeInBytes;
 };
 
-module.exports = {
-  getFileStats,
-};
+export default getFileStats;

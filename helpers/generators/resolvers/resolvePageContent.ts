@@ -1,4 +1,4 @@
-import generatePageTmp from "./../templates/pageTemplate";
+import generatePageTmp from "../templates/pageTemplate";
 
 const resolvePageContent = (userConfig, pageName) => {
   if (
