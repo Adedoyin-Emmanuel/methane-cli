@@ -1,7 +1,11 @@
-const userReadConfig = require("./readUserConfig");
-const userWriteConfig = require("./writeUserConfig");
-const { program } = require("commander");
-const colors = require("colors");
+import { program } from "commander";
+import  colors from "colors";
+// import * as userReadConfig from "./readUserConfig";
+// import * as userWriteConfig from "./writeUserConfig";
+
+import * as userReadConfig from "./readUserConfig";
+import * as userWriteConfig from "./writeUserConfig";
+
 
 const configurePackage = () => {
   program
@@ -218,6 +222,6 @@ const configurePackage = () => {
     });
 };
 
-module.exports = {
+export {
   configurePackage,
 };

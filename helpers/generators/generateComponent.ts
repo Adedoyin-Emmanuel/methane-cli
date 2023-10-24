@@ -1,7 +1,8 @@
-const fs = require("fs");
-const colors = require("colors");
-const path = require("path");
+import colors from "colors";
+import fs from "fs";
+import path from "path";
 const rootDir = path.join(process.cwd());
+
 const componentDir = [
   "src/components",
   "src/Components",
@@ -14,21 +15,25 @@ const componentDir = [
 ].find((dir) => {
   return fs.existsSync(path.join(rootDir, dir));
 });
-const readUserConfig = require("./../utilis/readUserConfig");
-const componentResolver = require("./resolvers/resolveComponentContent");
-const generateComponentFile = async (name, componentDir, componentResolver) => {
+import * as readUserConfig from "../utilis/readUserConfig";
+import * as componentResolver from "./resolvers/resolveComponentContent"
+const generateComponentFile = async (
+  name: string,
+  componentDir: string,
+  componentResolver: any
+) => {
   await fs.writeFile(
     componentDir,
     componentResolver.resolveComponentContent(readUserConfig, name),
-    (error) => {
+    (error: any) => {
       if (error) {
-        console.log(colors.bold(colors.red(error)));
+        console.log(colors.bold(colors.red(error.toString())));
       }
     }
   );
 };
 
-const generateComponent = async (name) => {
+export const generateComponent = async (name: string) => {
   if (!name) {
     return console.log(
       colors.bold(colors.red("Component extension or name is required!"))
@@ -69,15 +74,11 @@ const generateComponent = async (name) => {
       path.join(componentFilePath),
       componentResolver
     );
-  } catch (error) {
+  } catch (error: any) {
     console.log(colors.bold(colors.red(error)));
   }
 
   console.log(
     `${colors.bold(colors.green(`${name} Component generated successfully`))}`
   );
-};
-
-module.exports = {
-  generateComponent,
 };

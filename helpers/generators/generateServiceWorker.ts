@@ -1,13 +1,13 @@
-const fs = require("fs");
-const colors = require("colors");
-const path = require("path");
+import colors from "colors";
+import fs from "fs";
+import path from "path";
 const rootDir = path.join(process.cwd());
 const SWDir = ["src"].find((dir) => {
   return fs.existsSync(path.join(rootDir, dir));
 });
-const readUserConfig = require("./../utilis/readUserConfig");
-const swResolver = require("./resolvers/resolveServiceWorker");
-const swRegisterer = require("./register/registerServiceWorker");
+
+import * as swRegisterer from "./register/registerServiceWorker";
+import * as swResolver from "./resolvers/resolveServiceWorker";
 
 const generateServiceWorkerFile = async () => {
   if (SWDir) {
@@ -18,7 +18,7 @@ const generateServiceWorkerFile = async () => {
         swResolver.resolveServiceWorkerTemplate(),
         (error) => {
           if (error) {
-            console.log(colors.bold(colors.red(error)));
+            console.log(colors.bold(colors.red(error.toString())));
           }
         }
       );
@@ -26,13 +26,13 @@ const generateServiceWorkerFile = async () => {
       await fs.writeFile(
         path.resolve(SWDir, "serviceWorkerRegistration.js"),
         swResolver.resolveServiceWorkerRegistrationTemplate(),
-        (error) => {
+        (error:any) => {
           if (error) {
-            console.log(colors.bold(colors.red(error)));
+            console.log(colors.bold(colors.red(error.toString())));
           }
         }
       );
-    } catch (error) {
+    } catch (error:any) {
       console.log(colors.bold(colors.red(error)));
     }
   } else {
@@ -47,6 +47,6 @@ const generateServiceWorkerFile = async () => {
   swRegisterer.checkAndImportServiceWorker();
 };
 
-module.exports = {
+export {
   generateServiceWorkerFile,
 };

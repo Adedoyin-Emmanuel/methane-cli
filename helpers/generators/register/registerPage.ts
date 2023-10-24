@@ -1,16 +1,16 @@
-const fs = require("fs");
-const path = require("path");
-const colors = require("colors");
-const readUserConfig = require("./../../utilis/readUserConfig");
+import colors from "colors";
+import fs from "fs";
+import path from "path";
+import * as readUserConfig from "../../utilis/readUserConfig";
 
-const addPageImport = (rootDir, pageName, currentPageName) => {
+export const addPageImport = (rootDir: string, pageName: string, currentPageName: string) => {
   const supportedExtensions = [".js", ".jsx", ".ts", ".tsx"];
   const generatedPageImportStatement =
     readUserConfig.readConfig().generateFolder === "true"
       ? `import ${pageName} from "./${currentPageName}/${pageName}/${pageName}";`
       : `import ${pageName} from "./${currentPageName}/${pageName}";`;
 
-  const checkFile = (filePath) => {
+  const checkFile = (filePath: string) => {
     const fileExt = path.extname(filePath);
     if (supportedExtensions.includes(fileExt)) {
       const fileContents = fs.readFileSync(filePath, "utf8");
@@ -49,7 +49,7 @@ const addPageImport = (rootDir, pageName, currentPageName) => {
     }
   };
 
-  const searchDir = (dirPath) => {
+  const searchDir = (dirPath: string) => {
     const files = fs.readdirSync(dirPath);
     files.forEach((file) => {
       const filePath = path.join(dirPath, file);
@@ -65,6 +65,3 @@ const addPageImport = (rootDir, pageName, currentPageName) => {
   searchDir(rootDir);
 };
 
-module.exports = {
-  addPageImport,
-};

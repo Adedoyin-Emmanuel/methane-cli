@@ -1,17 +1,16 @@
 const generateJsxArrowTemplate = (
-  componentName,
-  importStyleSheet,
-  styleSheetType
+  componentName: string,
+  importStyleSheet:any,
+  styleSheetType:any
 ) => {
   let template;
   if (importStyleSheet === "true") {
     template = `
 import React from "react";
 import "./${componentName}Style.${styleSheetType}";
-import {Link, useNavigate} from "react-router-dom";
 
 const ${componentName} = () => {
-    const navigateTo = useNavigate();
+
     return (
         <React.Fragment>
             <h1>${componentName} works!</h1>
@@ -24,10 +23,9 @@ export default ${componentName};
   } else {
     template = `
 import React from "react";
-import {Link, useNavigate} from "react-router-dom";
 
 const ${componentName} = () => {
-    const navigateTo = useNavigate();
+
     return (
         <React.Fragment>
             <h1>${componentName} works!</h1>
@@ -43,19 +41,18 @@ export default ${componentName};
 };
 
 const generateJsxFunctionTemplate = (
-  componentName,
-  importStyleSheet,
-  styleSheetType
+  componentName: string,
+  importStyleSheet:any,
+  styleSheetType: any
 ) => {
   let template;
   if (importStyleSheet === "true") {
     template = `
     import React from "react";
     import "./${componentName}Style.${styleSheetType}";
-    import {Link, useNavigate} from "react-router-dom";
-
+    
     function ${componentName} () {
-        const navigateTo = useNavigate();
+    
         return (
             <React.Fragment>
                 <h1>${componentName} works!</h1>
@@ -68,11 +65,9 @@ const generateJsxFunctionTemplate = (
   } else {
     template = `
     import React from "react";
-    import {Link, useNavigate} from "react-router-dom";
-
+    
     function ${componentName} () {
-      const navigateTo = useNavigate();
-      
+    
         return (
             <React.Fragment>
                 <h1>${componentName} works!</h1>
@@ -87,22 +82,21 @@ const generateJsxFunctionTemplate = (
 };
 
 const generateTsxArrowTemplate = (
-  componentName,
-  importStyleSheet,
-  styleSheetType
+  componentName:string,
+  importStyleSheet:any,
+  styleSheetType: any
 ) => {
   let template;
   if (importStyleSheet === "true") {
     template = `
 import React from "react";
 import "./${componentName}Style.${styleSheetType}";
-import {Link, useNavigate} from "react-router-dom";
 
 interface ${componentName}Props {
     
 }
 const ${componentName}:React.FC = (): JSX.Element => {
-    const navigateTo = useNavigate();
+
     return (
         <React.Fragment>
             <h1>${componentName} works!</h1>
@@ -115,14 +109,13 @@ export default ${componentName};
   } else {
     template = `
 import React from "react";
-import {Link, useNavigate} from "react-router-dom";
 
 interface ${componentName}Props {
     
 }
 
 const ${componentName}:React.FC = (): JSX.Element => {
-    const navigateTo = useNavigate();
+
     return (
         <React.Fragment>
             <h1>${componentName} works!</h1>
@@ -137,16 +130,15 @@ export default ${componentName};
 };
 
 const generateTsxFunctionTemplate = (
-  componentName,
-  importStyleSheet,
-  styleSheetType
+  componentName:string,
+  importStyleSheet:any,
+  styleSheetType:any
 ) => {
   let template;
   if (importStyleSheet === "true") {
     template = `
 import React from "react";
 import "./${componentName}Style.${styleSheetType}";
-import {Link, useNavigate} from "react-router-dom";
 
 
 interface ${componentName}Props {
@@ -154,8 +146,7 @@ interface ${componentName}Props {
 }
 
 function ${componentName}(): JSX.Element {
-    const navigateTo = useNavigate();
-    
+
     return (
         <React.Fragment>
             <h1>${componentName} works!</h1>
@@ -168,7 +159,6 @@ export default ${componentName};
   } else {
     template = `
 import React from "react";
-import {Link, useNavigate} from "react-router-dom";
 
 
 interface ${componentName}Props {
@@ -176,8 +166,7 @@ interface ${componentName}Props {
 }
 
 function ${componentName}(): JSX.Element {
-    const navigateTo = useNavigate();
-    
+
     return (
         <React.Fragment>
             <h1>${componentName} works!</h1>
@@ -192,7 +181,7 @@ export default ${componentName};
   return template;
 };
 
-module.exports = {
+export {
   generateJsxArrowTemplate,
   generateJsxFunctionTemplate,
   generateTsxArrowTemplate,

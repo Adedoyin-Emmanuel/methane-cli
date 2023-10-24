@@ -1,27 +1,37 @@
-const fs = require("fs");
-const colors = require("colors");
-const path = require("path");
+import colors from "colors";
+import fs from "fs";
+import path from "path";
+import * as readUserConfig from "../utilis/readUserConfig";
+import * as pageRegisterer from "./register/registerPage";
+import * as  pageResolver from "./resolvers/resolvePageContent";
+
 const rootDir = path.join(process.cwd());
-const pageDir = ["src/pages", "src/Pages", "src/page", "src/Page",  "pages","Pages", "page", "Page"].find((dir) => {
+const pageDir = [
+  "src/pages",
+  "src/Pages",
+  "src/page",
+  "src/Page",
+  "pages",
+  "Pages",
+  "page",
+  "Page",
+].find((dir) => {
   return fs.existsSync(path.join(rootDir, dir));
 });
-const readUserConfig = require("./../utilis/readUserConfig");
-const pageResolver = require("./resolvers/resolvePageContent");
-const pageRegisterer = require("./register/registerPage");
 
-const generatePageFile = async (name, pageDir, pageResolver) => {
+const generatePageFile = async (name:string, pageDir:string, pageResolver:any) => {
   await fs.writeFile(
     pageDir,
     pageResolver.resolvePageContent(readUserConfig, name),
     (error) => {
       if (error) {
-        console.log(colors.bold(colors.red(error)));
+        console.log(colors.bold(colors.red(error.toString())));
       }
     }
   );
 };
 
-const generatePage = async (name) => {
+export const generatePage = async (name: string) => {
   if (!name) {
     return console.log(
       colors.bold(colors.red("page extension or name is required!"))
@@ -57,12 +67,8 @@ const generatePage = async (name) => {
       await fs.promises.writeFile(cssFilePath, "");
     }
 
-    generatePageFile(
-      name,
-      path.join(pageFilePath),
-      pageResolver
-    );
-    
+    generatePageFile(name, path.join(pageFilePath), pageResolver);
+
     /*register the page in the App.jsx or App.tsx file*/
     readUserConfig.readConfig().register === "true"
       ? pageRegisterer.addPageImport(
@@ -71,14 +77,11 @@ const generatePage = async (name) => {
           path.join(".", pageDir.replace("src/", ""))
         )
       : null;
-    
-  } catch (error) {
+  } catch (error:any) {
     console.log(colors.bold(colors.red(error)));
   }
 
-  console.log(`${colors.bold(colors.green(`${name} Page generated successfully`))}`);
-};
-
-module.exports = {
-  generatePage,
+  console.log(
+    `${colors.bold(colors.green(`${name} Page generated successfully`))}`
+  );
 };
