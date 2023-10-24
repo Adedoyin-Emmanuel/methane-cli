@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-const colors = require("colors");
-const figlet = require("figlet");
-const { program } = require("commander");
-const packageConfig = require("./helpers/utilis/packageConfiguration");
-const packageDes = require("./helpers/utilis/packageDescription");
-const packageGen = require("./helpers/utilis/packageGenerator");
-const packageInit = require("./helpers/utilis/packageInit");
-const packageListConfig = require("./helpers/utilis/packageListConfiguration");
+
+import colors from "colors";
+import { program } from "commander";
+import figlet from "figlet";
+import packageConfig from "./helpers/utilis/packageConfiguration";
+import packageDes from "./helpers/utilis/packageDescription";
+import packageGen from "./helpers/utilis/packageGenerator";
+import packageInit from "./helpers/utilis/packageInit";
+import packageListConfig from "./helpers/utilis/packageListConfiguration";
 
 /* Configure Figlet for the package name */
 
