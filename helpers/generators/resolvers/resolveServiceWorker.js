@@ -1,20 +1,17 @@
-const {
-  serviceWorkerTemplate,
+import {
   serviceWorkerRegistrationTemplate,
-} = require("./../templates/serviceWorkerTemplate");
+  serviceWorkerTemplate,
+} from "./../templates/serviceWorkerTemplate";
 
-const resolveServiceWorkerTemplate= () => {
+const resolveServiceWorkerTemplate = () => {
   return serviceWorkerTemplate();
 };
 
-
-const resolveServiceWorkerRegistrationTemplate = () =>
-{
-    return serviceWorkerRegistrationTemplate();
-}
-
+const resolveServiceWorkerRegistrationTemplate = () => {
+  return serviceWorkerRegistrationTemplate();
+};
 
 module.exports = {
-    resolveServiceWorkerTemplate,
-    resolveServiceWorkerRegistrationTemplate,
-}
+  resolveServiceWorkerTemplate,
+  resolveServiceWorkerRegistrationTemplate,
+};

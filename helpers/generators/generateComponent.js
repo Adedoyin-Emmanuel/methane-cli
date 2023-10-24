@@ -1,7 +1,8 @@
-const fs = require("fs");
-const colors = require("colors");
-const path = require("path");
+import colors from "colors";
+import fs from "fs";
+import path from "path";
 const rootDir = path.join(process.cwd());
+
 const componentDir = [
   "src/components",
   "src/Components",

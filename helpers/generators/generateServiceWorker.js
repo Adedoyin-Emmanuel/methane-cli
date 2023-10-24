@@ -1,13 +1,13 @@
-const fs = require("fs");
-const colors = require("colors");
-const path = require("path");
+import colors from "colors";
+import fs from "fs";
+import path from "path";
 const rootDir = path.join(process.cwd());
 const SWDir = ["src"].find((dir) => {
   return fs.existsSync(path.join(rootDir, dir));
 });
-const readUserConfig = require("./../utilis/readUserConfig");
-const swResolver = require("./resolvers/resolveServiceWorker");
-const swRegisterer = require("./register/registerServiceWorker");
+
+import swRegisterer from "./../utilis/swRegisterer";
+import swResolver from "./../utilis/swResolver";
 
 const generateServiceWorkerFile = async () => {
   if (SWDir) {

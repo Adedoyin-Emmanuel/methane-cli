@@ -1,4 +1,4 @@
-const generateComponentTmp = require("./../templates/componentTemplate");
+import generateComponentTmp from "./../templates/componentTemplate";
 
 const resolveComponentContent = (userConfig, componentName) => {
   if (
