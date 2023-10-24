@@ -1,7 +1,7 @@
 const generateJsxArrowTemplate = (
-  componentName,
-  importStyleSheet,
-  styleSheetType
+  componentName: string,
+  importStyleSheet:any,
+  styleSheetType:any
 ) => {
   let template;
   if (importStyleSheet === "true") {
@@ -41,9 +41,9 @@ export default ${componentName};
 };
 
 const generateJsxFunctionTemplate = (
-  componentName,
-  importStyleSheet,
-  styleSheetType
+  componentName: string,
+  importStyleSheet:any,
+  styleSheetType: any
 ) => {
   let template;
   if (importStyleSheet === "true") {
@@ -82,9 +82,9 @@ const generateJsxFunctionTemplate = (
 };
 
 const generateTsxArrowTemplate = (
-  componentName,
-  importStyleSheet,
-  styleSheetType
+  componentName:string,
+  importStyleSheet:any,
+  styleSheetType: any
 ) => {
   let template;
   if (importStyleSheet === "true") {
@@ -130,9 +130,9 @@ export default ${componentName};
 };
 
 const generateTsxFunctionTemplate = (
-  componentName,
-  importStyleSheet,
-  styleSheetType
+  componentName:string,
+  importStyleSheet:any,
+  styleSheetType:any
 ) => {
   let template;
   if (importStyleSheet === "true") {

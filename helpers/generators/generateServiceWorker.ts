@@ -26,13 +26,13 @@ const generateServiceWorkerFile = async () => {
       await fs.writeFile(
         path.resolve(SWDir, "serviceWorkerRegistration.js"),
         swResolver.resolveServiceWorkerRegistrationTemplate(),
-        (error) => {
+        (error:any) => {
           if (error) {
             console.log(colors.bold(colors.red(error.toString())));
           }
         }
       );
-    } catch (error) {
+    } catch (error:any) {
       console.log(colors.bold(colors.red(error)));
     }
   } else {

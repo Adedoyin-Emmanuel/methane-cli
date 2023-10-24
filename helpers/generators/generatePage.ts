@@ -19,7 +19,7 @@ const pageDir = [
   return fs.existsSync(path.join(rootDir, dir));
 });
 
-const generatePageFile = async (name, pageDir, pageResolver) => {
+const generatePageFile = async (name:string, pageDir:string, pageResolver:any) => {
   await fs.writeFile(
     pageDir,
     pageResolver.resolvePageContent(readUserConfig, name),
@@ -31,7 +31,7 @@ const generatePageFile = async (name, pageDir, pageResolver) => {
   );
 };
 
-export const generatePage = async (name) => {
+export const generatePage = async (name: string) => {
   if (!name) {
     return console.log(
       colors.bold(colors.red("page extension or name is required!"))
@@ -77,7 +77,7 @@ export const generatePage = async (name) => {
           path.join(".", pageDir.replace("src/", ""))
         )
       : null;
-  } catch (error) {
+  } catch (error:any) {
     console.log(colors.bold(colors.red(error)));
   }
 

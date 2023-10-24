@@ -1,6 +1,6 @@
 import * as generatePageTmp from "../templates/pageTemplate";
 
-const resolvePageContent = (userConfig, pageName) => {
+const resolvePageContent = (userConfig:any, pageName:string) => {
   if (
     userConfig.readConfig().template === "jsx" &&
     userConfig.readConfig().component === "arrow"
@@ -40,6 +40,6 @@ const resolvePageContent = (userConfig, pageName) => {
   }
 };
 
-module.exports = {
+export {
   resolvePageContent,
 };

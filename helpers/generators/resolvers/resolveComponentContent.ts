@@ -1,6 +1,6 @@
 import * as generateComponentTmp from "./../templates/componentTemplate";
 
-const resolveComponentContent = (userConfig, componentName) => {
+const resolveComponentContent = (userConfig: any, componentName: string) => {
   if (
     userConfig.readConfig().template === "jsx" &&
     userConfig.readConfig().component === "arrow"

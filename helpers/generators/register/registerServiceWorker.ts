@@ -20,7 +20,7 @@ export const checkAndImportServiceWorker = () => {
   ];
   const importStatement = `import * as serviceWorkerRegistration from './serviceWorkerRegistration';`;
 
-  const searchDir = (dirPath) => {
+  const searchDir = (dirPath:string) => {
     const files = fs.readdirSync(dirPath);
     files.forEach((file) => {
       const filePath = path.join(dirPath, file);

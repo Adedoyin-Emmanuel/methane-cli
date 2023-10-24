@@ -8,11 +8,11 @@ const filePath = path.join(
   "methaneCliConfig.json"
 );
 
-export const writeConfig = (config) => {
+export const writeConfig = (config: any) => {
   try {
     fs.writeFileSync(filePath, JSON.stringify(config, null, 2));
     console.log(colors.green("Configurations saved successfully!"));
-  } catch (error) {
+  } catch (error:any) {
     console.log(colors.grey("Error Writing config"), colors.red(error.message));
   }
 };
