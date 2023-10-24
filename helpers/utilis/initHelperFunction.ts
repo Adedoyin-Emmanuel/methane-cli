@@ -3,8 +3,8 @@ import path from "path";
 import fs from "fs";
 
 export const initMethaneCLI = () =>{
-  const configFolderPath = path.join(process.cwd(), "config");
-  const userConfigFilePath = path.join(configFolderPath, "userConfig.json");
+  const configFolderPath = path.join(process.cwd(), "methane");
+  const userConfigFilePath = path.join(configFolderPath, "methane.json");
 
   if (!fs.existsSync(configFolderPath)) {
     fs.mkdirSync(configFolderPath);

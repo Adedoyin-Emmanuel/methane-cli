@@ -9,7 +9,7 @@
     "clean": "rimraf ./dist",
     "build": "tsc index.ts --esModuleInterop true --target ES6 --module nodenext --moduleResolution nodenext --outDir dist",
     "start": "npm run clean && npm run build  && node ./dist/index.js",
-    "dev": "nodemon index.ts",
+    "dev": "ts-node index.ts",
     "test": "jest",
     "full-test": "eslint */[0-9]*.ts && jest --watchAll --verbose",
     "full-test-fix": "eslint */[0-9]*.ts --fix && jest --watchAll --verbose"

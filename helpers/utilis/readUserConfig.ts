@@ -1,13 +1,9 @@
 import colors from "colors";
 import fs from "fs";
-import path from "path";
+import { getUserConfigFilePath } from "./getUserConfigFilePath";
 
-const filePath = path.join(
-  __dirname,
-  "../../",
-  "config",
-  "methaneCliConfig.json"
-);
+const filePath = getUserConfigFilePath();
+
 export const readConfig = () => {
   try {
     const data = fs.readFileSync(filePath);
