@@ -1,6 +1,6 @@
-const colors = require("colors");
-const { program } = require("commander");
-const userReadConfig = require("./readUserConfig");
+import { program } from "commander";
+import userReadConfig from "./readUserConfig";
+import colors from "colors";
 
 const listAllConfig = () => {
   program

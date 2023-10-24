@@ -1,6 +1,7 @@
-const colors = require("colors");
+import colors from "colors";
 const { program } = require("commander");
 
+import { program } from "commander";
 const packageDescription = () => {
   program
     .version("1.0.0")

@@ -1,6 +1,6 @@
-const fs = require("fs");
-const path = require("path");
-const colors = require("colors");
+import colors from "colors";
+import path from "path";
+import fs from "fs";
 
 const initMethaneCLI = () =>{
   const configFolderPath = path.join(process.cwd(), "config");

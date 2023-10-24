@@ -1,7 +1,12 @@
-const fs = require("fs");
-const path = require("path");
-const filePath = path.join(__dirname, "../../", "config", "methaneCliConfig.json");
-const colors = require("colors");
+const filePath = path.join(
+  __dirname,
+  "../../",
+  "config",
+  "methaneCliConfig.json"
+);
+import colors from "colors";
+import fs from "fs";
+import path from "path";
 
 const readConfig = () => {
   try {

@@ -1,8 +1,8 @@
-const colors = require("colors");
-const { program } = require("commander");
-const componentGen = require("./../generators/generateComponent");
-const pageGen = require("./../generators/generatePage");
-const serviceWorkerGen = require("./../generators/generateServiceWorker");
+import colors from "colors";
+import { program } from "commander";
+import componentGen from "./../generators/generateComponent";
+import pageGen from "./../generators/generatePage";
+import serviceWorkerGen from "./../generators/generateServiceWorker";
 
 const packageGenerator = () => {
   program
@@ -16,10 +16,7 @@ const packageGenerator = () => {
       "-c, --component " + colors.green("<name>"),
       "Generates a React component file."
     )
-    .option(
-      "-sw, --serviceWorker ",
-      "Generates a Service Worker file for PWA."
-    )
+    .option("-sw, --serviceWorker ", "Generates a Service Worker file for PWA.")
     .description("Generate a new React Component, Page or Service Worker!")
     .action(async (name) => {
       //check if an argument was passed
@@ -50,7 +47,6 @@ const packageGenerator = () => {
         serviceWorkerGen.generateServiceWorkerFile();
         componentGen.generateComponent(componentName);
         pageGen.generatePage(pageName);
-        
       } else if (
         component !== undefined &&
         page === undefined &&
@@ -59,9 +55,8 @@ const packageGenerator = () => {
         const componentName = `${component
           .charAt(0)
           .toUpperCase()}${component.slice(1)}`;
-          
+
         componentGen.generateComponent(componentName);
-        
       } else if (
         page !== undefined &&
         component === undefined &&
@@ -69,14 +64,12 @@ const packageGenerator = () => {
       ) {
         const pageName = `${page.charAt(0).toUpperCase()}${page.slice(1)}`;
         pageGen.generatePage(pageName);
-        
       } else if (
         serviceWorker !== undefined &&
         component === undefined &&
         page === undefined
       ) {
         serviceWorkerGen.generateServiceWorkerFile();
-        
       } else if (
         serviceWorker !== undefined &&
         page !== undefined &&
@@ -84,7 +77,7 @@ const packageGenerator = () => {
       ) {
         const pageName = `${page.charAt(0).toUpperCase()}${page.slice(1)}`;
         pageGen.generatePage(pageName);
-        
+
         //serviceworker is here too
       } else if (
         serviceWorker !== undefined &&
@@ -94,9 +87,9 @@ const packageGenerator = () => {
         const componentName = `${component
           .charAt(0)
           .toUpperCase()}${component.slice(1)}`;
-         componentGen.generateComponent(componentName);
-         serviceWorkerGen.generateServiceWorkerFile();
-         
+        componentGen.generateComponent(componentName);
+        serviceWorkerGen.generateServiceWorkerFile();
+
         //service worker is here too
       } else if (
         page !== undefined &&
@@ -109,7 +102,6 @@ const packageGenerator = () => {
         const pageName = `${page.charAt(0).toUpperCase()}${page.slice(1)}`;
         pageGen.generatePage(pageName);
         componentGen.generateComponent(componentName);
-        
       }
     });
 };
