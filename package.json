@@ -41,11 +41,13 @@
   },
   "homepage": "https://github.com/Adedoyin-Emmanuel/methane-cli#readme",
   "dependencies": {
+    "@types/inquirer": "^9.0.6",
     "colors": "^1.4.0",
     "commander": "^10.0.1",
     "figlet": "^1.6.0",
     "fs-extra": "^11.1.1",
     "gradient-string": "^2.0.2",
+    "inquirer": "^9.2.11",
     "rimraf": "^5.0.5"
   },
   "devDependencies": {
