@@ -8,7 +8,7 @@
     "check-lint": "eslint [0-9]*.ts",
     "build": "rimraf ./build && tsc index.ts --esModuleInterop true --target ES6 --module nodenext --moduleResolution nodenext --outDir dist",
     "start": "npm run build && node ./dist/index.js",
-    "dev": " ts-node index.ts",
+    "dev": "nodemon index.ts",
     "test": "jest",
     "full-test": "eslint */[0-9]*.ts && jest --watchAll --verbose",
     "full-test-fix": "eslint */[0-9]*.ts --fix && jest --watchAll --verbose"
