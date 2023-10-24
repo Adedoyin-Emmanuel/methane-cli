@@ -2,10 +2,16 @@
   "name": "methane-cli",
   "version": "1.1.0",
   "description": "methane-cli is a command-line tool for generating React components and pages with ease.",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "script": "./index.js"
+    "lint": "eslint .",
+    "check-lint": "eslint [0-9]*.ts",
+    "build": "rimraf ./build && tsc index.ts --esModuleInterop true --target ES6 --module nodenext --moduleResolution nodenext --outDir dist",
+    "start": "npm run build && node ./dist/index.js",
+    "dev": "index.ts",
+    "test": "jest",
+    "full-test": "eslint */[0-9]*.ts && jest --watchAll --verbose",
+    "full-test-fix": "eslint */[0-9]*.ts --fix && jest --watchAll --verbose"
   },
   "repository": {
     "type": "git",
@@ -38,9 +44,21 @@
     "commander": "^10.0.1",
     "figlet": "^1.6.0",
     "fs-extra": "^11.1.1",
-    "gradient-string": "^2.0.2"
+    "gradient-string": "^2.0.2",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
+    "tslint": "^6.1.3",
+    "@babel/core": "^7.6.0",
+    "@babel/node": "^7.8.0",
+    "@babel/preset-env": "^7.6.0",
+    "@types/node": "^20.7.1",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.17.0",
     "typescript": "^5.2.2"
   }
 }
