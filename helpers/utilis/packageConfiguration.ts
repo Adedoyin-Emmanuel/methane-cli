@@ -1,7 +1,11 @@
 import { program } from "commander";
 import  colors from "colors";
-import userReadConfig from "./readUserConfig";
-import userWriteConfig from "./writeUserConfig";
+// import * as userReadConfig from "./readUserConfig";
+// import * as userWriteConfig from "./writeUserConfig";
+
+import * as userReadConfig from "./readUserConfig";
+import * as userWriteConfig from "./writeUserConfig";
+
 
 const configurePackage = () => {
   program
@@ -218,6 +222,6 @@ const configurePackage = () => {
     });
 };
 
-module.exports = {
+export {
   configurePackage,
 };

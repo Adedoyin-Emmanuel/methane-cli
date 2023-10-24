@@ -1,8 +1,8 @@
 import colors from "colors";
 import { program } from "commander";
-import componentGen from "../generators/generateComponent";
-import pageGen from "../generators/generatePage";
-import serviceWorkerGen from "../generators/generateServiceWorker";
+import * as componentGen from "../generators/generateComponent";
+import * as pageGen from "../generators/generatePage";
+import * as serviceWorkerGen from "../generators/generateServiceWorker";
 
 const packageGenerator = () => {
   program
@@ -106,6 +106,4 @@ const packageGenerator = () => {
     });
 };
 
-module.exports = {
-  packageGenerator,
-};
+export { packageGenerator };

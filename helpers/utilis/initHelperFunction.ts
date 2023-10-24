@@ -2,7 +2,7 @@ import colors from "colors";
 import path from "path";
 import fs from "fs";
 
-const initMethaneCLI = () =>{
+export const initMethaneCLI = () =>{
   const configFolderPath = path.join(process.cwd(), "config");
   const userConfigFilePath = path.join(configFolderPath, "userConfig.json");
 
@@ -30,6 +30,4 @@ const initMethaneCLI = () =>{
   console.log(colors.green(colors.bold("Methane CLI has been initialized successfully!")));
 }
 
-module.exports = {
-  initMethaneCLI
-}
+

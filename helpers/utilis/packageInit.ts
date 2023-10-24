@@ -1,5 +1,5 @@
 import { program } from "commander";
-import methaneCli from "./initHelperFunction";
+import * as methaneCli from "./initHelperFunction";
 
 const InitMethaneCLI = () => {
   program
@@ -11,6 +11,6 @@ const InitMethaneCLI = () => {
     });
 };
 
-module.exports = {
+export  {
   InitMethaneCLI,
 };

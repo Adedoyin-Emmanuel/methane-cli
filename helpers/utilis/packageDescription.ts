@@ -1,5 +1,4 @@
 import colors from "colors";
-const { program } = require("commander");
 
 import { program } from "commander";
 const packageDescription = () => {
@@ -9,9 +8,7 @@ const packageDescription = () => {
       colors.cyan(
         "Methane-Cli is a tool for efficient creation of React components, pages and Service Worker files."
       )
-    )
+    );
 };
 
-module.exports = {
-  packageDescription,
-};
+export { packageDescription };

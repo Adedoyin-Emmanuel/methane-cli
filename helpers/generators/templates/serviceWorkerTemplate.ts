@@ -225,8 +225,7 @@ export function unregister() {
 };
 
 
-
-module.exports = {
+export {
 
     serviceWorkerTemplate,
     serviceWorkerRegistrationTemplate

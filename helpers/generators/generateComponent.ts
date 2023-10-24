@@ -23,13 +23,13 @@ const generateComponentFile = async (name, componentDir, componentResolver) => {
     componentResolver.resolveComponentContent(readUserConfig, name),
     (error) => {
       if (error) {
-        console.log(colors.bold(colors.red(error)));
+        console.log(colors.bold(colors.red(error.toString())));
       }
     }
   );
 };
 
-const generateComponent = async (name) => {
+export const generateComponent = async (name) => {
   if (!name) {
     return console.log(
       colors.bold(colors.red("Component extension or name is required!"))
@@ -77,8 +77,4 @@ const generateComponent = async (name) => {
   console.log(
     `${colors.bold(colors.green(`${name} Component generated successfully`))}`
   );
-};
-
-module.exports = {
-  generateComponent,
 };

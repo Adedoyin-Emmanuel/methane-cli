@@ -11,7 +11,7 @@ const resolveServiceWorkerRegistrationTemplate = () => {
   return serviceWorkerRegistrationTemplate();
 };
 
-module.exports = {
+export {
   resolveServiceWorkerTemplate,
   resolveServiceWorkerRegistrationTemplate,
 };

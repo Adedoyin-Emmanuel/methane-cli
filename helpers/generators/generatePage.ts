@@ -1,9 +1,10 @@
 import colors from "colors";
 import fs from "fs";
 import path from "path";
-import readUserConfig from "../utilis/readUserConfig";
-import pageRegisterer from "./register/registerPage";
-import pageResolver from "./resolvers/resolvePageContent";
+import * as readUserConfig from "../utilis/readUserConfig";
+import * as pageRegisterer from "./register/registerPage";
+import * as  pageResolver from "./resolvers/resolvePageContent";
+
 const rootDir = path.join(process.cwd());
 const pageDir = [
   "src/pages",
@@ -24,13 +25,13 @@ const generatePageFile = async (name, pageDir, pageResolver) => {
     pageResolver.resolvePageContent(readUserConfig, name),
     (error) => {
       if (error) {
-        console.log(colors.bold(colors.red(error)));
+        console.log(colors.bold(colors.red(error.toString())));
       }
     }
   );
 };
 
-const generatePage = async (name) => {
+export const generatePage = async (name) => {
   if (!name) {
     return console.log(
       colors.bold(colors.red("page extension or name is required!"))
@@ -83,8 +84,4 @@ const generatePage = async (name) => {
   console.log(
     `${colors.bold(colors.green(`${name} Page generated successfully`))}`
   );
-};
-
-module.exports = {
-  generatePage,
 };

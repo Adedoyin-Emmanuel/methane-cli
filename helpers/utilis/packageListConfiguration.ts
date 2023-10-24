@@ -1,5 +1,5 @@
 import { program } from "commander";
-import userReadConfig from "./readUserConfig";
+import * as userReadConfig from "./readUserConfig";
 import colors from "colors";
 
 const listAllConfig = () => {
@@ -23,6 +23,6 @@ const listAllConfig = () => {
     });
 };
 
-module.exports = {
+export{
   listAllConfig,
 };

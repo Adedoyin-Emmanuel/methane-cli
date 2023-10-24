@@ -3,11 +3,11 @@
 import colors from "colors";
 import { program } from "commander";
 import figlet from "figlet";
-import packageConfig from "./helpers/utilis/packageConfiguration";
-import packageDes from "./helpers/utilis/packageDescription";
-import packageGen from "./helpers/utilis/packageGenerator";
-import packageInit from "./helpers/utilis/packageInit";
-import packageListConfig from "./helpers/utilis/packageListConfiguration";
+import * as packageConfig from "./helpers/utilis/packageConfiguration";
+import * as packageDes from "./helpers/utilis/packageDescription";
+import * as packageGen from "./helpers/utilis/packageGenerator";
+import * as packageInit from "./helpers/utilis/packageInit";
+import * as packageListConfig from "./helpers/utilis/packageListConfiguration";
 
 /* Configure Figlet for the package name */
 
@@ -20,9 +20,9 @@ figlet.text(
     width: 150,
     whitespaceBreak: true,
   },
-  function (err, data) {
+  function (err, data: any) {
     if (err) {
-      console.log("Figlet error:", colors.red(err));
+      console.log("Figlet error:", colors.red(err.toString()));
       return;
     }
 

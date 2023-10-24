@@ -6,8 +6,8 @@ const SWDir = ["src"].find((dir) => {
   return fs.existsSync(path.join(rootDir, dir));
 });
 
-import swRegisterer from "./../utilis/swRegisterer";
-import swResolver from "./../utilis/swResolver";
+import * as swRegisterer from "./register/registerServiceWorker";
+import * as swResolver from "./resolvers/resolveServiceWorker";
 
 const generateServiceWorkerFile = async () => {
   if (SWDir) {
@@ -18,7 +18,7 @@ const generateServiceWorkerFile = async () => {
         swResolver.resolveServiceWorkerTemplate(),
         (error) => {
           if (error) {
-            console.log(colors.bold(colors.red(error)));
+            console.log(colors.bold(colors.red(error.toString())));
           }
         }
       );
@@ -28,7 +28,7 @@ const generateServiceWorkerFile = async () => {
         swResolver.resolveServiceWorkerRegistrationTemplate(),
         (error) => {
           if (error) {
-            console.log(colors.bold(colors.red(error)));
+            console.log(colors.bold(colors.red(error.toString())));
           }
         }
       );
@@ -47,6 +47,6 @@ const generateServiceWorkerFile = async () => {
   swRegisterer.checkAndImportServiceWorker();
 };
 
-module.exports = {
+export {
   generateServiceWorkerFile,
 };

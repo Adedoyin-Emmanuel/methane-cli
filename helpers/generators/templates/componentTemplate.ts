@@ -181,7 +181,7 @@ export default ${componentName};
   return template;
 };
 
-module.exports = {
+export {
   generateJsxArrowTemplate,
   generateJsxFunctionTemplate,
   generateTsxArrowTemplate,

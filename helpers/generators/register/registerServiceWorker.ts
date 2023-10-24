@@ -2,7 +2,7 @@ import colors from "colors";
 import fs from "fs";
 import path from "path";
 
-const checkAndImportServiceWorker = () => {
+export const checkAndImportServiceWorker = () => {
   const supportedFiles = [
     "index.jsx",
     "index.tsx",
@@ -51,8 +51,4 @@ const checkAndImportServiceWorker = () => {
   };
 
   searchDir("./");
-};
-
-module.exports = {
-  checkAndImportServiceWorker,
 };

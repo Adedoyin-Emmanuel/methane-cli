@@ -1,9 +1,9 @@
 import colors from "colors";
 import fs from "fs";
 import path from "path";
-import readUserConfig from "../../utilis/readUserConfig";
+import * as readUserConfig from "../../utilis/readUserConfig";
 
-const addPageImport = (rootDir, pageName, currentPageName) => {
+export const addPageImport = (rootDir, pageName, currentPageName) => {
   const supportedExtensions = [".js", ".jsx", ".ts", ".tsx"];
   const generatedPageImportStatement =
     readUserConfig.readConfig().generateFolder === "true"
@@ -65,6 +65,3 @@ const addPageImport = (rootDir, pageName, currentPageName) => {
   searchDir(rootDir);
 };
 
-module.exports = {
-  addPageImport,
-};
