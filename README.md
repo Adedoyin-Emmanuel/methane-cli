@@ -1,5 +1,7 @@
 # Methane-Cli
 
+## V2 Massive update ongoing, 🚀
+
 [![npm downloads](https://img.shields.io/npm/dt/methane-cli.svg)](https://www.npmjs.com/package/methane-cli)
 
 Methane-Cli is a CLI tool that helps developers easily create **React Components, Pages and Service Worker Files**. The CLI tool provides tons of powerful configurations for creating **React Components, Pages and Service Worker Files**
