@@ -1,6 +1,10 @@
 # Methane-Cli
 
 ## V2 Massive update ongoing, 🚀
+1. Adding TypeScript support
+2. Support for NextJS
+3. New features added
+4. I can't wait to finish, the spirit of God rest upon me, I would start, I would finish 🙌
 
 [![npm downloads](https://img.shields.io/npm/dt/methane-cli.svg)](https://www.npmjs.com/package/methane-cli)
 
