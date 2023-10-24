@@ -1,12 +1,24 @@
-const fs = require("fs");
-const path = require("path");
-const colors = require("colors");
-
+import colors from "colors";
+import fs from "fs";
+import path from "path";
 
 const checkAndImportServiceWorker = () => {
-  const supportedFiles = ["index.jsx", "index.tsx", "main.jsx", "main.tsx", "index.js", "main.js", "main.ts", "index.ts", "Index.jsx", "Main.jsx", "Index.js","Index.ts", "Main.ts"];
-  const importStatement =
-    `import * as serviceWorkerRegistration from './serviceWorkerRegistration';`;
+  const supportedFiles = [
+    "index.jsx",
+    "index.tsx",
+    "main.jsx",
+    "main.tsx",
+    "index.js",
+    "main.js",
+    "main.ts",
+    "index.ts",
+    "Index.jsx",
+    "Main.jsx",
+    "Index.js",
+    "Index.ts",
+    "Main.ts",
+  ];
+  const importStatement = `import * as serviceWorkerRegistration from './serviceWorkerRegistration';`;
 
   const searchDir = (dirPath) => {
     const files = fs.readdirSync(dirPath);
@@ -41,7 +53,6 @@ const checkAndImportServiceWorker = () => {
   searchDir("./");
 };
 
-
 module.exports = {
-    checkAndImportServiceWorker
-}
+  checkAndImportServiceWorker,
+};
