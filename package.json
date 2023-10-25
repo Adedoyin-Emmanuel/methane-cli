@@ -38,8 +38,8 @@
     "url": "https://github.com/Adedoyin-Emmanuel/methane-cli/issues"
   },
   "bin": {
-    "rg": "./dist/index.js",
-    "methane": "./dist/index.js"
+    "methane": "./dist/index.js",
+    "rg": "./dist/index.js"
   },
   "homepage": "https://github.com/Adedoyin-Emmanuel/methane-cli#readme",
   "dependencies": {

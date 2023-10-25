@@ -9,13 +9,13 @@ const configurePackage = () => {
         .command("config")
         .alias("c")
         .description("Set default configurations")
-        .option("-t, --template " + colors.green("<template>"), "Set the default template (jsx or tsx)")
-        .option("-c, --component " + colors.green("<component>"), "Set the default component type (arrow or functional)")
-        .option("-p, --page " + colors.green("<page>"), "Set the default page type (arrow or functional)")
-        .option("-r, --register " + colors.green("<boolean>"), "Set the default registration of pages in the App.jsx or App.tsx file (true or false)")
-        .option("-st, --stylesheetType " + colors.green("<style>"), "Set the default style type (css or scss)")
-        .option("-gs, --generateStylesheet " + colors.green("<boolean>"), "Generates a stylesheet file for the Component and Pages. (true or false)")
-        .option("-gf, --generateFolder " + colors.green("<boolean>"), "Generates a custom folder for the Component and Pages. (true or false)")
+        .option("-t, --template " + colors.bold(colors.white("<template>")), "Set the default template (jsx or tsx)")
+        .option("-c, --component " + colors.bold(colors.white("<component>")), "Set the default component type (arrow or functional)")
+        .option("-p, --page " + colors.bold(colors.white("<page>")), "Set the default page type (arrow or functional)")
+        .option("-r, --register " + colors.bold(colors.white("<boolean>")), "Set the default registration of pages in the App.jsx or App.tsx file (true or false)")
+        .option("-st, --stylesheetType " + colors.bold(colors.white("<style>")), "Set the default style type (css or scss)")
+        .option("-gs, --generateStylesheet " + colors.bold(colors.white("<boolean>")), "Generates a stylesheet file for the Component and Pages. (true or false)")
+        .option("-gf, --generateFolder " + colors.bold(colors.white("<boolean>")), "Generates a custom folder for the Component and Pages. (true or false)")
         .action((options) => {
         const config = userReadConfig.readConfig();
         //component template

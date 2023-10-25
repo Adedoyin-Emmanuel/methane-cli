@@ -7,8 +7,8 @@ const packageGenerator = () => {
     program
         .command("generate")
         .alias("g")
-        .option("-p, --page " + colors.green("<name>"), "Generates a React page file.")
-        .option("-c, --component " + colors.green("<name>"), "Generates a React component file.")
+        .option("-p, --page " + colors.bold(colors.bold("<name>")), "Generates a React page file.")
+        .option("-c, --component " + colors.bold(colors.bold("<name>")), "Generates a React component file.")
         .option("-sw, --serviceWorker ", "Generates a Service Worker file for PWA.")
         .description("Generate a new React Component, Page or Service Worker!")
         .action(async (name) => {

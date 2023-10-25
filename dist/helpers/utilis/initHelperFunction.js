@@ -73,7 +73,7 @@ export const initMethaneCLI = () => {
             .then((answers) => {
             const userConfig = { ...defaultConfig, ...answers };
             fs.writeFileSync(userConfigFilePath, JSON.stringify(userConfig, null, 2));
-            console.log(colors.cyan(colors.bold("Methane CLI configurations has been initialized successfully!")));
+            console.log(colors.green(colors.bold("Methane CLI configurations has been initialized successfully!")));
         });
     }
     else {

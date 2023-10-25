@@ -9,11 +9,11 @@ const packageGenerator = () => {
     .command("generate")
     .alias("g")
     .option(
-      "-p, --page " + colors.green("<name>"),
+      "-p, --page " + colors.bold(colors.bold("<name>")),
       "Generates a React page file."
     )
     .option(
-      "-c, --component " + colors.green("<name>"),
+      "-c, --component " + colors.bold(colors.bold("<name>")),
       "Generates a React component file."
     )
     .option("-sw, --serviceWorker ", "Generates a Service Worker file for PWA.")

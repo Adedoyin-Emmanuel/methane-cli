@@ -88,7 +88,7 @@ export const initMethaneCLI = () => {
           JSON.stringify(userConfig, null, 2)
         );
         console.log(
-          colors.cyan(
+          colors.green(
             colors.bold("Methane CLI configurations has been initialized successfully!")
           )
         );
