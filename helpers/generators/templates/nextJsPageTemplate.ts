@@ -123,10 +123,6 @@ import "./${componentName}Style.${styleSheetType}";
 ${addRouterImport}
 
 
-interface ${componentName}Props {
-    
-}
-
 const ${componentName} = () => {
 
     return (
@@ -144,10 +140,6 @@ ${componentTypeTemplate}
 import React from "react";
 ${addRouterImport}
 
-
-interface ${componentName}Props {
-    
-}
 
 const ${componentName} = () => {
 
@@ -185,10 +177,6 @@ import "./${componentName}Style.${styleSheetType}";
 ${addRouterImport}
 
 
-interface ${componentName}Props {
-    
-}
-
 function ${componentName}() {
 
     return (
@@ -206,10 +194,6 @@ ${componentTypeTemplate}
 import React from "react";
 ${addRouterImport}
 
-
-interface ${componentName}Props {
-    
-}
 
 function ${componentName}() {
 

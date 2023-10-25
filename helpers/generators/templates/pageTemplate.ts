@@ -96,12 +96,7 @@ const generateTsxArrowTemplate = (
     template = `
 import React from "react";
 import "./${componentName}Style.${styleSheetType}";
-import {Link, useNavigate} from "react-router-dom";
-
-interface ${componentName}Props {
-    
-}
-const ${componentName}:React.FC = (): JSX.Element => {
+import {Link, useNavigate} from "react-router-dom";const ${componentName}:React.FC = (): JSX.Element => {
     const navigateTo = useNavigate();
     return (
         <div>
@@ -116,11 +111,6 @@ export default ${componentName};
     template = `
 import React from "react";
 import {Link, useNavigate} from "react-router-dom";
-
-interface ${componentName}Props {
-    
-}
-
 const ${componentName}:React.FC = (): JSX.Element => {
     const navigateTo = useNavigate();
     return (
@@ -148,11 +138,6 @@ import React from "react";
 import "./${componentName}Style.${styleSheetType}";
 import {Link, useNavigate} from "react-router-dom";
 
-
-interface ${componentName}Props {
-    
-}
-
 function ${componentName}(): JSX.Element {
     const navigateTo = useNavigate();
     
@@ -169,11 +154,6 @@ export default ${componentName};
     template = `
 import React from "react";
 import {Link, useNavigate} from "react-router-dom";
-
-
-interface ${componentName}Props {
-    
-}
 
 function ${componentName}(): JSX.Element {
     const navigateTo = useNavigate();
