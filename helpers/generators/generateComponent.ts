@@ -15,8 +15,8 @@ const componentDir = [
 ].find((dir) => {
   return fs.existsSync(path.join(rootDir, dir));
 });
-import * as readUserConfig from "../utilis/readUserConfig";
-import * as componentResolver from "./resolvers/resolveComponentContent"
+import * as readUserConfig from "../utilis/readUserConfig.js";
+import * as componentResolver from "./resolvers/resolveComponentContent.js"
 const generateComponentFile = async (
   name: string,
   componentDir: string,

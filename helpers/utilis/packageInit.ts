@@ -1,5 +1,5 @@
 import { program } from "commander";
-import * as methaneCli from "./initHelperFunction";
+import * as methaneCli from "./initHelperFunction.js";
 
 const InitMethaneCLI = () => {
   program

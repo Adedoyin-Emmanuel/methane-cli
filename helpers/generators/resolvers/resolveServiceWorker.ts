@@ -1,7 +1,7 @@
 import {
   serviceWorkerRegistrationTemplate,
   serviceWorkerTemplate,
-} from "../templates/serviceWorkerTemplate";
+} from "../templates/serviceWorkerTemplate.js";
 
 const resolveServiceWorkerTemplate = () => {
   return serviceWorkerTemplate();

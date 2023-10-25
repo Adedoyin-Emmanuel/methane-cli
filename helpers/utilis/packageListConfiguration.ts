@@ -1,5 +1,5 @@
 import { program } from "commander";
-import * as userReadConfig from "./readUserConfig";
+import * as userReadConfig from "./readUserConfig.js";
 import colors from "colors";
 
 const listAllConfig = () => {
