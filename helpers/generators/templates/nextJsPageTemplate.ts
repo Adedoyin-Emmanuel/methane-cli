@@ -8,7 +8,12 @@ const generateNextJsJsxArrowTemplate = (
   let componentTypeTemplate = componentType === "client" && "use client";
   let addRouterImport =
     componentType === "client" &&
-    'import { useRouter } from "next/navigation";';
+    'import { useRouter, usePathname } from "next/navigation";';
+  let pathnameDeclaration =
+    componentType === "client" && "const pathname = usePathname();";
+  let pathnameDisplay =
+    componentType === "client" && "<p>Current pathname: {pathname}</p>";
+
   if (importStyleSheet === "true") {
     template = `
 ${componentTypeTemplate}
@@ -18,10 +23,12 @@ import "./${componentName}Style.${styleSheetType}";
 ${addRouterImport}
 
 const ${componentName} = () => {
+    ${pathnameDeclaration}
 
     return (
         <div>
             <h1>${componentName} works!</h1>
+            ${pathnameDisplay}
         </div>
     );  
 }
@@ -36,10 +43,12 @@ ${addRouterImport}
 
 
 const ${componentName} = () => {
+    ${pathnameDeclaration}
 
     return (
         <div>
             <h1>${componentName} works!</h1>
+            ${pathnameDisplay}
         </div>
     );  
 }
@@ -61,7 +70,12 @@ const generateNextJsJsxFunctionTemplate = (
   let componentTypeTemplate = componentType === "client" && "use client";
   let addRouterImport =
     componentType === "client" &&
-    'import { useRouter } from "next/navigation";';
+    'import { useRouter, usePathname } from "next/navigation";';
+  let pathnameDeclaration =
+    componentType === "client" && "const pathname = usePathname();";
+  let pathnameDisplay =
+    componentType === "client" && "<p>Current pathname: {pathname}</p>";
+
   if (importStyleSheet === "true") {
     template = `
 ${componentTypeTemplate}
@@ -71,10 +85,12 @@ import "./${componentName}Style.${styleSheetType}";
 ${addRouterImport}
 
 function ${componentName} (){
+    ${pathnameDeclaration}
 
     return (
         <div>
             <h1>${componentName} works!</h1>
+            ${pathnameDisplay}
         </div>
     );  
 }
@@ -89,10 +105,12 @@ ${addRouterImport}
 
 
 function ${componentName} (){
+    ${pathnameDeclaration}
 
     return (
         <div>
             <h1>${componentName} works!</h1>
+            ${pathnameDisplay}
         </div>
     );  
 }
@@ -113,7 +131,12 @@ const generateNextJsTsxArrowTemplate = (
   let componentTypeTemplate = componentType === "client" && "use client";
   let addRouterImport =
     componentType === "client" &&
-    'import { useRouter } from "next/navigation";';
+    'import { useRouter, usePathname } from "next/navigation";';
+  let pathnameDeclaration =
+    componentType === "client" && "const pathname = usePathname();";
+  let pathnameDisplay =
+    componentType === "client" && "<p>Current pathname: {pathname}</p>";
+
   if (importStyleSheet === "true") {
     template = `
 ${componentTypeTemplate}
@@ -124,10 +147,12 @@ ${addRouterImport}
 
 
 const ${componentName} = () => {
+    ${pathnameDeclaration}
 
     return (
         <div>
             <h1>${componentName} works!</h1>
+            ${pathnameDisplay}
         </div>
     );  
 }
@@ -142,10 +167,12 @@ ${addRouterImport}
 
 
 const ${componentName} = () => {
+    ${pathnameDeclaration}
 
     return (
         <div>
             <h1>${componentName} works!</h1>
+            ${pathnameDisplay}
         </div>
     );  
 }
@@ -167,7 +194,12 @@ const generateNextJsTsxFunctionTemplate = (
   let componentTypeTemplate = componentType === "client" && "use client";
   let addRouterImport =
     componentType === "client" &&
-    'import { useRouter } from "next/navigation";';
+    'import { useRouter, usePathname } from "next/navigation";';
+  let pathnameDeclaration =
+    componentType === "client" && "const pathname = usePathname();";
+  let pathnameDisplay =
+    componentType === "client" && "<p>Current pathname: {pathname}</p>";
+
   if (importStyleSheet === "true") {
     template = `
 ${componentTypeTemplate}
@@ -178,10 +210,12 @@ ${addRouterImport}
 
 
 function ${componentName}() {
+   ${pathnameDeclaration}
 
     return (
         <div>
             <h1>${componentName} works!</h1>
+            ${pathnameDisplay}
         </div>
     );  
 }
@@ -196,10 +230,12 @@ ${addRouterImport}
 
 
 function ${componentName}() {
+  ${pathnameDeclaration}
 
     return (
         <div>
             <h1>${componentName} works!</h1>
+            ${pathnameDisplay}
         </div>
     );  
 }
