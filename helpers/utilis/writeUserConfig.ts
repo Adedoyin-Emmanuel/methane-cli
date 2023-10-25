@@ -1,6 +1,6 @@
 import colors from "colors";
 import fs from "fs";
-import { getUserConfigFilePath } from "./getUserConfigFilePath";
+import { getUserConfigFilePath } from "./getUserConfigFilePath.js";
 
 const filePath = getUserConfigFilePath();
 

@@ -6,8 +6,8 @@ const SWDir = ["src"].find((dir) => {
   return fs.existsSync(path.join(rootDir, dir));
 });
 
-import * as swRegisterer from "./register/registerServiceWorker";
-import * as swResolver from "./resolvers/resolveServiceWorker";
+import * as swRegisterer from "./register/registerServiceWorker.js";
+import * as swResolver from "./resolvers/resolveServiceWorker.js";
 
 const generateServiceWorkerFile = async () => {
   if (SWDir) {

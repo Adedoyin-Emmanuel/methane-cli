@@ -1,7 +1,7 @@
 import colors from "colors";
 import fs from "fs";
 import path from "path";
-import * as readUserConfig from "../../utilis/readUserConfig";
+import * as readUserConfig from "../../utilis/readUserConfig.js";
 
 export const addPageImport = (rootDir: string, pageName: string, currentPageName: string) => {
   const supportedExtensions = [".js", ".jsx", ".ts", ".tsx"];

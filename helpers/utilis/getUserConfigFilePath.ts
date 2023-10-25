@@ -1,7 +1,5 @@
-import fs from 'fs';
-import path from 'path';
-
-
+import fs from "fs";
+import path from "path";
 
 export const getUserConfigFilePath = () => {
   const userConfigFolderPath = path.join(process.cwd(), "methane");
@@ -11,6 +9,11 @@ export const getUserConfigFilePath = () => {
     return userConfigFilePath;
   }
 
-  // Fall back to the global configuration file
-  return path.join(__dirname, "../../", "config", "methane.json");
+  // Use import.meta.url to get the current module's URL
+  const currentModuleUrl = new URL(import.meta.url);
+
+  // Convert the URL to a file path
+  const currentModulePath = path.dirname(currentModuleUrl.pathname);
+
+  return path.join(currentModulePath, "../../", "config", "methane.json");
 };

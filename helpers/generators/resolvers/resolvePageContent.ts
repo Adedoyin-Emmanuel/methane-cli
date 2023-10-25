@@ -1,6 +1,6 @@
-import * as generatePageTmp from "../templates/pageTemplate";
+import * as generatePageTmp from "../templates/pageTemplate.js";
 
-const resolvePageContent = (userConfig:any, pageName:string) => {
+const resolvePageContent = (userConfig:any, pageName:string):any => {
   if (
     userConfig.readConfig().template === "jsx" &&
     userConfig.readConfig().component === "arrow"

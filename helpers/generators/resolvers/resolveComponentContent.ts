@@ -1,4 +1,4 @@
-import * as generateComponentTmp from "./../templates/componentTemplate";
+import * as generateComponentTmp from "./../templates/componentTemplate.js";
 
 const resolveComponentContent = (userConfig: any, componentName: string) => {
   if (
@@ -40,6 +40,6 @@ const resolveComponentContent = (userConfig: any, componentName: string) => {
   }
 };
 
-module.exports = {
+export {
   resolveComponentContent,
 };

@@ -1,9 +1,9 @@
 import colors from "colors";
 import fs from "fs";
 import path from "path";
-import * as readUserConfig from "../utilis/readUserConfig";
-import * as pageRegisterer from "./register/registerPage";
-import * as  pageResolver from "./resolvers/resolvePageContent";
+import * as readUserConfig from "../utilis/readUserConfig.js";
+import * as pageRegisterer from "./register/registerPage.js";
+import * as  pageResolver from "./resolvers/resolvePageContent.js";
 
 const rootDir = path.join(process.cwd());
 const pageDir = [

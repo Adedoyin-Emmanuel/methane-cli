@@ -3,16 +3,18 @@
   "version": "1.1.0",
   "description": "methane-cli is a command-line tool for generating React components and pages with ease.",
   "main": "./dist/index.js",
+  "type": "module",
   "scripts": {
     "lint": "eslint .",
     "check-lint": "eslint [0-9]*.ts",
     "clean": "rimraf ./dist",
-    "build": "tsc index.ts --esModuleInterop true --target ES6 --module nodenext --moduleResolution nodenext --outDir dist",
+    "build": "tsc index.ts --esModuleInterop true --target ES2020 --module nodenext --moduleResolution nodenext --outDir dist",
     "start": "npm run clean && npm run build  && node ./dist/index.js",
     "dev": "ts-node index.ts",
     "test": "jest",
     "full-test": "eslint */[0-9]*.ts && jest --watchAll --verbose",
-    "full-test-fix": "eslint */[0-9]*.ts --fix && jest --watchAll --verbose"
+    "full-test-fix": "eslint */[0-9]*.ts --fix && jest --watchAll --verbose",
+    "pub":"npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
@@ -36,8 +38,8 @@
     "url": "https://github.com/Adedoyin-Emmanuel/methane-cli/issues"
   },
   "bin": {
-    "rg": "./index.js",
-    "methane-cli": "./index.js"
+    "rg": "./dist/index.js",
+    "methane": "./dist/index.js"
   },
   "homepage": "https://github.com/Adedoyin-Emmanuel/methane-cli#readme",
   "dependencies": {
@@ -46,6 +48,7 @@
     "figlet": "^1.6.0",
     "fs-extra": "^11.1.1",
     "gradient-string": "^2.0.2",
+    "inquirer": "^9.2.11",
     "rimraf": "^5.0.5"
   },
   "devDependencies": {
@@ -56,6 +59,7 @@
     "@types/figlet": "^1.5.5",
     "@types/fs-extra": "^9.0.13",
     "@types/gradient-string": "^1.1.2",
+    "@types/inquirer": "^9.0.6",
     "@types/node": "^20.7.1",
     "@types/rimraf": "^3.0.2",
     "eslint": "^6.4.0",
