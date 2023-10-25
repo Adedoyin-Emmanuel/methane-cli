@@ -6,14 +6,16 @@ const generateJsxArrowTemplate = (
   let template: string;
   if (importStyleSheet === "true") {
     template = `
+import React from "react";
 import "./${componentName}Style.${styleSheetType}";
+import {Link, useNavigate} from "react-router-dom";
 
 const ${componentName} = () => {
-
+    const navigateTo = useNavigate();
     return (
-        <>
+        <div>
             <h1>${componentName} works!</h1>
-        </>
+        </div>
     );  
 }
 
@@ -21,13 +23,15 @@ export default ${componentName};
     `;
   } else {
     template = `
+import React from "react";
+import {Link, useNavigate} from "react-router-dom";
 
 const ${componentName} = () => {
-
+    const navigateTo = useNavigate();
     return (
-        <>
+        <div>
             <h1>${componentName} works!</h1>
-        </>
+        </div>
     );  
 }
 
@@ -46,14 +50,16 @@ const generateJsxFunctionTemplate = (
   let template: string;
   if (importStyleSheet === "true") {
     template = `
+    import React from "react";
     import "./${componentName}Style.${styleSheetType}";
+    import {Link, useNavigate} from "react-router-dom";
 
     function ${componentName} () {
-
-      return (
-            <>
+        const navigateTo = useNavigate();
+        return (
+            <div>
                 <h1>${componentName} works!</h1>
-            </>
+            </div>
         );  
     }
     
@@ -61,13 +67,16 @@ const generateJsxFunctionTemplate = (
         `;
   } else {
     template = `
+    import React from "react";
+    import {Link, useNavigate} from "react-router-dom";
 
     function ${componentName} () {
+      const navigateTo = useNavigate();
       
         return (
-            <>
+            <div>
                 <h1>${componentName} works!</h1>
-            </>
+            </div>
         );  
     }
     
@@ -85,18 +94,19 @@ const generateTsxArrowTemplate = (
   let template: string;
   if (importStyleSheet === "true") {
     template = `
+import React from "react";
 import "./${componentName}Style.${styleSheetType}";
+import {Link, useNavigate} from "react-router-dom";
 
 interface ${componentName}Props {
     
 }
-
-const ${componentName} = ()=> {
-   
+const ${componentName}:React.FC = (): JSX.Element => {
+    const navigateTo = useNavigate();
     return (
-        <>
+        <div>
             <h1>${componentName} works!</h1>
-        </>
+        </div>
     );  
 }
 
@@ -104,16 +114,19 @@ export default ${componentName};
     `;
   } else {
     template = `
+import React from "react";
+import {Link, useNavigate} from "react-router-dom";
 
 interface ${componentName}Props {
     
 }
 
-const ${componentName} = ()=> {
+const ${componentName}:React.FC = (): JSX.Element => {
+    const navigateTo = useNavigate();
     return (
-        <>
+        <div>
             <h1>${componentName} works!</h1>
-        </>
+        </div>
     );  
 }
 
@@ -131,19 +144,22 @@ const generateTsxFunctionTemplate = (
   let template: string;
   if (importStyleSheet === "true") {
     template = `
+import React from "react";
 import "./${componentName}Style.${styleSheetType}";
+import {Link, useNavigate} from "react-router-dom";
 
 
 interface ${componentName}Props {
     
 }
 
-function ${componentName}() {
-
+function ${componentName}(): JSX.Element {
+    const navigateTo = useNavigate();
+    
     return (
-        <>
+        <div>
             <h1>${componentName} works!</h1>
-        </>
+        </div>
     );  
 }
 
@@ -151,18 +167,21 @@ export default ${componentName};
     `;
   } else {
     template = `
+import React from "react";
+import {Link, useNavigate} from "react-router-dom";
 
 
 interface ${componentName}Props {
     
 }
 
-function ${componentName}() {
+function ${componentName}(): JSX.Element {
+    const navigateTo = useNavigate();
     
     return (
-        <>
+        <div>
             <h1>${componentName} works!</h1>
-        </>
+        </div>
     );  
 }
 
