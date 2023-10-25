@@ -58,7 +58,7 @@ export const initMethaneCLI = () => {
             {
                 type: "list",
                 name: "register",
-                message: "If using NextJS, select false, else, sets the default registration of pages in the App.jsx or App.tsx file",
+                message: "Registers pages in app entry point. If using NextJS, select false, else, sets the default registration of pages in the App.jsx or App.tsx file",
                 choices: ["true", "false"],
                 default: "false",
             },
@@ -73,10 +73,10 @@ export const initMethaneCLI = () => {
             .then((answers) => {
             const userConfig = { ...defaultConfig, ...answers };
             fs.writeFileSync(userConfigFilePath, JSON.stringify(userConfig, null, 2));
-            console.log(colors.green(colors.bold("Methane CLI has been initialized successfully!")));
+            console.log(colors.cyan(colors.bold("Methane CLI configurations has been initialized successfully!")));
         });
     }
     else {
-        console.log(colors.yellow("Methane CLI configuration already exists."));
+        console.log(colors.bold(colors.yellow("Methane CLI configuration already exists.")));
     }
 };
