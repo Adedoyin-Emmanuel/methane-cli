@@ -1,5 +1,5 @@
 const generateNextJsDynamicPageTsxArrowTemplate = (
-  dynamicPageId: string,
+ dynamicPageId: any,
   importStyleSheet: string,
   componentName: string,
   styleSheetType: string,
@@ -39,7 +39,7 @@ export default ${componentName};
 };
 
 const generateNextJsDynamicPageTsxFunctionTemplate = (
-  dynamicPageId: string,
+ dynamicPageId: any,
   importStyleSheet: string,
   componentName: string,
   styleSheetType: string,
@@ -80,7 +80,7 @@ export default ${componentName};
 };
 
 const generateNextJsDynamicPageJsxArrowTemplate = (
-  dynamicPageId: string,
+ dynamicPageId: any,
   importStyleSheet: string,
   componentName: string,
   styleSheetType: string,
@@ -124,7 +124,7 @@ export default ${componentName};
 };
 
 const generateNextJsDynamicPageJsxFunctionTemplate = (
-  dynamicPageId: string,
+ dynamicPageId: any,
   importStyleSheet: string,
   componentName: string,
   styleSheetType: string,
