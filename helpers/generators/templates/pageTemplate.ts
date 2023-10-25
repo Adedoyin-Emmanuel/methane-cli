@@ -13,9 +13,9 @@ import {Link, useNavigate} from "react-router-dom";
 const ${componentName} = () => {
     const navigateTo = useNavigate();
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
@@ -29,9 +29,9 @@ import {Link, useNavigate} from "react-router-dom";
 const ${componentName} = () => {
     const navigateTo = useNavigate();
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
@@ -57,9 +57,9 @@ const generateJsxFunctionTemplate = (
     function ${componentName} () {
         const navigateTo = useNavigate();
         return (
-            <React.Fragment>
+            <div>
                 <h1>${componentName} works!</h1>
-            </React.Fragment>
+            </div>
         );  
     }
     
@@ -74,9 +74,9 @@ const generateJsxFunctionTemplate = (
       const navigateTo = useNavigate();
       
         return (
-            <React.Fragment>
+            <div>
                 <h1>${componentName} works!</h1>
-            </React.Fragment>
+            </div>
         );  
     }
     
@@ -104,9 +104,9 @@ interface ${componentName}Props {
 const ${componentName}:React.FC = (): JSX.Element => {
     const navigateTo = useNavigate();
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
@@ -124,9 +124,9 @@ interface ${componentName}Props {
 const ${componentName}:React.FC = (): JSX.Element => {
     const navigateTo = useNavigate();
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
@@ -157,9 +157,9 @@ function ${componentName}(): JSX.Element {
     const navigateTo = useNavigate();
     
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
@@ -179,9 +179,9 @@ function ${componentName}(): JSX.Element {
     const navigateTo = useNavigate();
     
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 

@@ -1,11 +1,14 @@
-const generateJsxArrowTemplate = (
+const generateNextJsJsxArrowTemplate = (
   componentName: string,
-  importStyleSheet:any,
-  styleSheetType:any
+  importStyleSheet: any,
+  styleSheetType: any,
+  componentType: string
 ) => {
-  let template;
+  let template: string;
+  let componentTypeTemplate = componentType === "client" && "use client";
   if (importStyleSheet === "true") {
     template = `
+${componentTypeTemplate}
 import React from "react";
 import "./${componentName}Style.${styleSheetType}";
 
@@ -22,6 +25,7 @@ export default ${componentName};
     `;
   } else {
     template = `
+${componentTypeTemplate}
 import React from "react";
 
 const ${componentName} = () => {
@@ -40,62 +44,72 @@ export default ${componentName};
   return template;
 };
 
-const generateJsxFunctionTemplate = (
+const generateNextJsJsxFunctionTemplate = (
   componentName: string,
-  importStyleSheet:any,
-  styleSheetType: any
+  importStyleSheet: any,
+  styleSheetType: any,
+  componentType: string
 ) => {
-  let template;
+  let template: string;
+  let componentTypeTemplate = componentType === "client" && "use client";
   if (importStyleSheet === "true") {
     template = `
-    import React from "react";
-    import "./${componentName}Style.${styleSheetType}";
+${componentTypeTemplate}
+import React from "react";
+import "./${componentName}Style.${styleSheetType}";
+
+function ${componentName} () {
     
-    function ${componentName} () {
-    
-        return (
-            <div>
-                <h1>${componentName} works!</h1>
-            </div>
-        );  
-    }
-    
-    export default ${componentName};
-        `;
+    return (
+        <div>
+            <h1>${componentName} works!</h1>
+        </div>
+    );  
+}
+
+export default ${componentName};
+    `;
   } else {
     template = `
-    import React from "react";
+${componentTypeTemplate}
+import React from "react";
+
+
+function ${componentName} () {
     
-    function ${componentName} () {
-    
-        return (
-            <div>
-                <h1>${componentName} works!</h1>
-            </div>
-        );  
-    }
-    
-    export default ${componentName};
-        `;
+    return (
+        <div>
+            <h1>${componentName} works!</h1>
+        </div>
+    );  
+}
+
+export default ${componentName};
+    `;
   }
+
   return template;
 };
 
-const generateTsxArrowTemplate = (
-  componentName:string,
-  importStyleSheet:any,
-  styleSheetType: any
+const generateNextJsTsxArrowTemplate = (
+  componentName: string,
+  importStyleSheet: any,
+  styleSheetType: any,
+  componentType: string
 ) => {
-  let template;
+  let template: string;
+  let componentTypeTemplate = componentType === "client" && "use client";
   if (importStyleSheet === "true") {
     template = `
+${componentTypeTemplate}
 import React from "react";
 import "./${componentName}Style.${styleSheetType}";
 
 interface ${componentName}Props {
     
 }
-const ${componentName}:React.FC = (): JSX.Element => {
+
+const ${componentName} = () => {
 
     return (
         <div>
@@ -108,13 +122,14 @@ export default ${componentName};
     `;
   } else {
     template = `
+${componentTypeTemplate}
 import React from "react";
 
 interface ${componentName}Props {
     
 }
 
-const ${componentName}:React.FC = (): JSX.Element => {
+const ${componentName} = ()=> {
 
     return (
         <div>
@@ -129,23 +144,25 @@ export default ${componentName};
   return template;
 };
 
-const generateTsxFunctionTemplate = (
-  componentName:string,
-  importStyleSheet:any,
-  styleSheetType:any
+const generateNextJsTsxFunctionTemplate = (
+  componentName: string,
+  importStyleSheet: any,
+  styleSheetType: any,
+  componentType: string
 ) => {
-  let template;
+  let template: string;
+  let componentTypeTemplate = componentType === "client" && "use client";
   if (importStyleSheet === "true") {
     template = `
+${componentTypeTemplate}
 import React from "react";
 import "./${componentName}Style.${styleSheetType}";
-
 
 interface ${componentName}Props {
     
 }
 
-function ${componentName}(): JSX.Element {
+function ${componentName} (){
 
     return (
         <div>
@@ -158,14 +175,14 @@ export default ${componentName};
     `;
   } else {
     template = `
+${componentTypeTemplate}
 import React from "react";
-
 
 interface ${componentName}Props {
     
 }
 
-function ${componentName}(): JSX.Element {
+function ${componentName} (){
 
     return (
         <div>
@@ -177,13 +194,12 @@ function ${componentName}(): JSX.Element {
 export default ${componentName};
     `;
   }
-
   return template;
 };
 
 export {
-  generateJsxArrowTemplate,
-  generateJsxFunctionTemplate,
-  generateTsxArrowTemplate,
-  generateTsxFunctionTemplate,
+  generateNextJsJsxArrowTemplate,
+  generateNextJsJsxFunctionTemplate,
+  generateNextJsTsxArrowTemplate,
+  generateNextJsTsxFunctionTemplate,
 };
