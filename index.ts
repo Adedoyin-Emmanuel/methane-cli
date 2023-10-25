@@ -12,7 +12,7 @@ import { listAllConfig } from "./helpers/utilis/packageListConfiguration.js";
 /* Configure Figlet for the package name */
 
 figlet.text(
-  "Methane-C l i",
+  "Methane",
   {
     font: "Big",
     horizontalLayout: "default",

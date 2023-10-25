@@ -67,7 +67,7 @@ export const initMethaneCLI = () => {
           type: "list",
           name: "register",
           message:
-            "If using NextJS, select false, else, sets the default registration of pages in the App.jsx or App.tsx file",
+            "Registers pages in app entry point. If using NextJS, select false, else, sets the default registration of pages in the App.jsx or App.tsx file",
           choices: ["true", "false"],
           default: "false",
         },
@@ -89,11 +89,13 @@ export const initMethaneCLI = () => {
         );
         console.log(
           colors.green(
-            colors.bold("Methane CLI has been initialized successfully!")
+            colors.bold("Methane CLI configurations has been initialized successfully!")
           )
         );
       });
   } else {
-    console.log(colors.yellow("Methane CLI configuration already exists."));
+    console.log(
+      colors.bold(colors.yellow("Methane CLI configuration already exists."))
+    );
   }
 };
