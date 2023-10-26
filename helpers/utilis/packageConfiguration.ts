@@ -1,7 +1,5 @@
 import { program } from "commander";
 import  colors from "colors";
-// import * as userReadConfig from "./readUserConfig";
-// import * as userWriteConfig from "./writeUserConfig";
 
 import * as userReadConfig from "./readUserConfig.js";
 import * as userWriteConfig from "./writeUserConfig.js";
