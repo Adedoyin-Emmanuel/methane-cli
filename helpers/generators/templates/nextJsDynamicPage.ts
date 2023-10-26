@@ -1,12 +1,12 @@
 const generateNextJsDynamicPageTsxArrowTemplate = (
- dynamicPageId: any,
+  dynamicPageId: any,
   importStyleSheet: string,
   componentName: string,
   styleSheetType: string,
   componentType: string
 ) => {
   let template: string;
-  let componentTypeTemplate = componentType === "client" && "use client";
+  let componentTypeTemplate = componentType === "client" && '"use client"';
   let addStyleSheetImport =
     importStyleSheet === "true" &&
     `import "./${componentName}Style.${styleSheetType}";`;
@@ -39,14 +39,14 @@ export default ${componentName};
 };
 
 const generateNextJsDynamicPageTsxFunctionTemplate = (
- dynamicPageId: any,
+  dynamicPageId: any,
   importStyleSheet: string,
   componentName: string,
   styleSheetType: string,
   componentType: string
 ) => {
   let template: string;
-  let componentTypeTemplate = componentType === "client" && "use client";
+  let componentTypeTemplate = componentType === "client" && '"use client"';
   let addStyleSheetImport =
     importStyleSheet === "true" &&
     `import "./${componentName}Style.${styleSheetType}";`;
@@ -80,14 +80,14 @@ export default ${componentName};
 };
 
 const generateNextJsDynamicPageJsxArrowTemplate = (
- dynamicPageId: any,
+  dynamicPageId: any,
   importStyleSheet: string,
   componentName: string,
   styleSheetType: string,
   componentType: string
 ) => {
   let template: string;
-  let componentTypeTemplate = componentType === "client" ? "use client" : "";
+  let componentTypeTemplate = componentType === "client" && '"use client"';
   let addStyleSheetImport =
     importStyleSheet === "true"
       ? `import "./${componentName}Style.${styleSheetType}";`
@@ -124,7 +124,7 @@ export default ${componentName};
 };
 
 const generateNextJsDynamicPageJsxFunctionTemplate = (
- dynamicPageId: any,
+  dynamicPageId: any,
   importStyleSheet: string,
   componentName: string,
   styleSheetType: string,

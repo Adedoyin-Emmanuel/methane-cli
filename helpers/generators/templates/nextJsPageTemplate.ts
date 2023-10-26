@@ -5,14 +5,15 @@ const generateNextJsJsxArrowTemplate = (
   componentType: string
 ) => {
   let template: string;
-  let componentTypeTemplate = componentType === "client" && "use client";
+  let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
   let addRouterImport =
-    componentType === "client" &&
-    'import { useRouter, usePathname } from "next/navigation";';
+    componentType === "client"
+      ? 'import { useRouter, usePathname } from "next/navigation";'
+      : "";
   let pathnameDeclaration =
-    componentType === "client" && "const pathname = usePathname();";
+    componentType === "client" ? "const pathname = usePathname();" : "";
   let pathnameDisplay =
-    componentType === "client" && "<p>Current pathname: {pathname}</p>";
+    componentType === "client" ? "<p>Current pathname: {pathname}</p>" : "";
 
   if (importStyleSheet === "true") {
     template = `
@@ -67,14 +68,15 @@ const generateNextJsJsxFunctionTemplate = (
   componentType: string
 ) => {
   let template: string;
-  let componentTypeTemplate = componentType === "client" && "use client";
+  let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
   let addRouterImport =
-    componentType === "client" &&
-    'import { useRouter, usePathname } from "next/navigation";';
+    componentType === "client"
+      ? 'import { useRouter, usePathname } from "next/navigation";'
+      : "";
   let pathnameDeclaration =
-    componentType === "client" && "const pathname = usePathname();";
+    componentType === "client" ? "const pathname = usePathname();" : "";
   let pathnameDisplay =
-    componentType === "client" && "<p>Current pathname: {pathname}</p>";
+    componentType === "client" ? "<p>Current pathname: {pathname}</p>" : "";
 
   if (importStyleSheet === "true") {
     template = `
@@ -128,14 +130,15 @@ const generateNextJsTsxArrowTemplate = (
   componentType: string
 ) => {
   let template: string;
-  let componentTypeTemplate = componentType === "client" && "use client";
+  let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
   let addRouterImport =
-    componentType === "client" &&
-    'import { useRouter, usePathname } from "next/navigation";';
+    componentType === "client"
+      ? 'import { useRouter, usePathname } from "next/navigation";'
+      : "";
   let pathnameDeclaration =
-    componentType === "client" && "const pathname = usePathname();";
+    componentType === "client" ? "const pathname = usePathname();" : "";
   let pathnameDisplay =
-    componentType === "client" && "<p>Current pathname: {pathname}</p>";
+    componentType === "client" ? "<p>Current pathname: {pathname}</p>" : "";
 
   if (importStyleSheet === "true") {
     template = `
@@ -191,14 +194,15 @@ const generateNextJsTsxFunctionTemplate = (
   componentType: string
 ) => {
   let template: string;
-  let componentTypeTemplate = componentType === "client" && "use client";
+  let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
   let addRouterImport =
-    componentType === "client" &&
-    'import { useRouter, usePathname } from "next/navigation";';
+    componentType === "client"
+      ? 'import { useRouter, usePathname } from "next/navigation";'
+      : "";
   let pathnameDeclaration =
-    componentType === "client" && "const pathname = usePathname();";
+    componentType === "client" ? "const pathname = usePathname();" : "";
   let pathnameDisplay =
-    componentType === "client" && "<p>Current pathname: {pathname}</p>";
+    componentType === "client" ? "<p>Current pathname: {pathname}</p>" : "";
 
   if (importStyleSheet === "true") {
     template = `

@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import * as readUserConfig from "../utilis/readUserConfig.js";
 import * as pageRegisterer from "./register/registerPage.js";
-import * as  pageResolver from "./resolvers/resolvePageContent.js";
+import * as pageResolver from "./resolvers/resolvePageContent.js";
 
 const rootDir = path.join(process.cwd());
 const pageDir = [
@@ -19,7 +19,11 @@ const pageDir = [
   return fs.existsSync(path.join(rootDir, dir));
 });
 
-const generatePageFile = async (name:string, pageDir:string, pageResolver:any) => {
+const generatePageFile = async (
+  name: string,
+  pageDir: string,
+  pageResolver: any
+) => {
   await fs.writeFile(
     pageDir,
     pageResolver.resolvePageContent(readUserConfig, name),
@@ -38,7 +42,7 @@ export const generatePage = async (name: string) => {
     );
   }
   if (!pageDir) {
-    console.log(colors.red("pages folder doesn't exist"));
+    console.log(colors.bold(colors.red("pages folder doesn't exist")));
     return;
   }
 
@@ -77,7 +81,7 @@ export const generatePage = async (name: string) => {
           path.join(".", pageDir.replace("src/", ""))
         )
       : null;
-  } catch (error:any) {
+  } catch (error: any) {
     console.log(colors.bold(colors.red(error)));
   }
 

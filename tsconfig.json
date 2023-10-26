@@ -43,5 +43,6 @@
     "useDefineForClassFields": true,
     "baseUrl": "./",
     "outDir": "./dist",
-  }
+  },
+   "include": ["**/*.ts"]
 }

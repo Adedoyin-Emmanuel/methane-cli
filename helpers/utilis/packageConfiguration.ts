@@ -1,7 +1,5 @@
 import { program } from "commander";
 import  colors from "colors";
-// import * as userReadConfig from "./readUserConfig";
-// import * as userWriteConfig from "./writeUserConfig";
 
 import * as userReadConfig from "./readUserConfig.js";
 import * as userWriteConfig from "./writeUserConfig.js";
@@ -213,7 +211,7 @@ const configurePackage = () => {
           colors.grey(
             colors.bold(
               `No configurations applied, run ${colors.white(
-                "rg config --help"
+                "methane config --help"
               )} to see available commands`
             )
           )
