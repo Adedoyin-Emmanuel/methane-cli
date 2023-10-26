@@ -29,7 +29,7 @@ export const generatePage = async (name) => {
         return console.log(colors.bold(colors.red("page extension or name is required!")));
     }
     if (!pageDir) {
-        console.log(colors.red("pages folder doesn't exist"));
+        console.log(colors.bold(colors.red("pages folder doesn't exist")));
         return;
     }
     const pageDirName = readUserConfig.readConfig().generateFolder === "true"

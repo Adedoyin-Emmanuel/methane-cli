@@ -10,8 +10,13 @@ export const readConfig = () => {
     return JSON.parse(data.toString());
   } catch (error: any) {
     console.log(
-      colors.grey(`Error reading config file ${colors.red(error.message)}`)
+      colors.bold(
+        colors.red(
+          `Error reading config file, please run methane init to initialize config file`
+        )
+      )
     );
+    process.exit(1);
     return {};
   }
 };
