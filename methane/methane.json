@@ -5,5 +5,5 @@
   "generateStylesheet": "true",
   "generateFolder": "true",
   "register": "false",
-  "stylesheetType": "scss"
+  "stylesheetType": "css"
 }

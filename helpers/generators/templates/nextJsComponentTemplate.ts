@@ -5,7 +5,7 @@ const generateNextJsJsxArrowTemplate = (
   componentType: string
 ) => {
   let template: string;
-  let componentTypeTemplate = componentType === "client" && "use client";
+  let componentTypeTemplate = componentType === "client" && '"use client"';
   if (importStyleSheet === "true") {
     template = `
 ${componentTypeTemplate}
@@ -51,7 +51,7 @@ const generateNextJsJsxFunctionTemplate = (
   componentType: string
 ) => {
   let template: string;
-  let componentTypeTemplate = componentType === "client" && "use client";
+  let componentTypeTemplate = componentType === "client" && '"use client"';
   if (importStyleSheet === "true") {
     template = `
 ${componentTypeTemplate}
@@ -98,7 +98,7 @@ const generateNextJsTsxArrowTemplate = (
   componentType: string
 ) => {
   let template: string;
-  let componentTypeTemplate = componentType === "client" && "use client";
+  let componentTypeTemplate = componentType === "client" && '"use client"';
   if (importStyleSheet === "true") {
     template = `
 ${componentTypeTemplate}
@@ -151,7 +151,7 @@ const generateNextJsTsxFunctionTemplate = (
   componentType: string
 ) => {
   let template: string;
-  let componentTypeTemplate = componentType === "client" && "use client";
+  let componentTypeTemplate = componentType === "client" && '"use client"';
   if (importStyleSheet === "true") {
     template = `
 ${componentTypeTemplate}

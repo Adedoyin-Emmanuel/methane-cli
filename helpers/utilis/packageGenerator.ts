@@ -3,105 +3,93 @@ import { program } from "commander";
 import * as componentGen from "../generators/generateComponent.js";
 import * as pageGen from "../generators/generatePage.js";
 import * as serviceWorkerGen from "../generators/generateServiceWorker.js";
+import * as nextJsPageGen from "../generators/generateNextJsPage.js";
+import * as nextJsComponentGen from "../generators/generateNextJsComponent.js";
+import * as nextJsDynamicPageGen from "../generators/generateNextJsDynamicPage.js";
+
+
 
 const packageGenerator = () => {
   program
     .command("generate")
     .alias("g")
     .option(
-      "-p, --page " + colors.bold(colors.bold("<name>")),
+      "-p, --page " + colors.bold(colors.white("<name>")),
       "Generates a React page file."
     )
     .option(
-      "-c, --component " + colors.bold(colors.bold("<name>")),
+      "-c, --component " + colors.bold(colors.white("<name>")),
       "Generates a React component file."
     )
+    .option(
+      "-nc, --next-component " + colors.bold(colors.white("<name>")),
+      "Generates a NextJs component file."
+    )
+    .option(
+      "-ct, --component-type " + colors.bold(colors.white("<name>")),
+      "Specifies a client or server component, defaults to client."
+    )
+
+    .option(
+      "-np, --next-page " + colors.bold(colors.white("<name>")),
+      "Generates a NextJs page file."
+    )
+    .option(
+      "-ndp, --next-dynamic-page " + colors.bold(colors.white("<name>")),
+      "Generates a NextJs dynamic page file."
+    )
     .option("-sw, --serviceWorker ", "Generates a Service Worker file for PWA.")
-    .description("Generate a new React Component, Page or Service Worker!")
-    .action(async (name) => {
-      //check if an argument was passed
-      if (Object.keys(name).length === 0) {
-        console.log(
-          colors.bold(
-            colors.grey(
-              `No argument specified, run ${colors.white(
-                "rg generate --help"
-              )} for available commands`
-            )
-          )
-        );
-        return;
+    .description(
+      "Generate a new React or NextJS Component, Page or Service Worker!"
+    )
+    .action(async (name:any, options:any) => {
+      const {
+        component,
+        page,
+        serviceWorker,
+        nextComponent,
+        nextPage,
+        nextDynamicPage,
+        componentType 
+      } = name;
+      const componentName = component
+        ? `${component.charAt(0).toUpperCase()}${component.slice(1)}`
+        : undefined;
+      const pageName = page
+        ? `${page.charAt(0).toUpperCase()}${page.slice(1)}`
+        : undefined;
+      
+      let legitComponentType = componentType === undefined ? "client" : "server";
+      if (serviceWorker) {
+        serviceWorkerGen.generateServiceWorkerFile();
+      }
+      if (componentName) {
+        componentGen.generateComponent(componentName);
+      }
+      if (pageName) {
+        pageGen.generatePage(pageName);
       }
 
-      const { component, page, serviceWorker } = name;
-      if (
-        component !== undefined &&
-        page !== undefined &&
-        serviceWorker !== undefined
-      ) {
-        const componentName = `${component
-          .charAt(0)
-          .toUpperCase()}${component.slice(1)}`;
-        const pageName = `${page.charAt(0).toUpperCase()}${page.slice(1)}`;
-        //serviceworker is here too
-        serviceWorkerGen.generateServiceWorkerFile();
-        componentGen.generateComponent(componentName);
-        pageGen.generatePage(pageName);
-      } else if (
-        component !== undefined &&
-        page === undefined &&
-        serviceWorker === undefined
-      ) {
-        const componentName = `${component
-          .charAt(0)
-          .toUpperCase()}${component.slice(1)}`;
+    
 
-        componentGen.generateComponent(componentName);
-      } else if (
-        page !== undefined &&
-        component === undefined &&
-        serviceWorker === undefined
-      ) {
-        const pageName = `${page.charAt(0).toUpperCase()}${page.slice(1)}`;
-        pageGen.generatePage(pageName);
-      } else if (
-        serviceWorker !== undefined &&
-        component === undefined &&
-        page === undefined
-      ) {
-        serviceWorkerGen.generateServiceWorkerFile();
-      } else if (
-        serviceWorker !== undefined &&
-        page !== undefined &&
-        component === undefined
-      ) {
-        const pageName = `${page.charAt(0).toUpperCase()}${page.slice(1)}`;
-        pageGen.generatePage(pageName);
+      if (nextComponent) {
+        //generate next component
+         console.log(nextComponent);
+        console.log(legitComponentType);
+        
+      }
 
-        //serviceworker is here too
-      } else if (
-        serviceWorker !== undefined &&
-        component !== undefined &&
-        page == undefined
-      ) {
-        const componentName = `${component
-          .charAt(0)
-          .toUpperCase()}${component.slice(1)}`;
-        componentGen.generateComponent(componentName);
-        serviceWorkerGen.generateServiceWorkerFile();
+      if (nextPage && legitComponentType) {
+        //generate next page
+        console.log(nextPage);
+        console.log(legitComponentType);
+        nextJsPageGen.generatePage(nextPage, legitComponentType);
 
-        //service worker is here too
-      } else if (
-        page !== undefined &&
-        component !== undefined &&
-        serviceWorker === undefined
-      ) {
-        const componentName = `${component
-          .charAt(0)
-          .toUpperCase()}${component.slice(1)}`;
-        const pageName = `${page.charAt(0).toUpperCase()}${page.slice(1)}`;
-        pageGen.generatePage(pageName);
-        componentGen.generateComponent(componentName);
+      }
+
+      if (nextDynamicPage) {
+         console.log(nextDynamicPage);
+         console.log(legitComponentType);
       }
     });
 };

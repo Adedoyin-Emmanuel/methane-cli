@@ -13,10 +13,11 @@ const findPagesDirectory = () => {
     "src/app/Pages",
     "src/pages",
     "src/Pages",
-    "app/page",
-    "app/Page",
-    "app/",
     "src/app/",
+    "app/page",
+    "app/Pages",
+    "app/pages",
+    "app/",
   ];
 
   const directoryExists = (dir: string) => {
@@ -36,22 +37,26 @@ const findPagesDirectory = () => {
 };
 
 const generatePageFile = async (
-  name: string = "page",
+  name: string,
   pagesDir: string,
   pageResolver: any,
-  componentType: string
+  componentType: string = "client"
 ) => {
-  const pageFilePath = path.join(
-    pagesDir + `/${name}.${readUserConfig.readConfig().template}`
-  );
-
-  await fs.promises.writeFile(
-    pageFilePath,
-    pageResolver.resolvePageContent(readUserConfig, name, componentType)
+  await fs.writeFile(
+    pagesDir,
+    pageResolver.resolvePageContent(readUserConfig, "Index", componentType),
+    (error) => {
+      if (error) {
+        console.log(colors.bold(colors.red(error.toString())));
+      }
+    }
   );
 };
 
-export const generatePage = async (name: string = "page", componentType: string) => {
+export const generatePage = async (
+  name,
+  componentType: string
+) => {
   if (!name) {
     return console.log(colors.bold(colors.red("Page name is required!")));
   }
@@ -63,19 +68,39 @@ export const generatePage = async (name: string = "page", componentType: string)
     return;
   }
 
-  const pageFilePath = path.join(
-    pagesDir + `/${name}.${readUserConfig.readConfig().template}`
-  );
+  const pageDirName =
+    readUserConfig.readConfig().generateFolder === "true"
+      ? path.join(pagesDir, name)
+      : path.join(pagesDir);
 
+  const pageFilePath = path.join(
+    pageDirName + `/page.${readUserConfig.readConfig().template}`
+  );
   try {
+    readUserConfig.readConfig().generateFolder === "true"
+      ? await fs.mkdirSync(pageDirName)
+      : null;
+
+ 
+    
     if (readUserConfig.readConfig().generateStylesheet === "true") {
       const styleSheetType = readUserConfig.readConfig().stylesheetType;
-      const cssFilePath = path.join(pagesDir, `${name}Style.${styleSheetType}`);
+      const cssFilePath = path.join(
+        pageDirName,
+        `page.style.${styleSheetType}`
+      );
 
       await fs.promises.writeFile(cssFilePath, "");
+    } else {
+      
     }
 
-    generatePageFile(name, pagesDir, pageResolver, componentType);
+    generatePageFile(
+      name,
+      path.join(pageFilePath),
+      pageResolver,
+      componentType
+    );
   } catch (error: any) {
     console.log(colors.bold(colors.red(error)));
   }

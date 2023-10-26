@@ -211,7 +211,7 @@ const configurePackage = () => {
           colors.grey(
             colors.bold(
               `No configurations applied, run ${colors.white(
-                "rg config --help"
+                "methane config --help"
               )} to see available commands`
             )
           )
