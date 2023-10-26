@@ -9,6 +9,13 @@ export const writeConfig = (config: any) => {
     fs.writeFileSync(filePath, JSON.stringify(config, null, 2));
     console.log(colors.green("Configurations saved successfully!"));
   } catch (error: any) {
-    console.log(colors.grey("Error Writing config"), colors.red(error.message));
+    console.log(
+      colors.bold(
+        colors.red(
+          `Error writing to config file, please run methane init to initialize config file`
+        )
+      )
+    );
+    process.exit(1);
   }
 };
