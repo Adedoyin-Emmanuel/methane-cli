@@ -1,6 +1,6 @@
 import * as generateNextJsPageTmp from "../templates/nextJsComponentTemplate.js";
 
-const resolveComponentContent = (userConfig: any, pageName: string): any => {
+const resolveComponentContent = (userConfig: any, pageName: string, componentType: string = "client"): any => {
   if (
     userConfig.readConfig().template === "jsx" &&
     userConfig.readConfig().component === "arrow"
@@ -9,7 +9,7 @@ const resolveComponentContent = (userConfig: any, pageName: string): any => {
       pageName,
       userConfig.readConfig().generateStylesheet,
       userConfig.readConfig().stylesheetType,
-      userConfig.readConfig().componentType
+      componentType
     );
   } else if (
     userConfig.readConfig().template === "jsx" &&
@@ -19,7 +19,7 @@ const resolveComponentContent = (userConfig: any, pageName: string): any => {
       pageName,
       userConfig.readConfig().generateStylesheet,
       userConfig.readConfig().stylesheetType,
-      userConfig.readConfig().componentType
+      componentType
     );
   } else if (
     userConfig.readConfig().template === "tsx" &&
@@ -29,7 +29,7 @@ const resolveComponentContent = (userConfig: any, pageName: string): any => {
       pageName,
       userConfig.readConfig().generateStylesheet,
       userConfig.readConfig().stylesheetType,
-      userConfig.readConfig().componentType
+      componentType
     );
   } else if (
     userConfig.readConfig().template === "tsx" &&
@@ -39,9 +39,9 @@ const resolveComponentContent = (userConfig: any, pageName: string): any => {
       pageName,
       userConfig.readConfig().generateStylesheet,
       userConfig.readConfig().stylesheetType,
-      userConfig.readConfig().componentType
+      componentType
     );
   }
 };
 
-export { resolveComponentContent as resolvePageContent };
+export { resolveComponentContent };
