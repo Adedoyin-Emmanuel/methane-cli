@@ -8,9 +8,9 @@ import "./${componentName}Style.${styleSheetType}";
 const ${componentName} = () => {
 
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
@@ -24,9 +24,9 @@ import React from "react";
 const ${componentName} = () => {
 
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
@@ -45,9 +45,9 @@ const generateJsxFunctionTemplate = (componentName, importStyleSheet, styleSheet
     function ${componentName} () {
     
         return (
-            <React.Fragment>
+            <div>
                 <h1>${componentName} works!</h1>
-            </React.Fragment>
+            </div>
         );  
     }
     
@@ -61,9 +61,9 @@ const generateJsxFunctionTemplate = (componentName, importStyleSheet, styleSheet
     function ${componentName} () {
     
         return (
-            <React.Fragment>
+            <div>
                 <h1>${componentName} works!</h1>
-            </React.Fragment>
+            </div>
         );  
     }
     
@@ -85,9 +85,9 @@ interface ${componentName}Props {
 const ${componentName}:React.FC = (): JSX.Element => {
 
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
@@ -105,9 +105,9 @@ interface ${componentName}Props {
 const ${componentName}:React.FC = (): JSX.Element => {
 
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
@@ -131,9 +131,9 @@ interface ${componentName}Props {
 function ${componentName}(): JSX.Element {
 
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
@@ -152,9 +152,9 @@ interface ${componentName}Props {
 function ${componentName}(): JSX.Element {
 
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 

@@ -12,7 +12,7 @@ figlet.text("Methane", {
     font: "Big",
     horizontalLayout: "default",
     verticalLayout: "default",
-    width: 200,
+    width: 150,
     whitespaceBreak: true,
 }, function (err, data) {
     if (err) {

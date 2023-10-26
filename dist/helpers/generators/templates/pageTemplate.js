@@ -9,9 +9,9 @@ import {Link, useNavigate} from "react-router-dom";
 const ${componentName} = () => {
     const navigateTo = useNavigate();
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
@@ -26,9 +26,9 @@ import {Link, useNavigate} from "react-router-dom";
 const ${componentName} = () => {
     const navigateTo = useNavigate();
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
@@ -48,9 +48,9 @@ const generateJsxFunctionTemplate = (componentName, importStyleSheet, styleSheet
     function ${componentName} () {
         const navigateTo = useNavigate();
         return (
-            <React.Fragment>
+            <div>
                 <h1>${componentName} works!</h1>
-            </React.Fragment>
+            </div>
         );  
     }
     
@@ -66,9 +66,9 @@ const generateJsxFunctionTemplate = (componentName, importStyleSheet, styleSheet
       const navigateTo = useNavigate();
       
         return (
-            <React.Fragment>
+            <div>
                 <h1>${componentName} works!</h1>
-            </React.Fragment>
+            </div>
         );  
     }
     
@@ -83,17 +83,12 @@ const generateTsxArrowTemplate = (componentName, importStyleSheet, styleSheetTyp
         template = `
 import React from "react";
 import "./${componentName}Style.${styleSheetType}";
-import {Link, useNavigate} from "react-router-dom";
-
-interface ${componentName}Props {
-    
-}
-const ${componentName}:React.FC = (): JSX.Element => {
+import {Link, useNavigate} from "react-router-dom";const ${componentName}:React.FC = (): JSX.Element => {
     const navigateTo = useNavigate();
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
@@ -104,17 +99,12 @@ export default ${componentName};
         template = `
 import React from "react";
 import {Link, useNavigate} from "react-router-dom";
-
-interface ${componentName}Props {
-    
-}
-
 const ${componentName}:React.FC = (): JSX.Element => {
     const navigateTo = useNavigate();
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
@@ -131,18 +121,13 @@ import React from "react";
 import "./${componentName}Style.${styleSheetType}";
 import {Link, useNavigate} from "react-router-dom";
 
-
-interface ${componentName}Props {
-    
-}
-
 function ${componentName}(): JSX.Element {
     const navigateTo = useNavigate();
     
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
@@ -154,18 +139,13 @@ export default ${componentName};
 import React from "react";
 import {Link, useNavigate} from "react-router-dom";
 
-
-interface ${componentName}Props {
-    
-}
-
 function ${componentName}(): JSX.Element {
     const navigateTo = useNavigate();
     
     return (
-        <React.Fragment>
+        <div>
             <h1>${componentName} works!</h1>
-        </React.Fragment>
+        </div>
     );  
 }
 
