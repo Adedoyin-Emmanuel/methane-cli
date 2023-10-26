@@ -74,15 +74,12 @@ const packageGenerator = () => {
 
       if (nextComponent) {
         //generate next component
-         console.log(nextComponent);
-        console.log(legitComponentType);
+        nextJsComponentGen.generateComponent(nextComponent,legitComponentType);
         
       }
 
       if (nextPage && legitComponentType) {
         //generate next page
-        console.log(nextPage);
-        console.log(legitComponentType);
         nextJsPageGen.generatePage(nextPage, legitComponentType);
 
       }

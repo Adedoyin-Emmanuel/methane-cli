@@ -40,7 +40,7 @@ const generatePageFile = async (
   name: string,
   pagesDir: string,
   pageResolver: any,
-  componentType: string = "client"
+  componentType: string
 ) => {
   await fs.writeFile(
     pagesDir,
@@ -81,7 +81,7 @@ export const generatePage = async (
       ? await fs.mkdirSync(pageDirName)
       : null;
 
- 
+
     
     if (readUserConfig.readConfig().generateStylesheet === "true") {
       const styleSheetType = readUserConfig.readConfig().stylesheetType;
