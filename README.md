@@ -1,67 +1,56 @@
-# Methane-Cli Deprecated.
+# Methane 🚀
 
-## Documentation Revamp in process 🚀
-❓
-[![npm downloads](https://img.shields.io/npm/dt/methane-cli.svg)](https://www.npmjs.com/package/methane-cli)
+<div style="display: flex; justify-content: start;">
+ <a href="https://wakatime.com/badge/github/Adedoyin-Emmanuel/methane-cli"><img src="https://wakatime.com/badge/github/Adedoyin-Emmanuel/methane-cli.svg" alt="wakatime"></a>
 
-Methane-Cli is a CLI tool that helps developers easily create **React Components, Pages and Service Worker Files**. The CLI tool provides tons of powerful configurations for creating **React Components, Pages and Service Worker Files**
+  <a href="https://github.com/adedoyin-emmanuel/methane-cli/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/adedoyin-emmanuel/methane-cli.svg?style=social"></a>
+  <a href="https://github.com/adedoyin-emmanuel/fotograph/network/members"><img alt="GitHub forks" src="https://img.shields.io/github/forks/adedoyin-emmanuel/methane-cli.svg?style=social"></a>
+  <a href="https://www.npmjs.com/package/methane-cli"><img alt="GitHub downloads" src="https://img.shields.io/npm/dt/methane-cli.svg"></a>
+</div>
 
-```bash
-                  __  __      _   _                              _____   _   _
-                 |  \/  |    | | | |                            / ____| | | (_)
-                 | \  / | ___| |_| |__   __ _ _ __   ___ ______| |      | |  _
-                 | |\/| |/ _ \ __| '_ \ / _` | '_ \ / _ \______| |      | | | |
-                 | |  | |  __/ |_| | | | (_| | | | |  __/      | |____  | | | |
-                 |_|  |_|\___|\__|_| |_|\__,_|_| |_|\___|       \_____| |_| |_|
+Methane is a **CLI** tool that helps developers easily create **React components, pages or NextJS components, pages, dynamic pages and service worker files** with boilerplate codes. It also comes with extra configration that allows you choose either **JavaScript** or **TypeScript** templates.
+
+<p align="center">
+  <img src="./assets/MethaneLogo.png" alt="Methane Logo" style="max-width: 100%; width: 100%; height:40%;">
+</p>
+
+## What's New  ❓
+The new major version **2.0.0** comes with support for **NextJS**. This is a game changer for NextJs developers, with **Methane** you can easily generate your components from the command line and bingo 🚀
+
+1. Support for **NextJS**
+2. Migrated codebase from **JS** to **TS**
+3. Cleaner CLI Interface
+4. Customize your project based on your local configuration.
 
 
-```
-
-
-## What's New ?
-
-Added a new command **`list-config [ls]`**
-
-- `--list-config` or `-lc`: Lists all Methane-Cli configurations.
-
-```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli list-config
-
-All configurations
-{
-  template: 'jsx',
-  component: 'arrow',
-  page: 'arrow',
-  generateStylesheet: 'true',
-  generateFolder: 'true',
-  register: 'true',
-  stylesheetType: 'css'
-}
-
-```
 
 ## Installation 💿
 
-To install **Methane-Cli**, run the following command.
+To install **Methane-Cli**, run the following command. Note you've to install it as a dev dependency.
 
 ```bash
 # npm
-npm install -g methane-cli
+npm install --save-dev methane-cli
 
-# yarn
-yarn add global methane-cli
 ```
 
 ## Usage 🚦
 
-To use **Methane-Cli** or **rg**, simply run the command
+To use **methane** or **rg**, simply run the command
 
 ```bash
-methane-cli
+methane
 rg
 ```
+This would show a welcome message with information about the tool. Then you need to run the init command.
 
-This would show a welcome message with information about the tool.
+```bash
+
+methane init
+
+```
+This would prompt you to answer some questions and a config file will be created. Note you can't use **Methane** if you don't have the config file.
+
 
 ## Commands
 
@@ -210,6 +199,27 @@ This would create a new page according to the global configuration and add the p
 
 _You don't have to be in your react-app pages folder. you can run the command from the root folder of your react-application_
 Also, if you configure **methane-cli** to automatically import your pages, it would add the page once it is generated.
+
+
+## Configurations ⚙️
+
+Added a new command **`list-config [ls]`**
+
+- `--list-config` or `-lc`: Lists all Methane-Cli configurations.
+
+```bash
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli list-config
+
+All configurations
+{
+  template: 'jsx',
+  component: 'arrow',
+  page: 'arrow',
+  generateStylesheet: 'true',
+  generateFolder: 'true',
+  register: 'true',
+  stylesheetType: 'css'
+}
 
 ## Create a Service Worker ⏭.
 
