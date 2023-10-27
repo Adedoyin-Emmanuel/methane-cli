@@ -40,10 +40,21 @@ const generatePageFile = async (
   name: string,
   pagesDir: string,
   pageResolver: any,
-  componentType: string
+  componentType: string,
+  startPage?: any
 ) => {
+  let pageFilePath = path.join(
+    pagesDir + `/page.${readUserConfig.readConfig().template}`
+  );
+
+  if (startPage) {
+    pageFilePath = path.join(
+      pagesDir + startPage + `/page.${readUserConfig.readConfig().template}`
+    );
+  }
+
   await fs.writeFile(
-    pagesDir,
+    pageFilePath,
     pageResolver.resolvePageContent(readUserConfig, "Index", componentType),
     (error) => {
       if (error) {
@@ -55,7 +66,8 @@ const generatePageFile = async (
 
 export const generatePage = async (
   name,
-  componentType: string
+  componentType: string,
+  startPage?: any
 ) => {
   if (!name) {
     return console.log(colors.bold(colors.red("Page name is required!")));
@@ -68,21 +80,23 @@ export const generatePage = async (
     return;
   }
 
-  const pageDirName =
+  let pageDirName =
     readUserConfig.readConfig().generateFolder === "true"
       ? path.join(pagesDir, name)
       : path.join(pagesDir);
 
-  const pageFilePath = path.join(
-    pageDirName + `/page.${readUserConfig.readConfig().template}`
-  );
+  if (startPage) {
+    pageDirName =
+      readUserConfig.readConfig().generateFolder === "true"
+        ? path.join(pagesDir + startPage, name)
+        : path.join(pagesDir + startPage);
+  }
+
   try {
     readUserConfig.readConfig().generateFolder === "true"
       ? await fs.mkdirSync(pageDirName)
       : null;
 
-
-    
     if (readUserConfig.readConfig().generateStylesheet === "true") {
       const styleSheetType = readUserConfig.readConfig().stylesheetType;
       const cssFilePath = path.join(
@@ -92,20 +106,14 @@ export const generatePage = async (
 
       await fs.promises.writeFile(cssFilePath, "");
     } else {
-      
     }
 
-    generatePageFile(
-      name,
-      path.join(pageFilePath),
-      pageResolver,
-      componentType
-    );
+    generatePageFile(name, pageDirName, pageResolver, componentType);
   } catch (error: any) {
     console.log(colors.bold(colors.red(error)));
   }
 
   console.log(
-    `${colors.bold(colors.green(`${name} Page generated successfully`))}`
+    `${colors.bold(colors.green(`${name} page generated successfully`))}`
   );
 };

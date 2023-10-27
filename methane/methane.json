@@ -1,8 +1,8 @@
 {
-  "template": "jsx",
-  "component": "functional",
+  "template": "tsx",
+  "component": "arrow",
   "page": "arrow",
-  "generateStylesheet": "true",
+  "generateStylesheet": "false",
   "generateFolder": "true",
   "register": "false",
   "stylesheetType": "css"

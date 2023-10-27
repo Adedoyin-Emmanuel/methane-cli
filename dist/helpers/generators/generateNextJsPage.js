@@ -30,14 +30,18 @@ const findPagesDirectory = () => {
     const pagesDir = possibleDirs.find((dir) => directoryExists(path.join(rootDir, dir)));
     return pagesDir ? path.join(rootDir, pagesDir) : null;
 };
-const generatePageFile = async (name, pagesDir, pageResolver, componentType) => {
-    await fs.writeFile(pagesDir, pageResolver.resolvePageContent(readUserConfig, "Index", componentType), (error) => {
+const generatePageFile = async (name, pagesDir, pageResolver, componentType, startPage) => {
+    let pageFilePath = path.join(pagesDir + `/page.${readUserConfig.readConfig().template}`);
+    if (startPage) {
+        pageFilePath = path.join(pagesDir + startPage + `/page.${readUserConfig.readConfig().template}`);
+    }
+    await fs.writeFile(pageFilePath, pageResolver.resolvePageContent(readUserConfig, "Index", componentType), (error) => {
         if (error) {
             console.log(colors.bold(colors.red(error.toString())));
         }
     });
 };
-export const generatePage = async (name, componentType) => {
+export const generatePage = async (name, componentType, startPage) => {
     if (!name) {
         return console.log(colors.bold(colors.red("Page name is required!")));
     }
@@ -46,10 +50,15 @@ export const generatePage = async (name, componentType) => {
         console.log(colors.bold(colors.red("pages directory doesn't exist")));
         return;
     }
-    const pageDirName = readUserConfig.readConfig().generateFolder === "true"
+    let pageDirName = readUserConfig.readConfig().generateFolder === "true"
         ? path.join(pagesDir, name)
         : path.join(pagesDir);
-    const pageFilePath = path.join(pageDirName + `/page.${readUserConfig.readConfig().template}`);
+    if (startPage) {
+        pageDirName =
+            readUserConfig.readConfig().generateFolder === "true"
+                ? path.join(pagesDir + startPage, name)
+                : path.join(pagesDir + startPage);
+    }
     try {
         readUserConfig.readConfig().generateFolder === "true"
             ? await fs.mkdirSync(pageDirName)
@@ -61,7 +70,7 @@ export const generatePage = async (name, componentType) => {
         }
         else {
         }
-        generatePageFile(name, path.join(pageFilePath), pageResolver, componentType);
+        generatePageFile(name, pageDirName, pageResolver, componentType);
     }
     catch (error) {
         console.log(colors.bold(colors.red(error)));

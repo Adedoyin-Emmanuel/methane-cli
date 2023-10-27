@@ -82,7 +82,7 @@ import "./${componentName}Style.${styleSheetType}";
 interface ${componentName}Props {
     
 }
-const ${componentName}:React.FC = (): JSX.Element => {
+const ${componentName} = (): JSX.Element => {
 
     return (
         <div>
@@ -102,7 +102,7 @@ interface ${componentName}Props {
     
 }
 
-const ${componentName}:React.FC = (): JSX.Element => {
+const ${componentName} = (): JSX.Element => {
 
     return (
         <div>

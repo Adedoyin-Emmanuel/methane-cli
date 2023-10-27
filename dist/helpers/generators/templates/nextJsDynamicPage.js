@@ -1,11 +1,13 @@
 const generateNextJsDynamicPageTsxArrowTemplate = (dynamicPageId, importStyleSheet, componentName, styleSheetType, componentType) => {
     let template;
-    let componentTypeTemplate = componentType === "client" && '"use client"';
-    let addStyleSheetImport = importStyleSheet === "true" &&
-        `import "./${componentName}Style.${styleSheetType}";`;
-    let addRouterImport = componentType === "client" &&
-        'import { useRouter } from "next/navigation";';
-    let dynamicPageIdDisplay = `\${params.${dynamicPageId}}`;
+    let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
+    let addStyleSheetImport = importStyleSheet === "true"
+        ? `import "./${componentName}Style.${styleSheetType}";`
+        : "";
+    let addRouterImport = componentType === "client"
+        ? 'import { useRouter } from "next/navigation";'
+        : "";
+    let dynamicPageIdDisplay = `\{params.${dynamicPageId}}`;
     template = `
 ${componentTypeTemplate}
 
@@ -29,12 +31,14 @@ export default ${componentName};
 };
 const generateNextJsDynamicPageTsxFunctionTemplate = (dynamicPageId, importStyleSheet, componentName, styleSheetType, componentType) => {
     let template;
-    let componentTypeTemplate = componentType === "client" && '"use client"';
-    let addStyleSheetImport = importStyleSheet === "true" &&
-        `import "./${componentName}Style.${styleSheetType}";`;
-    let addRouterImport = componentType === "client" &&
-        'import { useRouter } from "next/navigation";';
-    let dynamicPageIdDisplay = `\${params.${dynamicPageId}}`;
+    let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
+    let addStyleSheetImport = importStyleSheet === "true"
+        ? `import "./${componentName}Style.${styleSheetType}";`
+        : "";
+    let addRouterImport = componentType === "client"
+        ? 'import { useRouter } from "next/navigation";'
+        : "";
+    let dynamicPageIdDisplay = `\{params.${dynamicPageId}}`;
     template = `
 ${componentTypeTemplate}
 
@@ -58,14 +62,14 @@ export default ${componentName};
 };
 const generateNextJsDynamicPageJsxArrowTemplate = (dynamicPageId, importStyleSheet, componentName, styleSheetType, componentType) => {
     let template;
-    let componentTypeTemplate = componentType === "client" && '"use client"';
+    let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
     let addStyleSheetImport = importStyleSheet === "true"
         ? `import "./${componentName}Style.${styleSheetType}";`
         : "";
     let addRouterImport = componentType === "client"
         ? 'import { useRouter } from "next/navigation";'
         : "";
-    let dynamicPageIdDisplay = dynamicPageId + " is ${params." + dynamicPageId + "}";
+    let dynamicPageIdDisplay = `\{params.${dynamicPageId}}`;
     template = `
 ${componentTypeTemplate}
 
@@ -89,14 +93,14 @@ export default ${componentName};
 };
 const generateNextJsDynamicPageJsxFunctionTemplate = (dynamicPageId, importStyleSheet, componentName, styleSheetType, componentType) => {
     let template;
-    let componentTypeTemplate = componentType === "client" ? "use client" : "";
+    let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
     let addStyleSheetImport = importStyleSheet === "true"
         ? `import "./${componentName}Style.${styleSheetType}";`
         : "";
     let addRouterImport = componentType === "client"
         ? 'import { useRouter } from "next/navigation";'
         : "";
-    let dynamicPageIdDisplay = dynamicPageId + " is ${params." + dynamicPageId + "}";
+    let dynamicPageIdDisplay = `\{params.${dynamicPageId}}`;
     template = `
 ${componentTypeTemplate}
 
