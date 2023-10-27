@@ -1,11 +1,7 @@
-const generateJsxArrowTemplate = (
-  componentName: string,
-  importStyleSheet:any,
-  styleSheetType:any
-) => {
-  let template;
-  if (importStyleSheet === "true") {
-    template = `
+const generateJsxArrowTemplate = (componentName, importStyleSheet, styleSheetType) => {
+    let template;
+    if (importStyleSheet === "true") {
+        template = `
 import React from "react";
 import "./${componentName}Style.${styleSheetType}";
 
@@ -20,8 +16,9 @@ const ${componentName} = () => {
 
 export default ${componentName};
     `;
-  } else {
-    template = `
+    }
+    else {
+        template = `
 import React from "react";
 
 const ${componentName} = () => {
@@ -35,19 +32,13 @@ const ${componentName} = () => {
 
 export default ${componentName};
     `;
-  }
-
-  return template;
+    }
+    return template;
 };
-
-const generateJsxFunctionTemplate = (
-  componentName: string,
-  importStyleSheet:any,
-  styleSheetType: any
-) => {
-  let template;
-  if (importStyleSheet === "true") {
-    template = `
+const generateJsxFunctionTemplate = (componentName, importStyleSheet, styleSheetType) => {
+    let template;
+    if (importStyleSheet === "true") {
+        template = `
     import React from "react";
     import "./${componentName}Style.${styleSheetType}";
     
@@ -62,8 +53,9 @@ const generateJsxFunctionTemplate = (
     
     export default ${componentName};
         `;
-  } else {
-    template = `
+    }
+    else {
+        template = `
     import React from "react";
     
     function ${componentName} () {
@@ -77,18 +69,13 @@ const generateJsxFunctionTemplate = (
     
     export default ${componentName};
         `;
-  }
-  return template;
+    }
+    return template;
 };
-
-const generateTsxArrowTemplate = (
-  componentName:string,
-  importStyleSheet:any,
-  styleSheetType: any
-) => {
-  let template;
-  if (importStyleSheet === "true") {
-    template = `
+const generateTsxArrowTemplate = (componentName, importStyleSheet, styleSheetType) => {
+    let template;
+    if (importStyleSheet === "true") {
+        template = `
 import React from "react";
 import "./${componentName}Style.${styleSheetType}";
 
@@ -106,8 +93,9 @@ const ${componentName} = (): JSX.Element => {
 
 export default ${componentName};
     `;
-  } else {
-    template = `
+    }
+    else {
+        template = `
 import React from "react";
 
 interface ${componentName}Props {
@@ -125,18 +113,13 @@ const ${componentName} = (): JSX.Element => {
 
 export default ${componentName};
     `;
-  }
-  return template;
+    }
+    return template;
 };
-
-const generateTsxFunctionTemplate = (
-  componentName:string,
-  importStyleSheet:any,
-  styleSheetType:any
-) => {
-  let template;
-  if (importStyleSheet === "true") {
-    template = `
+const generateTsxFunctionTemplate = (componentName, importStyleSheet, styleSheetType) => {
+    let template;
+    if (importStyleSheet === "true") {
+        template = `
 import React from "react";
 import "./${componentName}Style.${styleSheetType}";
 
@@ -156,8 +139,9 @@ function ${componentName}(): JSX.Element {
 
 export default ${componentName};
     `;
-  } else {
-    template = `
+    }
+    else {
+        template = `
 import React from "react";
 
 
@@ -176,14 +160,7 @@ function ${componentName}(): JSX.Element {
 
 export default ${componentName};
     `;
-  }
-
-  return template;
+    }
+    return template;
 };
-
-export {
-  generateJsxArrowTemplate,
-  generateJsxFunctionTemplate,
-  generateTsxArrowTemplate,
-  generateTsxFunctionTemplate,
-};
+export { generateJsxArrowTemplate, generateJsxFunctionTemplate, generateTsxArrowTemplate, generateTsxFunctionTemplate, };

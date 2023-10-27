@@ -1,13 +1,8 @@
-const generateNextJsJsxArrowTemplate = (
-  componentName: string,
-  importStyleSheet: any,
-  styleSheetType: any,
-  componentType: string
-) => {
-  let template: string;
-  let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
-  if (importStyleSheet === "true") {
-    template = `
+const generateNextJsJsxArrowTemplate = (componentName, importStyleSheet, styleSheetType, componentType) => {
+    let template;
+    let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
+    if (importStyleSheet === "true") {
+        template = `
 ${componentTypeTemplate}
 import React from "react";
 import "./${componentName}Style.${styleSheetType}";
@@ -23,8 +18,9 @@ const ${componentName} = () => {
 
 export default ${componentName};
     `;
-  } else {
-    template = `
+    }
+    else {
+        template = `
 ${componentTypeTemplate}
 import React from "react";
 
@@ -39,21 +35,14 @@ const ${componentName} = () => {
 
 export default ${componentName};
     `;
-  }
-
-  return template;
+    }
+    return template;
 };
-
-const generateNextJsJsxFunctionTemplate = (
-  componentName: string,
-  importStyleSheet: any,
-  styleSheetType: any,
-  componentType: string
-) => {
-  let template: string;
-  let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
-  if (importStyleSheet === "true") {
-    template = `
+const generateNextJsJsxFunctionTemplate = (componentName, importStyleSheet, styleSheetType, componentType) => {
+    let template;
+    let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
+    if (importStyleSheet === "true") {
+        template = `
 ${componentTypeTemplate}
 import React from "react";
 import "./${componentName}Style.${styleSheetType}";
@@ -69,8 +58,9 @@ function ${componentName} () {
 
 export default ${componentName};
     `;
-  } else {
-    template = `
+    }
+    else {
+        template = `
 ${componentTypeTemplate}
 import React from "react";
 
@@ -86,21 +76,14 @@ function ${componentName} () {
 
 export default ${componentName};
     `;
-  }
-
-  return template;
+    }
+    return template;
 };
-
-const generateNextJsTsxArrowTemplate = (
-  componentName: string,
-  importStyleSheet: any,
-  styleSheetType: any,
-  componentType: string
-) => {
-  let template: string;
-  let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
-  if (importStyleSheet === "true") {
-    template = `
+const generateNextJsTsxArrowTemplate = (componentName, importStyleSheet, styleSheetType, componentType) => {
+    let template;
+    let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
+    if (importStyleSheet === "true") {
+        template = `
 ${componentTypeTemplate}
 import React from "react";
 import "./${componentName}Style.${styleSheetType}";
@@ -120,8 +103,9 @@ const ${componentName} = () => {
 
 export default ${componentName};
     `;
-  } else {
-    template = `
+    }
+    else {
+        template = `
 ${componentTypeTemplate}
 import React from "react";
 
@@ -140,20 +124,14 @@ const ${componentName} = ()=> {
 
 export default ${componentName};
     `;
-  }
-  return template;
+    }
+    return template;
 };
-
-const generateNextJsTsxFunctionTemplate = (
-  componentName: string,
-  importStyleSheet: any,
-  styleSheetType: any,
-  componentType: string
-) => {
-  let template: string;
-  let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
-  if (importStyleSheet === "true") {
-    template = `
+const generateNextJsTsxFunctionTemplate = (componentName, importStyleSheet, styleSheetType, componentType) => {
+    let template;
+    let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
+    if (importStyleSheet === "true") {
+        template = `
 ${componentTypeTemplate}
 import React from "react";
 import "./${componentName}Style.${styleSheetType}";
@@ -173,8 +151,9 @@ function ${componentName} (){
 
 export default ${componentName};
     `;
-  } else {
-    template = `
+    }
+    else {
+        template = `
 ${componentTypeTemplate}
 import React from "react";
 
@@ -193,13 +172,7 @@ function ${componentName} (){
 
 export default ${componentName};
     `;
-  }
-  return template;
+    }
+    return template;
 };
-
-export {
-  generateNextJsJsxArrowTemplate,
-  generateNextJsJsxFunctionTemplate,
-  generateNextJsTsxArrowTemplate,
-  generateNextJsTsxFunctionTemplate,
-};
+export { generateNextJsJsxArrowTemplate, generateNextJsJsxFunctionTemplate, generateNextJsTsxArrowTemplate, generateNextJsTsxFunctionTemplate, };

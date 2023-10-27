@@ -38,19 +38,21 @@ const findComponentDirectory = () => {
 
 
 const generateComponentFile = async (
-  name: string = "index",
+  name: string,
   componentDir: string,
     componentResolver: any,
   componentType: string
 ) => {
-  const componentFilePath = path.join(
-    componentDir + `/${name}.${readUserConfig.readConfig().template}`
-  );
+   await fs.writeFile(
+     componentDir,
+     componentResolver.resolveComponentContent(readUserConfig, "Index", componentType),
+     (error) => {
+       if (error) {
+         console.log(colors.bold(colors.red(error.toString())));
+       }
+     }
+   );
 
-  await fs.promises.writeFile(
-    componentFilePath,
-    componentResolver.resolveComponentContent(readUserConfig, name, componentType)
-  );
 };
 
 
@@ -71,7 +73,7 @@ export const generateComponent = async (name: string = "index", componentType: s
   const componentDirName =
     readUserConfig.readConfig().generateFolder === "true"
       ? path.join(componentDir, name)
-      : componentDir;
+      : path.join(componentDir);
 
   const componentFilePath = path.join(
     componentDirName + `/${name}.${readUserConfig.readConfig().template}`
@@ -80,20 +82,25 @@ export const generateComponent = async (name: string = "index", componentType: s
   try {
     // Create the generated component directory
     if (readUserConfig.readConfig().generateFolder === "true") {
-      await fs.promises.mkdir(componentDirName, { recursive: true });
+      await fs.promises.mkdir(componentDirName);
     }
 
     if (readUserConfig.readConfig().generateStylesheet === "true") {
       const styleSheetType = readUserConfig.readConfig().stylesheetType;
       const cssFilePath = path.join(
         componentDirName,
-        `${name}Style.${styleSheetType}`
+        `${name}.style.${styleSheetType}`
       );
 
       await fs.promises.writeFile(cssFilePath, "");
     }
 
-    generateComponentFile(name, path.join(componentDir), componentResolver, componentType);
+    generateComponentFile(
+      name,
+      path.join(componentFilePath),
+      componentResolver,
+      componentType
+    );
   } catch (error: any) {
     console.log(colors.bold(colors.red(error)));
   }
