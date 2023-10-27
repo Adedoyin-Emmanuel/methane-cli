@@ -11,13 +11,13 @@ const findPagesDirectory = () => {
     "src/app/pages",
     "src/app/Page",
     "src/app/Pages",
+    "src/app/",
     "src/pages",
     "src/Pages",
     "app/page",
     "app/Page",
     "app/pages",
     "app/",
-    "src/app/",
   ];
 
   const directoryExists = (dir: string) => {
