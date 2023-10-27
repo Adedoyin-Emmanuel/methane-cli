@@ -1,6 +1,6 @@
 {
   "name": "methane-cli",
-  "version": "1.1.0",
+  "version": "1.4.0",
   "description": "methane-cli is a command-line tool for generating React components and pages with ease.",
   "main": "./dist/index.js",
   "type": "module",
@@ -14,7 +14,7 @@
     "test": "jest",
     "full-test": "eslint */[0-9]*.ts && jest --watchAll --verbose",
     "full-test-fix": "eslint */[0-9]*.ts --fix && jest --watchAll --verbose",
-    "pub":"npm run clean && npm run build"
+    "pub": "npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
@@ -29,8 +29,7 @@
     "cli"
   ],
   "files": [
-    "config/**/*",
-    "helpers/**/*"
+    "dist/**/*"
   ],
   "author": "Adedoyin Emmanuel Adeniyi",
   "license": "MIT",
