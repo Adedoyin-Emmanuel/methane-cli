@@ -26,11 +26,12 @@ The new major version **2.0.0** comes with support for **NextJS**. This is a gam
 
 ## Installation 💿
 
-To install **Methane-Cli**, run the following command. Note you've to install it as a dev dependency.
+To install **Methane-Cli**, run the following command. Note you've to install it as a global package. 
+**Note** You've to init methane before using it in your project.
 
 ```bash
 # npm
-npm install --save-dev methane-cli
+npm install -g methane-cli
 
 ```
 
@@ -41,8 +42,9 @@ To use **methane** or **rg**, simply run the command
 ```bash
 methane
 rg
+
 ```
-This would show a welcome message with information about the tool. Then you need to run the init command.
+This would show a welcome message with information about the tool. Then you need to run the init command. This would help you to configure methane to your taste. 😛
 
 ```bash
 
@@ -56,22 +58,18 @@ This would prompt you to answer some questions and a config file will be created
 
 The following commands are available in **methane-cli**
 
-- `--help` or `-h`: Displays a list of available commands.
-- `--version` or `-v`: Displays the version of methane-cli.
-- `--generate` or `-g`: Generates Components, Pages or Service Worker files.
-- `--config` or `-c`: Configures the CLI tool to your taste.
-- `--init` or `-i`: Initializes default configuration files in root directory.
-- `--list-config` or `-lc`: Lists all Methane-Cli configurations.
+- **`--help` or `-h`**: Displays a list of available commands.
+- **`--version` or `-v`**: Displays the version of methane-cli.
+- **`--generate` or `-g`**: Generates Components, Pages or Service Worker files.
+- **`--config` or `-c`**: Configures the CLI tool to your taste.
+- **`--init` or `-i`**: Initializes default configuration files in root directory.
+- **`--list-config` or `-lc`**: Lists all Methane-Cli configurations.
 
-#### Note:
-
-_Use the `init` command to configure **methane-cli** if you run into any error_
-
-To run a command, simply add it at the end of **methane-cli** or **rg** for example,
+To run a command, simply add it at the end of **methane** or **rg** for example,
 
 ## Configurations 🔥.
 
-To enjoy **methane-cli** you can configure the tool to your taste. Here are some default configuration.
+By default, when you run **methane init** you would be prompted to select some configurations. If you would love to change the configurations at some point, You can follow this format.
 
 ```json
 {
@@ -92,7 +90,7 @@ To change the configurations, run the following command.
 To change the template to **tsx** run the following command.
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli c --template tsx
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane c --template tsx
 
 ```
 
@@ -103,7 +101,7 @@ _jsx or tsx are the only options available_
 To change the component generation style, run the following command.
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli config -c arrow
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane config -c arrow
 
 ```
 
@@ -114,7 +112,7 @@ _arrow or functional are the only options available_
 To change the page generation style, run the following command
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli config -p arrow
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane config -p arrow
 
 ```
 
@@ -125,7 +123,7 @@ _arrow or functional are the only options available_
 To generate stylesheet file for components and pages, run the following command
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli config -gs true
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane config -gs true
 
 ```
 
@@ -136,7 +134,7 @@ _true or false are the only options available_
 To generate a folder for components and pages, run the following command
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli config -gf true
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane config -gf true
 
 ```
 
@@ -144,10 +142,10 @@ _true or false are the only options available_
 
 #### Register Generated Pages
 
-To register the generated pages in your **App.js or App.jsx or App.tsx or App.ts** file, run the following command.
+To register the generated pages in your **App.js or App.jsx or App.tsx or App.ts** file, run the following command. This is strictly or **React** and not **NextJS**
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli config -r true
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane config -r true
 
 ```
 
@@ -158,7 +156,7 @@ _true or false are the only options available_
 To change the stylesheet type for your components and pages, run the following command.
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli config -st css
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane config -st css
 
 ```
 
@@ -169,27 +167,46 @@ _css or scss are the only options available_
 If you are stuck or you want to learn more about the different configurations, run the following command.
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli c --help
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane c --help
 
 ```
 
 ## Create a Component ⏭.
 
+With the new update, you can generate **React** or **NextJS** server or client components. Intresting right 😄. But the commands are different.
+
+
+### Generating A React Component
+
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli g -c componentName
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -c componentName
 
 ```
 
-This would create a new component according to the global configuration and add the component to the components folder in your react-app application.
+### Generating A NextJS Component
+
+```bash
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -nc componentName
+
+```
+
+**Optionally, you can specify your nextJs component to be a server or client component** To do this, Simply add the **ct** flag, then you can specify server or client omitting the **ct** would generate a client component by default.
+
+
+The convention is that you've a component or components directory in your application. **Methane** would find that directory and then place your component in it.
+
 
 #### Note:
 
-_You don't have to be in your react-app components folder. you can run the command from the root folder of your react-application_
+_You don't have to be in your react-app components folder. You can run the command from the root folder of your react-application and that's infact how 
+
+
 
 ## Create a Page ⏭.
 
+
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli g -c componentName
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -c componentName
 
 ```
 
@@ -205,10 +222,10 @@ Also, if you configure **methane-cli** to automatically import your pages, it wo
 
 Added a new command **`list-config [ls]`**
 
-- `--list-config` or `-lc`: Lists all Methane-Cli configurations.
+- `--list-config` or `-lc`: Lists all Methane configurations.
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli list-config
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane list-config
 
 All configurations
 {
@@ -224,7 +241,7 @@ All configurations
 ## Create a Service Worker ⏭.
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane-cli g -sw
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -sw
 
 ```
 
@@ -240,13 +257,15 @@ serviceWorkerRegistration.register();
 
 _You don't have specify any name for the service-worker_
 
+
+
 ### Architecture 🛠
 
 `methane-cli` uses a `modular` architecture.It consists of different modules that perform specific tasks such as generating components, pages, and service worker files.
 
 ## Contributing ❤️
 
-If you'd like to contribute to **methane-cli**, please follow these steps:
+If you'd like to contribute to **methane**, please follow these steps:
 
 1. Fork the repository
 2. Create a new branch
