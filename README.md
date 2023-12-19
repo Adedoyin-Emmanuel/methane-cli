@@ -261,12 +261,13 @@ All configurations
   stylesheetType: 'css'
 }
 
-## Create a Service Worker ⏭.
 
 ```bash
 doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -sw
 
 ````
+
+## Create a Service Worker ⏭
 
 This would create a service worker and add the service worker to the [index.js, main.js, index.jsx, main.jsx] or tsx respectively.
 
@@ -302,6 +303,8 @@ If you'd like to contribute to **methane**, please follow these steps:
 3. Make your changes and commit them
 4. Push your changes to your fork
 5. Create a pull request :)
+
+Please star this repo if you find it useful. Also share the good news with your community.
 
 ## License 🧐
 
