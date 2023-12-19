@@ -163,15 +163,6 @@ doyin@doyinHpLaptop:~/Desktop/react-app$ methane config -st css
 
 _css or scss are the only options available_
 
-## Stuck :(
-
-If you are stuck or you want to learn more about the different configurations, run the following command.
-
-```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane c --help
-
-```
-
 ## Create a Component ⏭
 
 With the new update, you can generate **React** or **NextJS** server or client components. Intresting right 😄. But the commands are different.
@@ -200,17 +191,55 @@ The convention is that you've a component or components directory in your applic
 
 ## Create a Page ⏭
 
+With the new update, you can generate **React** or **NextJS** server or client pages.
+
+### Generating A React Page
+
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -c componentName
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -p pageName
 
 ```
 
 This would create a new page according to the global configuration and add the pages to the components pages in your react-app application. By default, a page generated comes with a **useNavigate()** hook and the **Link** tag.
 
-#### Note
+### Generating A NextJS Page
 
-_You don't have to be in your react-app pages folder. you can run the command from the root folder of your react-application_
-Also, if you configure **methane-cli** to automatically import your pages, it would add the page once it is generated.
+```bash
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -np pageName
+
+```
+
+This would generate a new page according to the configuration in your _/methane/methane.json_ file. Methane would check for your project structure and then create a new page in according to your project structure. By default a generated NextJS page comes with a useRouter and usePathname hook for navigation and also a **Rafce** component template.
+
+**Optionally, you can specify your nextJs page to be a server or client page** To do this, Simply add the **ct** flag, then you can specify server or client omitting the **ct** would generate a client page by default.
+
+```bash
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -np pageName -ct server
+
+```
+
+### Generating A Dynamic NextJS Page
+
+As you already know, in **NextJS** dynamic pages are pages whose content is determined by parameters included in the URL. For example _/product/1_ is a dynamic URL. Now Methane can also help you create dynamic pages. Usually, a dynamic page would be nested within a page. For example, I've a products page already _/products_, my dynamic page would most likely be productId. So using Methane, you can generate a dynamic page using the command below
+
+```bash
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -ndp productId -sp /products
+
+```
+
+##### Command Arguments
+
+1. **-npd** -npid (Next Dynamic Page) is the dynamic page name, which in this case is _productId_
+2. **-sp** -sp is an optional parameter called (Start Page) which is indicates the folder to place the dynamic page in. You don't need to specify the default nextJS _/app_ when specifying the folder to place the dynamic page.
+
+**Optionally, you can specify your nextJs page to be a server or client page** To do this, Simply add the **ct** flag, then you can specify server or client omitting the **ct** would generate a client page by default.
+
+```bash
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -ndp productId -sp /products -ct server
+
+```
+
+You can also nest different directory structure. for example, if you've a _/products_ directory and then you've a dynamic page called _/products/[productId]/_ you can still add a page like _/products/[productId]/edit_ or even _/products/[productId]/sub/[subId]/edit_. The choice is yours. With this awesome command, you would never have to manually create a new page.
 
 ## Configurations ⚙️
 
@@ -250,6 +279,15 @@ serviceWorkerRegistration.register();
 #### Note
 
 _You don't have specify any name for the service-worker_
+
+## Stuck :(
+
+If you are stuck or you want to learn more about the different configurations, run the following command.
+
+```bash
+doyin@doyinHpLaptop:~/Desktop/react-app$ methane c --help
+
+```
 
 ### Architecture 🛠
 
