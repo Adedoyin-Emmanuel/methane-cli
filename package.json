@@ -47,7 +47,7 @@
     "figlet": "^1.6.0",
     "fs-extra": "^11.2.0",
     "gradient-string": "^2.0.2",
-    "inquirer": "^9.2.14",
+    "inquirer": "^9.2.15",
     "rimraf": "^5.0.5"
   },
   "devDependencies": {
