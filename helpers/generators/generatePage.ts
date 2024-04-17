@@ -92,10 +92,7 @@ export const generatePage = async (name: string) => {
 
     if (readUserConfig.readConfig().generateStylesheet === "true") {
       const styleSheetType = readUserConfig.readConfig().stylesheetType;
-      const cssFilePath = path.join(
-        pageDirName,
-        `${name}.${styleSheetType}`
-      );
+      const cssFilePath = path.join(pageDirName, `${name}.${styleSheetType}`);
 
       await fs.promises.writeFile(cssFilePath, "");
     }
@@ -110,11 +107,13 @@ export const generatePage = async (name: string) => {
           path.join(".", pageDir.replace("src/", ""))
         )
       : null;
-  } catch (error: any) {
-    console.log(colors.bold(colors.red(error)));
-  }
 
-  console.log(
-    `${colors.bold(colors.green(`${name} Page generated successfully`))}`
-  );
+    console.log(
+      `${colors.bold(
+        colors.green(`${captitalizeWord(name)} Page generated successfully 🚀`)
+      )}`
+    );
+  } catch (error: any) {
+    console.log(colors.bold(colors.red(`An error occured! ${error.message}`)));
+  }
 };
