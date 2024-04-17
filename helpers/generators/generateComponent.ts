@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import * as readUserConfig from "../utilis/readUserConfig.js";
 import * as componentResolver from "./resolvers/resolveComponentContent.js";
+import { captitalizeWord } from "helpers/utilis/capitalize.js";
 
 const findComponentDirectory = () => {
   const rootDir = process.cwd();
@@ -29,19 +30,24 @@ const generateComponentFile = async (
   componentDir: string,
   componentResolver: any
 ) => {
-  // const componentFilePath = path.join(
-  //   componentDir + `/${name}.${readUserConfig.readConfig().template}`
-  // );
+  /**
+   * I added the capitalizeWord function to ensure that the component generated,
+   * starts with a capital letter even if the user enters a small letter.
+   * Eg button => Button
+   */
 
-    await fs.writeFile(
-      componentDir,
-      componentResolver.resolveComponentContent(readUserConfig, name),
-      (error) => {
-        if (error) {
-          console.log(colors.bold(colors.red(error.toString())));
-        }
+  await fs.writeFile(
+    componentDir,
+    componentResolver.resolveComponentContent(
+      readUserConfig,
+      captitalizeWord(name)
+    ),
+    (error) => {
+      if (error) {
+        console.log(colors.bold(colors.red(error.toString())));
       }
-    );
+    }
+  );
 };
 
 export const generateComponent = async (name: string) => {
