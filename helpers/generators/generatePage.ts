@@ -4,6 +4,7 @@ import path from "path";
 import * as readUserConfig from "../utilis/readUserConfig.js";
 import * as pageRegisterer from "./register/registerPage.js";
 import * as pageResolver from "./resolvers/resolvePageContent.js";
+import { captitalizeWord } from "helpers/utilis/capitalize.js";
 
 const rootDir = path.join(process.cwd());
 const pageDir = [
@@ -24,9 +25,15 @@ const generatePageFile = async (
   pageDir: string,
   pageResolver: any
 ) => {
+  /**
+   * I added the capitalizeWord function to ensure that the page generated,
+   * starts with a capital letter even if the user enters a small letter.
+   * Eg home => Home
+   */
+
   await fs.writeFile(
     pageDir,
-    pageResolver.resolvePageContent(readUserConfig, name),
+    pageResolver.resolvePageContent(readUserConfig, captitalizeWord(name)),
     (error) => {
       if (error) {
         console.log(colors.bold(colors.red(error.toString())));
@@ -46,20 +53,42 @@ export const generatePage = async (name: string) => {
     return;
   }
 
-  const pageDirName =
-    readUserConfig.readConfig().generateFolder === "true"
-      ? path.join(pageDir, name)
-      : path.join(pageDir);
+  const generatePageFolder =
+    readUserConfig.readConfig().generateFolder === "true";
+
+  const pageDirName = generatePageFolder
+    ? path.join(pageDir, name)
+    : path.join(pageDir);
+
+  /**
+   * So what I'm doing here is that if the user config allows generating folder with pages,
+   * Then the page name should be index.jsx or index.tsx. This will make the import statement cleaner
+   *
+   * Eg, If I generate a home page the path should be /pages/home/index.tsx
+   *
+   * Instead of /pages/home/home.tsx
+   *
+   * So when importing, I can do
+   * import Home from "/pages/home";
+   *
+   * instead of import Home from "/pages/home/home.tsx";
+   *
+   * I also did the same for the components
+   *
+   * @see generateComponent.ts
+   * @line 74
+   */
 
   const pageFilePath = path.join(
-    pageDirName + `/${name}.${readUserConfig.readConfig().template}`
+    pageDirName +
+      `/${generatePageFolder ? "index" : name}.${
+        readUserConfig.readConfig().template
+      }`
   );
 
   try {
     /*create the generated component directory*/
-    readUserConfig.readConfig().generateFolder === "true"
-      ? await fs.mkdirSync(pageDirName)
-      : null;
+    generatePageFolder ? await fs.mkdirSync(pageDirName) : null;
 
     if (readUserConfig.readConfig().generateStylesheet === "true") {
       const styleSheetType = readUserConfig.readConfig().stylesheetType;
