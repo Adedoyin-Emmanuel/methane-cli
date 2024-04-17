@@ -9,7 +9,7 @@ const generateNextJsDynamicPageTsxArrowTemplate = (
   let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
   let addStyleSheetImport =
     importStyleSheet === "true"
-      ? `import "./${componentName}Style.${styleSheetType}";`
+      ? `import "./${componentName}.${styleSheetType}";`
       : "";
   let addRouterImport =
     componentType === "client"
@@ -51,7 +51,7 @@ const generateNextJsDynamicPageTsxFunctionTemplate = (
   let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
   let addStyleSheetImport =
     importStyleSheet === "true"
-      ? `import "./${componentName}Style.${styleSheetType}";`
+      ? `import "./${componentName}.${styleSheetType}";`
       : "";
   let addRouterImport =
     componentType === "client"
@@ -94,7 +94,7 @@ const generateNextJsDynamicPageJsxArrowTemplate = (
   let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
   let addStyleSheetImport =
     importStyleSheet === "true"
-      ? `import "./${componentName}Style.${styleSheetType}";`
+      ? `import "./${componentName}.${styleSheetType}";`
       : "";
   let addRouterImport =
     componentType === "client"
@@ -136,7 +136,7 @@ const generateNextJsDynamicPageJsxFunctionTemplate = (
   let componentTypeTemplate = componentType === "client" ? '"use client"' : "";
   let addStyleSheetImport =
     importStyleSheet === "true"
-      ? `import "./${componentName}Style.${styleSheetType}";`
+      ? `import "./${componentName}.${styleSheetType}";`
       : "";
   let addRouterImport =
     componentType === "client"
