@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import * as readUserConfig from "../utilis/readUserConfig.js";
 import * as componentResolver from "./resolvers/resolveNextJsComponentContent.js";
+import { captitalizeWord } from "helpers/utilis/capitalize.js";
 
 const findComponentDirectory = () => {
   const rootDir = process.cwd();
@@ -24,7 +25,7 @@ const findComponentDirectory = () => {
     "app/_components",
     "app/_component",
     "app/_Components",
-    "app/_Component"
+    "app/_Component",
   ];
 
   // Function to check if a directory exists without traversing "node_modules"
@@ -44,27 +45,31 @@ const findComponentDirectory = () => {
   return componentDir ? path.join(rootDir, componentDir) : null;
 };
 
-
 const generateComponentFile = async (
   name: string,
   componentDir: string,
-    componentResolver: any,
+  componentResolver: any,
   componentType: string
 ) => {
-   await fs.writeFile(
-     componentDir,
-     componentResolver.resolveComponentContent(readUserConfig, "Index", componentType),
-     (error) => {
-       if (error) {
-         console.log(colors.bold(colors.red(error.toString())));
-       }
-     }
-   );
-
+  await fs.writeFile(
+    componentDir,
+    componentResolver.resolveComponentContent(
+      readUserConfig,
+      captitalizeWord(name),
+      componentType
+    ),
+    (error) => {
+      if (error) {
+        console.log(colors.bold(colors.red(error.toString())));
+      }
+    }
+  );
 };
 
-
-export const generateComponent = async (name: string = "index", componentType: string) => {
+export const generateComponent = async (
+  name: string,
+  componentType: string
+) => {
   if (!name) {
     return console.log(
       colors.bold(colors.red("Component extension or name is required!"))
@@ -78,18 +83,28 @@ export const generateComponent = async (name: string = "index", componentType: s
     return;
   }
 
-  const componentDirName =
-    readUserConfig.readConfig().generateFolder === "true"
-      ? path.join(componentDir, name)
-      : path.join(componentDir);
+  const generateComponentFolder =
+    readUserConfig.readConfig().generateFolder === "true";
+
+  const componentDirName = generateComponentFolder
+    ? path.join(componentDir, name)
+    : path.join(componentDir);
+
+  /**
+   * So what I'm doing here is that if the user config allows generating folder with pages,
+   * Then the page name should be index.jsx or index.tsx. This will make the import statement cleaner
+   */
 
   const componentFilePath = path.join(
-    componentDirName + `/${name}.${readUserConfig.readConfig().template}`
+    componentDirName +
+      `/${generateComponentFolder ? "index" : name}.${
+        readUserConfig.readConfig().template
+      }`
   );
 
   try {
     // Create the generated component directory
-    if (readUserConfig.readConfig().generateFolder === "true") {
+    if (generateComponentFolder) {
       await fs.promises.mkdir(componentDirName);
     }
 
@@ -97,7 +112,7 @@ export const generateComponent = async (name: string = "index", componentType: s
       const styleSheetType = readUserConfig.readConfig().stylesheetType;
       const cssFilePath = path.join(
         componentDirName,
-        `${name}.style.${styleSheetType}`
+        `${name}.${styleSheetType}`
       );
 
       await fs.promises.writeFile(cssFilePath, "");
@@ -109,11 +124,15 @@ export const generateComponent = async (name: string = "index", componentType: s
       componentResolver,
       componentType
     );
-  } catch (error: any) {
-    console.log(colors.bold(colors.red(error)));
-  }
 
-  console.log(
-    `${colors.bold(colors.green(`${name} Component generated successfully`))}`
-  );
+    console.log(
+      `${colors.bold(
+        colors.green(
+          `${captitalizeWord(name)} component generated successfully 🚀`
+        )
+      )}`
+    );
+  } catch (error: any) {
+    console.log(colors.bold(colors.red(`An error occured! ${error.message}`)));
+  }
 };
