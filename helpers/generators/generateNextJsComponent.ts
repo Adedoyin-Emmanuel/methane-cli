@@ -9,7 +9,11 @@ const findComponentDirectory = () => {
   const possibleDirs = [
     "src/app/component",
     "src/app/components",
+    "src/app/_components",
+    "src/app/_component",
     "src/app/Component",
+    "src/app/_Components",
+    "src/app/_Component",
     "src/app/Components",
     "src/components",
     "src/Components",
@@ -17,6 +21,10 @@ const findComponentDirectory = () => {
     "app/Component",
     "app/Components",
     "app/component",
+    "app/_components",
+    "app/_component",
+    "app/_Components",
+    "app/_Component"
   ];
 
   // Function to check if a directory exists without traversing "node_modules"
