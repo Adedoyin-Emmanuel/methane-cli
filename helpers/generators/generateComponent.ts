@@ -64,18 +64,36 @@ export const generateComponent = async (name: string) => {
     return;
   }
 
-  const componentDirName =
-    readUserConfig.readConfig().generateFolder === "true"
-      ? path.join(componentDir, name)
-      : componentDir;
+  const generateComponentFolder =
+    readUserConfig.readConfig().generateFolder === "true";
 
+  const componentDirName = generateComponentFolder
+    ? path.join(componentDir, name)
+    : componentDir;
+
+  /**
+   * So what I'm doing here is that if the user config allows generating folder with components,
+   * Then the component name should be index.jsx or index.tsx. This will make the import statement cleaner
+   *
+   * Eg, If I generate a button component the path should be /components/button/index.tsx
+   *
+   * Instead of /components/button/button.tsx
+   *
+   * So when importing, I can do
+   * import Button from "/components/button";
+   *
+   * instead of import Button from "/components/button/button.tsx";
+   */
   const componentFilePath = path.join(
-    componentDirName + `/${name}.${readUserConfig.readConfig().template}`
+    componentDirName +
+      `/${generateComponentFolder ? "index" : name}.${
+        readUserConfig.readConfig().template
+      }`
   );
 
   try {
     // Create the generated component directory
-    if (readUserConfig.readConfig().generateFolder === "true") {
+    if (generateComponentFolder) {
       fs.mkdirSync(componentDirName);
     }
 
@@ -83,7 +101,7 @@ export const generateComponent = async (name: string) => {
       const styleSheetType = readUserConfig.readConfig().stylesheetType;
       const cssFilePath = path.join(
         componentDirName,
-        `${name}Style.${styleSheetType}`
+        `${name}.${styleSheetType}`
       );
 
       await fs.promises.writeFile(cssFilePath, "");
