@@ -12,12 +12,18 @@ const findPagesDirectory = () => {
     "src/app/pages",
     "src/app/Page",
     "src/app/Pages",
+    "src/app/_pages",
+    "src/app/_Pages",
+    "src/app/_page",
+    "src/app/_Page",
     "src/pages",
     "src/Pages",
     "src/app/",
     "app/page",
     "app/Pages",
     "app/pages",
+    "app/_pages",
+    "app/_Pages",
     "app/",
   ];
 
