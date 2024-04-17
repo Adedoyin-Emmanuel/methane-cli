@@ -94,7 +94,7 @@ export const generatePage = async (name: string) => {
       const styleSheetType = readUserConfig.readConfig().stylesheetType;
       const cssFilePath = path.join(
         pageDirName,
-        `${name}Style.${styleSheetType}`
+        `${name}.${styleSheetType}`
       );
 
       await fs.promises.writeFile(cssFilePath, "");
