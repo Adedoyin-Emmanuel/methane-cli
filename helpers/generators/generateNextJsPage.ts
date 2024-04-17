@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import * as readUserConfig from "../utilis/readUserConfig.js";
 import * as pageResolver from "./resolvers/resolveNextJsPageContent.js";
+import { captitalizeWord } from "helpers/utilis/capitalize.js";
 
 const findPagesDirectory = () => {
   const rootDir = process.cwd();
@@ -47,6 +48,14 @@ const generatePageFile = async (
     pagesDir + `/page.${readUserConfig.readConfig().template}`
   );
 
+  /**
+   *
+   * Okay, so the Start page is an optional Methane CLI arument,
+   * that allows the user to generate pages in nested pages.
+   *
+   * @see line 106
+   */
+
   if (startPage) {
     pageFilePath = path.join(
       pagesDir + startPage + `/page.${readUserConfig.readConfig().template}`
@@ -55,7 +64,11 @@ const generatePageFile = async (
 
   await fs.writeFile(
     pageFilePath,
-    pageResolver.resolvePageContent(readUserConfig, "Index", componentType),
+    pageResolver.resolvePageContent(
+      readUserConfig,
+      captitalizeWord(name),
+      componentType
+    ),
     (error) => {
       if (error) {
         console.log(colors.bold(colors.red(error.toString())));
@@ -80,40 +93,52 @@ export const generatePage = async (
     return;
   }
 
-  let pageDirName =
-    readUserConfig.readConfig().generateFolder === "true"
-      ? path.join(pagesDir, name)
-      : path.join(pagesDir);
+  /**
+   * So what I'm doing here is that if the user config allows generating folder with pages,
+   * Then the page name should be index.jsx or index.tsx. This will make the import statement cleaner
+   */
 
+  const generatePageFolder =
+    readUserConfig.readConfig().generateFolder === "true";
+
+  const legitPageName: string = generatePageFolder ? "index" : name;
+
+  let pageDirName = generatePageFolder
+    ? path.join(pagesDir, legitPageName)
+    : path.join(pagesDir);
+
+  /**
+   *
+   * Okay, so the Start page is an optional Methane CLI arument that allows the user to generate pages in nested pages.
+   *
+   * Eg. I want to geneate a submit page in a /appointment page
+   *
+   * I can set the start page to be /appointment so the submit page is generated inside the appointment page.
+   */
   if (startPage) {
-    pageDirName =
-      readUserConfig.readConfig().generateFolder === "true"
-        ? path.join(pagesDir + startPage, name)
-        : path.join(pagesDir + startPage);
+    pageDirName = generatePageFolder
+      ? path.join(pagesDir + startPage, legitPageName)
+      : path.join(pagesDir + startPage);
   }
 
   try {
-    readUserConfig.readConfig().generateFolder === "true"
-      ? await fs.mkdirSync(pageDirName)
-      : null;
+    generatePageFolder ? await fs.mkdirSync(pageDirName) : null;
 
     if (readUserConfig.readConfig().generateStylesheet === "true") {
       const styleSheetType = readUserConfig.readConfig().stylesheetType;
-      const cssFilePath = path.join(
-        pageDirName,
-        `page.style.${styleSheetType}`
-      );
+      const cssFilePath = path.join(pageDirName, `${name}.${styleSheetType}`);
 
       await fs.promises.writeFile(cssFilePath, "");
-    } else {
     }
 
     generatePageFile(name, pageDirName, pageResolver, componentType);
-  } catch (error: any) {
-    console.log(colors.bold(colors.red(error)));
-  }
 
-  console.log(
-    `${colors.bold(colors.green(`${name} page generated successfully`))}`
-  );
+    console.log(
+      `${colors.bold(
+        colors.green(`${captitalizeWord(name)} page generated successfully 🚀`)
+      )}`
+    );
+  } catch (error: any) {
+    console.log(colors.bold(colors.red(`An error occured! ${error.message}`)));
+  }
 };

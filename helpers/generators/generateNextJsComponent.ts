@@ -92,7 +92,7 @@ export const generateComponent = async (
 
   /**
    * So what I'm doing here is that if the user config allows generating folder with pages,
-   * Then the page name should be index.jsx or index.tsx. This will make the import statement cleaner
+   * Then the component name should be index.jsx or index.tsx. This will make the import statement cleaner
    */
 
   const componentFilePath = path.join(
