@@ -45,7 +45,7 @@ const findPagesDirectory = () => {
 
 const generateDynamicPageFile = async (
   dynamicId: any,
-  name,
+  name: string,
   pagesDir: string,
   pageResolver: any,
   componentType: string,
@@ -56,7 +56,7 @@ const generateDynamicPageFile = async (
   );
 
   /*
-  users can optionally specify a page that they already have to generate the dynamic folder to
+  users can optionally specify a page that they already have to generate the dynamic folder in
     
   */
 

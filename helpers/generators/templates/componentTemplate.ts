@@ -1,13 +1,13 @@
 const generateJsxArrowTemplate = (
   componentName: string,
-  importStyleSheet:any,
-  styleSheetType:any
+  importStyleSheet: any,
+  styleSheetType: any
 ) => {
   let template;
   if (importStyleSheet === "true") {
     template = `
 import React from "react";
-import "./${componentName}Style.${styleSheetType}";
+import "./${componentName}.${styleSheetType}";
 
 const ${componentName} = () => {
 
@@ -42,14 +42,14 @@ export default ${componentName};
 
 const generateJsxFunctionTemplate = (
   componentName: string,
-  importStyleSheet:any,
+  importStyleSheet: any,
   styleSheetType: any
 ) => {
   let template;
   if (importStyleSheet === "true") {
     template = `
     import React from "react";
-    import "./${componentName}Style.${styleSheetType}";
+    import "./${componentName}.${styleSheetType}";
     
     function ${componentName} () {
     
@@ -82,20 +82,21 @@ const generateJsxFunctionTemplate = (
 };
 
 const generateTsxArrowTemplate = (
-  componentName:string,
-  importStyleSheet:any,
+  componentName: string,
+  importStyleSheet: any,
   styleSheetType: any
 ) => {
   let template;
   if (importStyleSheet === "true") {
     template = `
 import React from "react";
-import "./${componentName}Style.${styleSheetType}";
+import "./${componentName}.${styleSheetType}";
 
 interface ${componentName}Props {
     
 }
-const ${componentName} = (): JSX.Element => {
+
+const ${componentName} = () => {
 
     return (
         <div>
@@ -114,7 +115,7 @@ interface ${componentName}Props {
     
 }
 
-const ${componentName} = (): JSX.Element => {
+const ${componentName} = () => {
 
     return (
         <div>
@@ -130,22 +131,22 @@ export default ${componentName};
 };
 
 const generateTsxFunctionTemplate = (
-  componentName:string,
-  importStyleSheet:any,
-  styleSheetType:any
+  componentName: string,
+  importStyleSheet: any,
+  styleSheetType: any
 ) => {
   let template;
   if (importStyleSheet === "true") {
     template = `
 import React from "react";
-import "./${componentName}Style.${styleSheetType}";
+import "./${componentName}.${styleSheetType}";
 
 
 interface ${componentName}Props {
     
 }
 
-function ${componentName}(): JSX.Element {
+function ${componentName}() {
 
     return (
         <div>
@@ -165,7 +166,7 @@ interface ${componentName}Props {
     
 }
 
-function ${componentName}(): JSX.Element {
+function ${componentName}() {
 
     return (
         <div>
