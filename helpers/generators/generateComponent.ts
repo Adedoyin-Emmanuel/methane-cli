@@ -112,11 +112,15 @@ export const generateComponent = async (name: string) => {
       path.join(componentFilePath),
       componentResolver
     );
-  } catch (error: any) {
-    console.log(colors.bold(colors.red(error)));
-  }
 
-  console.log(
-    `${colors.bold(colors.green(`${name} Component generated successfully`))}`
-  );
+    console.log(
+      `${colors.bold(
+        colors.green(
+          `${captitalizeWord(name)} component generated successfully 🚀`
+        )
+      )}`
+    );
+  } catch (error: any) {
+    console.log(colors.bold(colors.red(`An error occured! ${error.message}`)));
+  }
 };

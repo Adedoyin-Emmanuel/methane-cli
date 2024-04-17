@@ -110,7 +110,7 @@ export const generatePage = async (name: string) => {
 
     console.log(
       `${colors.bold(
-        colors.green(`${captitalizeWord(name)} Page generated successfully 🚀`)
+        colors.green(`${captitalizeWord(name)} page generated successfully 🚀`)
       )}`
     );
   } catch (error: any) {
