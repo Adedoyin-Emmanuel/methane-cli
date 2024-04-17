@@ -3,7 +3,7 @@ import fs from "fs";
 import inquirer from "inquirer";
 import path from "path";
 
-export const initMethaneCLI = () => {
+export const initMethaneCLI = (skipPrompt: boolean) => {
   const configFolderPath = path.join(process.cwd(), "methane");
   const userConfigFilePath = path.join(configFolderPath, "methane.json");
 
@@ -11,17 +11,42 @@ export const initMethaneCLI = () => {
     fs.mkdirSync(configFolderPath);
   }
 
-  const defaultConfig = {
-    template: "tsx",
-    component: "arrow",
-    page: "arrow",
-    generateStylesheet: "false",
-    generateFolder: "true",
-    register: "false",
-    stylesheetType: "css",
-  };
-
   if (!fs.existsSync(userConfigFilePath)) {
+    let defaultConfig = {
+      template: "tsx",
+      component: "arrow",
+      page: "arrow",
+      generateStylesheet: "false",
+      generateFolder: "true",
+      register: "false",
+      stylesheetType: "css",
+    };
+
+    // check if the user skipped prompt
+    if (skipPrompt) {
+      console.log(
+        colors.yellow(
+          colors.bold(
+            `Skipping prompt, default config will be applied. You can always change it by runnning methane config --help`
+          )
+        )
+      );
+      const userConfig = { ...defaultConfig };
+
+      fs.writeFileSync(userConfigFilePath, JSON.stringify(userConfig, null, 2));
+
+      console.log("\n");
+      console.log(
+        colors.green(
+          colors.bold(
+            "Methane CLI configurations has been initialized successfully! 🚀"
+          )
+        )
+      );
+
+      return;
+    }
+
     inquirer
       .prompt([
         {
@@ -89,7 +114,9 @@ export const initMethaneCLI = () => {
         );
         console.log(
           colors.green(
-            colors.bold("Methane CLI configurations has been initialized successfully!")
+            colors.bold(
+              "Methane CLI configurations has been initialized successfully!"
+            )
           )
         );
       });
