@@ -20,10 +20,11 @@ const generateNextJsJsxArrowTemplate = (
 ${componentTypeTemplate}
 
 import React from "react";
-import "./${componentName}Style.${styleSheetType}";
+import "./${componentName}.${styleSheetType}";
 ${addRouterImport}
 
 const ${componentName} = () => {
+
     ${pathnameDeclaration}
 
     return (
@@ -44,6 +45,7 @@ ${addRouterImport}
 
 
 const ${componentName} = () => {
+
     ${pathnameDeclaration}
 
     return (
@@ -83,10 +85,11 @@ const generateNextJsJsxFunctionTemplate = (
 ${componentTypeTemplate}
 
 import React from "react";
-import "./${componentName}Style.${styleSheetType}";
+import "./${componentName}.${styleSheetType}";
 ${addRouterImport}
 
 function ${componentName} (){
+
     ${pathnameDeclaration}
 
     return (
@@ -107,6 +110,7 @@ ${addRouterImport}
 
 
 function ${componentName} (){
+
     ${pathnameDeclaration}
 
     return (
@@ -145,11 +149,12 @@ const generateNextJsTsxArrowTemplate = (
 ${componentTypeTemplate}
 
 import React from "react";
-import "./${componentName}Style.${styleSheetType}";
+import "./${componentName}.${styleSheetType}";
 ${addRouterImport}
 
 
 const ${componentName} = () => {
+
     ${pathnameDeclaration}
 
     return (
@@ -170,6 +175,7 @@ ${addRouterImport}
 
 
 const ${componentName} = () => {
+
     ${pathnameDeclaration}
 
     return (
@@ -209,11 +215,12 @@ const generateNextJsTsxFunctionTemplate = (
 ${componentTypeTemplate}
 
 import React from "react";
-import "./${componentName}Style.${styleSheetType}";
+import "./${componentName}.${styleSheetType}";
 ${addRouterImport}
 
 
 function ${componentName}() {
+
    ${pathnameDeclaration}
 
     return (
@@ -234,6 +241,7 @@ ${addRouterImport}
 
 
 function ${componentName}() {
+  
   ${pathnameDeclaration}
 
     return (

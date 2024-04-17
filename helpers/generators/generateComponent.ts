@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import * as readUserConfig from "../utilis/readUserConfig.js";
 import * as componentResolver from "./resolvers/resolveComponentContent.js";
+import { captitalizeWord } from "helpers/utilis/capitalize.js";
 
 const findComponentDirectory = () => {
   const rootDir = process.cwd();
@@ -29,19 +30,24 @@ const generateComponentFile = async (
   componentDir: string,
   componentResolver: any
 ) => {
-  // const componentFilePath = path.join(
-  //   componentDir + `/${name}.${readUserConfig.readConfig().template}`
-  // );
+  /**
+   * I added the capitalizeWord function to ensure that the component generated,
+   * starts with a capital letter even if the user enters a small letter.
+   * Eg button => Button
+   */
 
-    await fs.writeFile(
-      componentDir,
-      componentResolver.resolveComponentContent(readUserConfig, name),
-      (error) => {
-        if (error) {
-          console.log(colors.bold(colors.red(error.toString())));
-        }
+  await fs.writeFile(
+    componentDir,
+    componentResolver.resolveComponentContent(
+      readUserConfig,
+      captitalizeWord(name)
+    ),
+    (error) => {
+      if (error) {
+        console.log(colors.bold(colors.red(error.toString())));
       }
-    );
+    }
+  );
 };
 
 export const generateComponent = async (name: string) => {
@@ -58,18 +64,36 @@ export const generateComponent = async (name: string) => {
     return;
   }
 
-  const componentDirName =
-    readUserConfig.readConfig().generateFolder === "true"
-      ? path.join(componentDir, name)
-      : componentDir;
+  const generateComponentFolder =
+    readUserConfig.readConfig().generateFolder === "true";
 
+  const componentDirName = generateComponentFolder
+    ? path.join(componentDir, name)
+    : componentDir;
+
+  /**
+   * So what I'm doing here is that if the user config allows generating folder with components,
+   * Then the component name should be index.jsx or index.tsx. This will make the import statement cleaner
+   *
+   * Eg, If I generate a button component the path should be /components/button/index.tsx
+   *
+   * Instead of /components/button/button.tsx
+   *
+   * So when importing, I can do
+   * import Button from "/components/button";
+   *
+   * instead of import Button from "/components/button/button.tsx";
+   */
   const componentFilePath = path.join(
-    componentDirName + `/${name}.${readUserConfig.readConfig().template}`
+    componentDirName +
+      `/${generateComponentFolder ? "index" : name}.${
+        readUserConfig.readConfig().template
+      }`
   );
 
   try {
     // Create the generated component directory
-    if (readUserConfig.readConfig().generateFolder === "true") {
+    if (generateComponentFolder) {
       fs.mkdirSync(componentDirName);
     }
 
@@ -77,7 +101,7 @@ export const generateComponent = async (name: string) => {
       const styleSheetType = readUserConfig.readConfig().stylesheetType;
       const cssFilePath = path.join(
         componentDirName,
-        `${name}Style.${styleSheetType}`
+        `${name}.${styleSheetType}`
       );
 
       await fs.promises.writeFile(cssFilePath, "");
@@ -88,11 +112,15 @@ export const generateComponent = async (name: string) => {
       path.join(componentFilePath),
       componentResolver
     );
-  } catch (error: any) {
-    console.log(colors.bold(colors.red(error)));
-  }
 
-  console.log(
-    `${colors.bold(colors.green(`${name} Component generated successfully`))}`
-  );
+    console.log(
+      `${colors.bold(
+        colors.green(
+          `${captitalizeWord(name)} component generated successfully 🚀`
+        )
+      )}`
+    );
+  } catch (error: any) {
+    console.log(colors.bold(colors.red(`An error occured! ${error.message}`)));
+  }
 };

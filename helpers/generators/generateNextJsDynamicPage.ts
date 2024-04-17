@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import * as readUserConfig from "../utilis/readUserConfig.js";
 import * as pageResolver from "./resolvers/resolveNextJsDynamicPageContent.js";
+import { captitalizeWord } from "helpers/utilis/capitalize.js";
 
 const findPagesDirectory = () => {
   const rootDir = process.cwd();
@@ -11,12 +12,18 @@ const findPagesDirectory = () => {
     "src/app/pages",
     "src/app/Page",
     "src/app/Pages",
+    "src/app/_pages",
+    "src/app/_Pages",
+    "src/app/_page",
+    "src/app/_Page",
     "src/app/",
     "src/pages",
     "src/Pages",
     "app/page",
     "app/Page",
     "app/pages",
+    "app/_pages",
+    "app/_Pages",
     "app/",
   ];
 
@@ -38,7 +45,7 @@ const findPagesDirectory = () => {
 
 const generateDynamicPageFile = async (
   dynamicId: any,
-  name: string = "page",
+  name: string,
   pagesDir: string,
   pageResolver: any,
   componentType: string,
@@ -49,7 +56,7 @@ const generateDynamicPageFile = async (
   );
 
   /*
-  users can optionally specify a page that they already have to generate the dynamic folder to
+  users can optionally specify a page that they already have to generate the dynamic folder in
     
   */
 
@@ -57,7 +64,6 @@ const generateDynamicPageFile = async (
     pageFilePath = path.join(
       pagesDir + startPage + `/page.${readUserConfig.readConfig().template}`
     );
-
   }
 
   await fs.promises.writeFile(
@@ -65,7 +71,7 @@ const generateDynamicPageFile = async (
     pageResolver.resolveDynamicPageContent(
       dynamicId,
       readUserConfig,
-      name,
+      captitalizeWord(name),
       componentType
     )
   );
@@ -73,9 +79,9 @@ const generateDynamicPageFile = async (
 
 export const generatePage = async (
   dynamicId: any,
-  name: string = "page",
+  name,
   componentType: string,
-  startPage?:any
+  startPage?: any
 ) => {
   if (!name) {
     return console.log(colors.bold(colors.red("Page name is required!")));
@@ -88,23 +94,21 @@ export const generatePage = async (
     return;
   }
 
-  let pageDirName =
-    readUserConfig.readConfig().generateFolder === "true"
-      ? path.join(pagesDir, `[${dynamicId}]`)
-      : path.join(pagesDir);
-  
+  const generatePageFolder =
+    readUserConfig.readConfig().generateFolder === "true";
+
+  let pageDirName = generatePageFolder
+    ? path.join(pagesDir, `[${dynamicId}]`)
+    : path.join(pagesDir);
+
   if (startPage) {
-     pageDirName =
-       readUserConfig.readConfig().generateFolder === "true"
-         ? path.join(pagesDir + startPage, `[${dynamicId}]`)
-         : path.join(pagesDir + startPage);
+    pageDirName = generatePageFolder
+      ? path.join(pagesDir + startPage, `[${dynamicId}]`)
+      : path.join(pagesDir + startPage);
   }
 
-
   try {
-    readUserConfig.readConfig().generateFolder === "true"
-      ? await fs.mkdirSync(pageDirName)
-      : null;
+    generatePageFolder ? await fs.mkdirSync(pageDirName) : null;
 
     if (readUserConfig.readConfig().generateStylesheet === "true") {
       const styleSheetType = readUserConfig.readConfig().stylesheetType;
@@ -118,16 +122,20 @@ export const generatePage = async (
 
     generateDynamicPageFile(
       dynamicId,
-      "page",
+      captitalizeWord(dynamicId),
       pageDirName,
       pageResolver,
       componentType
     );
-  } catch (error: any) {
-    console.log(colors.bold(colors.red(error)));
-  }
 
-  console.log(
-    `${colors.bold(colors.green(`${dynamicId} page generated successfully`))}`
-  );
+    console.log(
+      `${colors.bold(
+        colors.green(
+          `${captitalizeWord(dynamicId)} page generated successfully 🚀`
+        )
+      )}`
+    );
+  } catch (error: any) {
+    console.log(colors.bold(colors.red(`An error occured! ${error.message}`)));
+  }
 };
