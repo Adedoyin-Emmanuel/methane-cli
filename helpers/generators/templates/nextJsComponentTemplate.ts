@@ -10,7 +10,7 @@ const generateNextJsJsxArrowTemplate = (
     template = `
 ${componentTypeTemplate}
 import React from "react";
-import "./${componentName}Style.${styleSheetType}";
+import "./${componentName}.${styleSheetType}";
 
 const ${componentName} = () => {
 
@@ -56,7 +56,7 @@ const generateNextJsJsxFunctionTemplate = (
     template = `
 ${componentTypeTemplate}
 import React from "react";
-import "./${componentName}Style.${styleSheetType}";
+import "./${componentName}.${styleSheetType}";
 
 function ${componentName} () {
     
@@ -103,7 +103,7 @@ const generateNextJsTsxArrowTemplate = (
     template = `
 ${componentTypeTemplate}
 import React from "react";
-import "./${componentName}Style.${styleSheetType}";
+import "./${componentName}.${styleSheetType}";
 
 interface ${componentName}Props {
     
@@ -156,7 +156,7 @@ const generateNextJsTsxFunctionTemplate = (
     template = `
 ${componentTypeTemplate}
 import React from "react";
-import "./${componentName}Style.${styleSheetType}";
+import "./${componentName}.${styleSheetType}";
 
 interface ${componentName}Props {
     
