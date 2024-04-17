@@ -107,10 +107,10 @@ export const generatePage = async (
   const generatePageFolder =
     readUserConfig.readConfig().generateFolder === "true";
 
-  const legitPageName: string = generatePageFolder ? "index" : name;
+  //const legitPageName: string = generatePageFolder ? "index" : name;
 
   let pageDirName = generatePageFolder
-    ? path.join(pagesDir, legitPageName)
+    ? path.join(pagesDir, name)
     : path.join(pagesDir);
 
   /**
@@ -123,7 +123,7 @@ export const generatePage = async (
    */
   if (startPage) {
     pageDirName = generatePageFolder
-      ? path.join(pagesDir + startPage, legitPageName)
+      ? path.join(pagesDir + startPage, name)
       : path.join(pagesDir + startPage);
   }
 

@@ -122,7 +122,7 @@ export const generatePage = async (
 
     generateDynamicPageFile(
       dynamicId,
-      generatePageFolder ? "index" : name,
+      captitalizeWord(dynamicId),
       pageDirName,
       pageResolver,
       componentType

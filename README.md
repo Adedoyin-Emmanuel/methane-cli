@@ -231,13 +231,13 @@ mac@Macs-MBP~/D/react-app$ methane g -np pageName -ct server
 As you already know, in **NextJS** dynamic pages are pages whose content is determined by parameters included in the URL. For example _/product/1_ is a dynamic URL. Now Methane can also help you create dynamic pages. Usually, a dynamic page would be nested within a page. For example, I've a products page already _/products_, my dynamic page would most likely be productId. So using Methane, you can generate a dynamic page using the command below
 
 ```bash
-mac@Macs-MBP~/D/react-app$ methane g -ndp productId -sp /products
+mac@Macs-MBP~/D/react-app$ methane g -nid productId -sp /products
 
 ```
 
 ##### Command Arguments
 
-1. **-npd** -npid (Next Dynamic Page) is the dynamic page name, which in this case is _productId_
+1. **-nid** -nid (Next Dynamic Page Id) is the dynamic page name, which in this case is _productId_
 2. **-sp** -sp is an optional parameter called (Start Page) which is indicates the folder to place the dynamic page in. You don't need to specify the default nextJS _/app_ when specifying the folder to place the dynamic page.
 
 **Optionally, you can specify your nextJs page to be a server or client page** To do this, Simply add the **ct** flag, then you can specify server or client omitting the **ct** would generate a client page by default.
