@@ -11,18 +11,14 @@
 
 Methane is a **CLI** tool that helps developers easily create **React components, pages or NextJS components, pages, dynamic pages and service worker files** with boilerplate codes. It also comes with extra configration that allows you choose either **JavaScript** or **TypeScript** templates.
 
-<p align="center">
-  <img src="./assets/MethaneLogo.png" alt="Methane Logo" style="max-width: 100%; width: 100%; height:40%;">
-</p>
-
 ## What's New ❓
 
-The new major version **2.0.0** comes with support for **NextJS**. This is a game changer for NextJs developers, with **Methane** you can easily generate your components from the command line and bingo 🚀
+The patch version **1.4.1** aims to fix issues related to the **components and pages** generation.
 
-1. Support for **NextJS**
-2. Migrated codebase from **JS** to **TS**
-3. Cleaner CLI Interface
-4. Customize your project based on your local configuration.
+1. React Components and Pages as well as NextJs Components, Pages name default to `index.jsx` or `index.tsx` if **generateFolder** configuration is specified. This makes **components and pages** import cleaner and easier to understand. For example, if you generate a component called `Button`, the generated component path would be `Button/index.jsx` or `Button/index.tsx` and you can import it like this `import Button from './components/Button'`. Unlike before where you would have to import it like this `import Button from './components/Button/Button'`.
+2. Fixed component and pages capitalization issue. In previous versions of **Methane**, if you generate a component called `button`, the file name remains `button` but the generated component would be `button` instead of `Button`. This has been fixed in this version.
+3. Gracefully handled potential error that might occur when generating pages or components.
+4. Added a new argument `-d` or `--default` to `methane init` command. This allows developers to easily intialize **Methane** with the default configuration without being prompted to answer questions. This is useful when you want to quickly initialize **Methane** in a new project. **Note** You can always update the **Methane** configuration by running `methane config` command.
 
 ## Installation 💿
 
@@ -30,9 +26,15 @@ To install **Methane-Cli**, run the following command. Note you've to install it
 **Note** You've to init methane before using it in your project.
 
 ```bash
-# npm
 npm install -g methane-cli
+```
 
+```bash
+bun install -g methane-cli
+```
+
+```bash
+yarn add -g methane-cli
 ```
 
 ## Usage 🚦
@@ -45,7 +47,7 @@ rg
 
 ```
 
-This would show a welcome message with information about the tool. Then you need to run the init command. This would help you to configure methane to your taste. 😛
+This would show a welcome message with information about the tool. Then you need to run the init command. This would help you to configure methane to your taste 😛.
 
 ```bash
 
@@ -54,6 +56,12 @@ methane init
 ```
 
 This would prompt you to answer some questions and a config file will be created. Note you can't use **Methane** if you don't have the config file.
+
+Optionally, you can also add the `-d` or `--default` argument to skip the prompt and use the default configuration.
+
+```bash
+methane init --default
+```
 
 ## Commands
 
@@ -91,7 +99,7 @@ To change the configurations, run the following command.
 To change the template to **tsx** run the following command.
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane c --template tsx
+mac@Macs-MBP~/D/react-app$ methane c --template tsx
 
 ```
 
@@ -102,7 +110,7 @@ _jsx or tsx are the only options available_
 To change the component generation style, run the following command.
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane config -c arrow
+mac@Macs-MBP~/D/react-app$ methane config -c arrow
 
 ```
 
@@ -113,7 +121,7 @@ _arrow or functional are the only options available_
 To change the page generation style, run the following command
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane config -p arrow
+mac@Macs-MBP~/D/react-app$ methane config -p arrow
 
 ```
 
@@ -124,7 +132,7 @@ _arrow or functional are the only options available_
 To generate stylesheet file for components and pages, run the following command
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane config -gs true
+mac@Macs-MBP~/D/react-app$ methane config -gs true
 
 ```
 
@@ -135,7 +143,7 @@ _true or false are the only options available_
 To generate a folder for components and pages, run the following command
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane config -gf true
+mac@Macs-MBP~/D/react-app$ methane config -gf true
 
 ```
 
@@ -146,7 +154,7 @@ _true or false are the only options available_
 To register the generated pages in your **App.js or App.jsx or App.tsx or App.ts** file, run the following command. This is strictly or **React** and not **NextJS**
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane config -r true
+mac@Macs-MBP~/D/react-app$ methane config -r true
 
 ```
 
@@ -157,7 +165,7 @@ _true or false are the only options available_
 To change the stylesheet type for your components and pages, run the following command.
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane config -st css
+mac@Macs-MBP~/D/react-app$ methane config -st css
 
 ```
 
@@ -170,14 +178,14 @@ With the new update, you can generate **React** or **NextJS** server or client c
 ### Generating A React Component
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -c componentName
+mac@Macs-MBP~/D/react-app$ methane g -c componentName
 
 ```
 
 ### Generating A NextJS Component
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -nc componentName
+mac@Macs-MBP~/D/react-app$ methane g -nc componentName
 
 ```
 
@@ -196,7 +204,7 @@ With the new update, you can generate **React** or **NextJS** server or client p
 ### Generating A React Page
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -p pageName
+mac@Macs-MBP~/D/react-app$ methane g -p pageName
 
 ```
 
@@ -205,7 +213,7 @@ This would create a new page according to the global configuration and add the p
 ### Generating A NextJS Page
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -np pageName
+mac@Macs-MBP~/D/react-app$ methane g -np pageName
 
 ```
 
@@ -214,7 +222,7 @@ This would generate a new page according to the configuration in your _/methane/
 **Optionally, you can specify your nextJs page to be a server or client page** To do this, Simply add the **ct** flag, then you can specify server or client omitting the **ct** would generate a client page by default.
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -np pageName -ct server
+mac@Macs-MBP~/D/react-app$ methane g -np pageName -ct server
 
 ```
 
@@ -223,7 +231,7 @@ doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -np pageName -ct server
 As you already know, in **NextJS** dynamic pages are pages whose content is determined by parameters included in the URL. For example _/product/1_ is a dynamic URL. Now Methane can also help you create dynamic pages. Usually, a dynamic page would be nested within a page. For example, I've a products page already _/products_, my dynamic page would most likely be productId. So using Methane, you can generate a dynamic page using the command below
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -ndp productId -sp /products
+mac@Macs-MBP~/D/react-app$ methane g -ndp productId -sp /products
 
 ```
 
@@ -235,7 +243,7 @@ doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -ndp productId -sp /products
 **Optionally, you can specify your nextJs page to be a server or client page** To do this, Simply add the **ct** flag, then you can specify server or client omitting the **ct** would generate a client page by default.
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -ndp productId -sp /products -ct server
+mac@Macs-MBP~/D/react-app$ methane g -ndp productId -sp /products -ct server
 
 ```
 
@@ -248,7 +256,7 @@ Added a new command **`list-config [ls]`**
 - `--list-config` or `-lc`: Lists all Methane configurations.
 
 ````bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane list-config
+mac@Macs-MBP~/D/react-app$ methane list-config
 
 All configurations
 {
@@ -263,7 +271,7 @@ All configurations
 
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane g -sw
+mac@Macs-MBP~/D/react-app$ methane g -sw
 
 ````
 
@@ -286,7 +294,7 @@ _You don't have specify any name for the service-worker_
 If you are stuck or you want to learn more about the different configurations, run the following command.
 
 ```bash
-doyin@doyinHpLaptop:~/Desktop/react-app$ methane c --help
+mac@Macs-MBP~/D/react-app$ methane c --help
 
 ```
 
@@ -296,7 +304,7 @@ doyin@doyinHpLaptop:~/Desktop/react-app$ methane c --help
 
 ## Contributing ❤️
 
-If you'd like to contribute to **methane**, please follow these steps:
+If you'd like to contribute to **Methane**, please follow these steps:
 
 1. Fork the repository
 2. Create a new branch
@@ -308,9 +316,9 @@ Please star this repo if you find it useful. Also share the good news with your 
 
 ## License 🧐
 
-**methane-cli** is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+**Methane-Cli** is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Contibutors 👨‍
 
-<img src="https://www.npmjs.com/npm-avatar/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdmF0YXJVUkwiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci82YjdmNjY1YjY5NzNlMTA5MDY5NWYxNGQ5ZTFjN2FlMT9zaXplPTQ5NiZkZWZhdWx0PXJldHJvIn0.VLsXZqAcYRo73KaG7EmkZtMv67-fHx-8x4Fo_nXv_b4" />
-<a target="_blank" href="https:adedoyin-emmanuel.netlify.app">Adedoyin Emmanuel Adeniyi</a>
+<a href="https://github.com/adedoyin-emmanuel"> <img src="https://www.npmjs.com/npm-avatar/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdmF0YXJVUkwiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci82YjdmNjY1YjY5NzNlMTA5MDY5NWYxNGQ5ZTFjN2FlMT9zaXplPTQ5NiZkZWZhdWx0PXJldHJvIn0.VLsXZqAcYRo73KaG7EmkZtMv67-fHx-8x4Fo_nXv_b4"  style="border-radius:50%" width="30" height="30"/>
+</a>
