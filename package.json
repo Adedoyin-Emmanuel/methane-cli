@@ -1,20 +1,19 @@
 {
   "name": "methane-cli",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "methane-cli is a command-line tool for generating React components and pages with ease.",
   "main": "./dist/index.js",
   "type": "module",
   "scripts": {
     "lint": "eslint .",
     "check-lint": "eslint [0-9]*.ts",
-    "clean": "rimraf ./dist",
     "build": "tsc index.ts --esModuleInterop true --target ES2020 --module nodenext --moduleResolution nodenext --outDir dist",
-    "start": "npm run clean && npm run build  && node ./dist/index.js",
+    "start": "npm run build  && node ./dist/index.js",
     "dev": "ts-node index.ts",
     "test": "jest",
     "full-test": "eslint */[0-9]*.ts && jest --watchAll --verbose",
     "full-test-fix": "eslint */[0-9]*.ts --fix && jest --watchAll --verbose",
-    "pub": "npm run clean && npm run build"
+    "pub": "npm publish"
   },
   "repository": {
     "type": "git",
@@ -47,8 +46,7 @@
     "figlet": "^1.6.0",
     "fs-extra": "^11.2.0",
     "gradient-string": "^2.0.2",
-    "inquirer": "^9.2.15",
-    "rimraf": "^5.0.5"
+    "inquirer": "^9.2.15"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
@@ -60,7 +58,6 @@
     "@types/gradient-string": "^1.1.2",
     "@types/inquirer": "^9.0.6",
     "@types/node": "^20.7.1",
-    "@types/rimraf": "^3.0.2",
     "eslint": "^6.4.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",

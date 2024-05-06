@@ -4,7 +4,7 @@ import path from "path";
 import * as readUserConfig from "../utilis/readUserConfig.js";
 import * as pageRegisterer from "./register/registerPage.js";
 import * as pageResolver from "./resolvers/resolvePageContent.js";
-import { captitalizeWord } from "helpers/utilis/capitalize.js";
+import { captitalizeWord } from "../../helpers/utilis/capitalize.js";
 
 const rootDir = path.join(process.cwd());
 const pageDir = [
