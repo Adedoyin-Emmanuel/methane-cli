@@ -1,6 +1,6 @@
 {
   "name": "methane-cli",
-  "version": "1.4.0",
+  "version": "1.4.4",
   "description": "methane-cli is a command-line tool for generating React components and pages with ease.",
   "main": "./dist/index.js",
   "type": "module",
