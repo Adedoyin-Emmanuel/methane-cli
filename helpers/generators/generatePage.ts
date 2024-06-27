@@ -4,7 +4,7 @@ import path from "path";
 import * as readUserConfig from "../utilis/readUserConfig.js";
 import * as pageRegisterer from "./register/registerPage.js";
 import * as pageResolver from "./resolvers/resolvePageContent.js";
-import { captitalizeWord } from "helpers/utilis/capitalize.js";
+import { capititalizeWord } from "helpers/utilis/capitalize.js";
 
 const rootDir = path.join(process.cwd());
 const pageDir = [
@@ -33,7 +33,7 @@ const generatePageFile = async (
 
   await fs.writeFile(
     pageDir,
-    pageResolver.resolvePageContent(readUserConfig, captitalizeWord(name)),
+    pageResolver.resolvePageContent(readUserConfig, capititalizeWord(name)),
     (error) => {
       if (error) {
         console.log(colors.bold(colors.red(error.toString())));
@@ -110,7 +110,7 @@ export const generatePage = async (name: string) => {
 
     console.log(
       `${colors.bold(
-        colors.green(`${captitalizeWord(name)} page generated successfully 🚀`)
+        colors.green(`${capititalizeWord(name)} page generated successfully 🚀`)
       )}`
     );
   } catch (error: any) {

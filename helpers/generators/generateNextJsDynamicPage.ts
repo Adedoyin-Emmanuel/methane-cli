@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import * as readUserConfig from "../utilis/readUserConfig.js";
 import * as pageResolver from "./resolvers/resolveNextJsDynamicPageContent.js";
-import { captitalizeWord } from "helpers/utilis/capitalize.js";
+import { capititalizeWord } from "helpers/utilis/capitalize.js";
 
 const findPagesDirectory = () => {
   const rootDir = process.cwd();
@@ -71,7 +71,7 @@ const generateDynamicPageFile = async (
     pageResolver.resolveDynamicPageContent(
       dynamicId,
       readUserConfig,
-      captitalizeWord(name),
+      capititalizeWord(name),
       componentType
     )
   );
@@ -122,7 +122,7 @@ export const generatePage = async (
 
     generateDynamicPageFile(
       dynamicId,
-      captitalizeWord(dynamicId),
+      capititalizeWord(dynamicId),
       pageDirName,
       pageResolver,
       componentType
@@ -131,7 +131,7 @@ export const generatePage = async (
     console.log(
       `${colors.bold(
         colors.green(
-          `${captitalizeWord(dynamicId)} page generated successfully 🚀`
+          `${capititalizeWord(dynamicId)} page generated successfully 🚀`
         )
       )}`
     );
