@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import * as readUserConfig from "../utilis/readUserConfig.js";
 import * as componentResolver from "./resolvers/resolveNextJsComponentContent.js";
-import { capititalizeWord } from "helpers/utilis/capitalize.js";
+import  capititalizeWord  from "helpers/utilis/capitalize.js";
 
 const findComponentDirectory = () => {
   const rootDir = process.cwd();
