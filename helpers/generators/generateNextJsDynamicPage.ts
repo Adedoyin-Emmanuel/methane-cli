@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import * as readUserConfig from "../utilis/readUserConfig.js";
 import * as pageResolver from "./resolvers/resolveNextJsDynamicPageContent.js";
-import capititalizeWord from "helpers/utilis/capitalize.js";
+import capititalizeWord from "./../../helpers/utilis/capitalize.js";
 
 const findPagesDirectory = () => {
   const rootDir = process.cwd();
