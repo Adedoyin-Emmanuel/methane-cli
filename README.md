@@ -13,7 +13,7 @@ Methane is a **CLI** tool that helps developers easily create **React components
 
 ## What's New ❓
 
-The latest patch version 1.4.4 introduces a crucial fix that enhances the naming conventions for generated components and Next.js pages. This update ensures that hyphenated names are correctly capitalized, providing a more consistent and readable codebase.
+The latest patch version 1.4.6 introduces a crucial fix that enhances the naming conventions for generated components and Next.js pages. This update ensures that hyphenated names are correctly capitalized, providing a more consistent and readable codebase.
 
 **Component Capitalization Fix:**
 
@@ -324,5 +324,9 @@ Please star this repo if you find it useful. Also share the good news with your 
 
 ## Contibutors 👨‍
 
-<a href="https://github.com/adedoyin-emmanuel"> <img src="https://www.npmjs.com/npm-avatar/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdmF0YXJVUkwiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci82YjdmNjY1YjY5NzNlMTA5MDY5NWYxNGQ5ZTFjN2FlMT9zaXplPTQ5NiZkZWZhdWx0PXJldHJvIn0.VLsXZqAcYRo73KaG7EmkZtMv67-fHx-8x4Fo_nXv_b4"  style="border-radius:50%" width="30" height="30"/>
-</a>
+<div style="display: flex; flex-wrap: wrap;">
+  <a href="https://github.com/adedoyin-emmanuuel" style="margin-right: 10px;">
+    <img src="https://github.com/adedoyin-emmanuel.png" width="80" height="80" style="border-radius: 50%; border: 2px solid #000;" alt="Adedoyin Emmanuel"/>
+  </a>
+
+</div>
