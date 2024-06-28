@@ -9,8 +9,6 @@ import { packageGenerator } from "./helpers/utilis/packageGenerator.js";
 import { InitMethaneCLI } from "./helpers/utilis/packageInit.js";
 import { listAllConfig } from "./helpers/utilis/packageListConfiguration.js";
 
-/* Configure Figlet for the package name */
-
 figlet.text(
   "Methane",
   {

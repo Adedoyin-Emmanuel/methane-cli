@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import * as readUserConfig from "../utilis/readUserConfig.js";
 import * as componentResolver from "./resolvers/resolveNextJsComponentContent.js";
-import { captitalizeWord } from "helpers/utilis/capitalize.js";
+import capititalizeWord from "./../../helpers/utilis/capitalize.js";
 
 const findComponentDirectory = () => {
   const rootDir = process.cwd();
@@ -55,7 +55,7 @@ const generateComponentFile = async (
     componentDir,
     componentResolver.resolveComponentContent(
       readUserConfig,
-      captitalizeWord(name),
+      capititalizeWord(name),
       componentType
     ),
     (error) => {
@@ -128,7 +128,7 @@ export const generateComponent = async (
     console.log(
       `${colors.bold(
         colors.green(
-          `${captitalizeWord(name)} component generated successfully 🚀`
+          `${capititalizeWord(name)} component generated successfully 🚀`
         )
       )}`
     );

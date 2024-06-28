@@ -3,7 +3,7 @@
   "component": "arrow",
   "page": "arrow",
   "generateStylesheet": "false",
-  "generateFolder": "false",
+  "generateFolder": "true",
   "register": "false",
   "stylesheetType": "css"
 }

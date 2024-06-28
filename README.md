@@ -13,12 +13,16 @@ Methane is a **CLI** tool that helps developers easily create **React components
 
 ## What's New ❓
 
-The patch version **1.4.1** aims to fix issues related to the **components and pages** generation.
+The latest patch version 1.4.8 introduces a crucial fix that enhances the naming conventions for generated components and Next.js pages. This update ensures that hyphenated names are correctly capitalized, providing a more consistent and readable codebase.
 
-1. React Components and Pages as well as NextJs Components, Pages name default to `index.jsx` or `index.tsx` if **generateFolder** configuration is specified. This makes **components and pages** import cleaner and easier to understand. For example, if you generate a component called `Button`, the generated component path would be `Button/index.jsx` or `Button/index.tsx` and you can import it like this `import Button from './components/Button'`. Unlike before where you would have to import it like this `import Button from './components/Button/Button'`.
-2. Fixed component and pages capitalization issue. In previous versions of **Methane**, if you generate a component called `button`, the file name remains `button` but the generated component would be `button` instead of `Button`. This has been fixed in this version.
-3. Gracefully handled potential error that might occur when generating pages or components.
-4. Added a new argument `-d` or `--default` to `methane init` command. This allows developers to easily intialize **Methane** with the default configuration without being prompted to answer questions. This is useful when you want to quickly initialize **Methane** in a new project. **Note** You can always update the **Methane** configuration by running `methane config` command.
+**Component Capitalization Fix:**
+
+When generating components with hyphenated names, **Methane** will now correctly capitalize each segment of the name. For instance, creating a component named `animated-button` will result in a component named `AnimatedButton`. This ensures that components follow standard **PascalCase** naming conventions, enhancing code readability and consistency.
+
+**Next.js Page Capitalization Fix:**
+
+Similarly, generating Next.js pages with hyphenated names will now produce correctly capitalized page names. For example, a page named 2fa-auth will be created as 2FaAuth, user-appointments as UserAppointments, and privacy-policy as PrivacyPolicy. This fix ensures that page names are intuitive and follow common naming practices.
+**Please Note:** Your nextJs page route will not be affected by this change. This change only affects the name of the generated page or component.
 
 ## Installation 💿
 
@@ -320,5 +324,9 @@ Please star this repo if you find it useful. Also share the good news with your 
 
 ## Contibutors 👨‍
 
-<a href="https://github.com/adedoyin-emmanuel"> <img src="https://www.npmjs.com/npm-avatar/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdmF0YXJVUkwiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci82YjdmNjY1YjY5NzNlMTA5MDY5NWYxNGQ5ZTFjN2FlMT9zaXplPTQ5NiZkZWZhdWx0PXJldHJvIn0.VLsXZqAcYRo73KaG7EmkZtMv67-fHx-8x4Fo_nXv_b4"  style="border-radius:50%" width="30" height="30"/>
-</a>
+<div style="display: flex; flex-wrap: wrap;">
+  <a href="https://github.com/adedoyin-emmanuuel" style="margin-right: 10px;">
+    <img src="https://github.com/adedoyin-emmanuel.png" width="80" height="80" style="border-radius: 50%; border: 2px solid #000;" alt="Adedoyin Emmanuel"/>
+  </a>
+
+</div>

@@ -3,7 +3,8 @@ import fs from "fs";
 import path from "path";
 import * as readUserConfig from "../utilis/readUserConfig.js";
 import * as pageResolver from "./resolvers/resolveNextJsPageContent.js";
-import { captitalizeWord } from "helpers/utilis/capitalize.js";
+import capititalizeWord from "./../../helpers/utilis/capitalize.js";
+
 
 const findPagesDirectory = () => {
   const rootDir = process.cwd();
@@ -72,7 +73,7 @@ const generatePageFile = async (
     pageFilePath,
     pageResolver.resolvePageContent(
       readUserConfig,
-      captitalizeWord(name),
+      capititalizeWord(name),
       componentType
     ),
     (error) => {
@@ -141,7 +142,7 @@ export const generatePage = async (
 
     console.log(
       `${colors.bold(
-        colors.green(`${captitalizeWord(name)} page generated successfully 🚀`)
+        colors.green(`${capititalizeWord(name)} page generated successfully 🚀`)
       )}`
     );
   } catch (error: any) {
