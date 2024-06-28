@@ -13,7 +13,7 @@ Methane is a **CLI** tool that helps developers easily create **React components
 
 ## What's New ❓
 
-The latest patch version 1.4.8 introduces a crucial fix that enhances the naming conventions for generated components and Next.js pages. This update ensures that hyphenated names are correctly capitalized, providing a more consistent and readable codebase.
+The latest patch version 1.4.9 introduces a crucial fix that enhances the naming conventions for generated components and Next.js pages. This update ensures that hyphenated names are correctly capitalized, providing a more consistent and readable codebase.
 
 **Component Capitalization Fix:**
 
