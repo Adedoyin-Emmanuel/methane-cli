@@ -5,10 +5,7 @@ import * as readUserConfig from "../../utilis/readUserConfig.js";
 
 export const addPageImport = (rootDir: string, pageName: string, currentPageName: string) => {
   const supportedExtensions = [".js", ".jsx", ".ts", ".tsx"];
-  const generatedPageImportStatement =
-    readUserConfig.readConfig().generateFolder === "true"
-      ? `import ${pageName} from "./${currentPageName}/${pageName}/${pageName}";`
-      : `import ${pageName} from "./${currentPageName}/${pageName}";`;
+  const generatedPageImportStatement = `import ${pageName} from "./${currentPageName}/${pageName}";`;
 
   const checkFile = (filePath: string) => {
     const fileExt = path.extname(filePath);
