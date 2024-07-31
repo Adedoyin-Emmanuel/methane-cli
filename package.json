@@ -48,7 +48,7 @@
     "fs-extra": "^11.2.0",
     "gradient-string": "^2.0.2",
     "inquirer": "^9.2.16",
-    "rimraf": "^5.0.7"
+    "rimraf": "^5.0.8"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
