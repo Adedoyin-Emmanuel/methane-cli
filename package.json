@@ -45,7 +45,7 @@
     "colors": "^1.4.0",
     "commander": "^10.0.1",
     "figlet": "^1.8.0",
-    "fs-extra": "^11.2.0",
+    "fs-extra": "^11.3.0",
     "gradient-string": "^2.0.2",
     "inquirer": "^9.2.16",
     "rimraf": "^5.0.9"
