@@ -47,7 +47,7 @@
     "figlet": "^1.8.2",
     "fs-extra": "^11.3.0",
     "gradient-string": "^2.0.2",
-    "inquirer": "^10.0.0",
+    "inquirer": "^12.9.1",
     "rimraf": "^5.0.10"
   },
   "devDependencies": {
@@ -61,7 +61,7 @@
     "@types/inquirer": "^9.0.6",
     "@types/node": "^20.7.1",
     "@types/rimraf": "^3.0.2",
-    "eslint": "^6.4.0",
+    "eslint": "^9.33.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^22.17.0",
