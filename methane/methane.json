@@ -1,9 +1,0 @@
-{
-  "template": "tsx",
-  "component": "arrow",
-  "page": "arrow",
-  "generateStylesheet": "false",
-  "generateFolder": "false",
-  "register": "false",
-  "stylesheetType": "css"
-}
